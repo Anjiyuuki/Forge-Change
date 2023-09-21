@@ -1,25 +1,3 @@
-// JavaScript code for handling navigation
-
-document.getElementById('explore').addEventListener('click', function () {
-  // Handle the "Explore" click event
-  alert('Explore clicked'); // Replace with your logic
-});
-
-document.getElementById('groups').addEventListener('click', function () {
-  // Handle the "Groups" click event
-  alert('Groups clicked'); // Replace with your logic
-});
-
-document.getElementById('inbox').addEventListener('click', function () {
-  // Handle the "Inbox" click event
-  alert('Inbox clicked'); // Replace with your logic
-});
-
-document.getElementById('info').addEventListener('click', function () {
-  // Handle the "Info" click event
-  alert('Info clicked'); // Replace with your logic
-});
-
 const volunteerOrganizations = [
   { name: 'Organization A', location: 'City 1', topic: 'Education' },
   { name: 'Organization B', location: 'City 2', topic: 'Environment' },
@@ -32,8 +10,9 @@ function filterVolunteerOrganizations() {
   const locationFilter = document.getElementById('locationFilter').value;
   const topicFilter = document.getElementById('topicFilter').value;
   const filteredOrganizations = volunteerOrganizations.filter(org => {
-      return (locationFilter === 'all' || org.location === locationFilter) &&
-             (topicFilter === 'all' || org.topic === topicFilter);
+      const locationMatch = locationFilter === 'all' || org.location === locationFilter;
+      const topicMatch = topicFilter === 'all' || org.topic === topicFilter;
+      return locationMatch && topicMatch;
   });
 
   displayVolunteerOrganizations(filteredOrganizations);
@@ -61,7 +40,7 @@ function searchVolunteerOpportunities() {
   const searchResults = volunteerOrganizations.filter(org =>
       org.name.toLowerCase().includes(searchInput.toLowerCase())
   );
-
+  alert(org);
   displayVolunteerOrganizations(searchResults);
 }
 
