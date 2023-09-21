@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- Reuse the CSS from your registration page -->
+    <link rel="stylesheet" href="styles.css">
     <title>Login Page</title>
 </head>
 <body>
@@ -15,7 +15,6 @@
 
     <nav>
         <ul>
-          <li><a href="index.html" id="home">Home</a></li>
             <li><a href="explore.html" id="explore">Explore</a></li>
             <li><a href="groups.html" id="groups">Groups</a></li>
             <li><a href="inbox.html" id="inbox">Inbox</a></li>
@@ -24,20 +23,18 @@
     </nav>
 
     <main>
-        <h2>Login to Your Account</h2>
-        <form action="login.php" method="POST">
+        <h2>Register a New Account</h2>
+        <form action="register.php" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <input type="submit" value="Login">
+            <input type="submit" value="Register">
         </form>
-        
-        <p>Don't have an account? <a href="register.html">Register</a></p>
     </main>
 
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
