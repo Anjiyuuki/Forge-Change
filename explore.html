@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Explore Volunteer Opportunities</title>
+</head>
+<body>
+    <header>
+        <h1>Explore Volunteer Opportunities</h1>
+    </header>
+
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for volunteer opportunities">
+            <button onclick="searchVolunteerOpportunities()">Search</button>
+        </div>
+
+        <div class="filters">
+            <label for="locationFilter">Location:</label>
+            <select id="locationFilter">
+                <option value="all">All Locations</option>
+                <option value="city1">City 1</option>
+                <option value="city2">City 2</option>
+                <!-- Add more location options as needed -->
+            </select>
+
+            <label for="topicFilter">Topic:</label>
+            <select id="topicFilter">
+                <option value="all">All Topics</option>
+                <option value="education">Education</option>
+                <option value="environment">Environment</option>
+                <!-- Add more topic options as needed -->
+            </select>
+        </div>
+
+        <ul class="volunteer-list">
+            <!-- Populate this list with volunteer organizations using JavaScript -->
+        </ul>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
