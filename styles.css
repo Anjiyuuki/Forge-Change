@@ -11,6 +11,13 @@ header {
   text-align: center;
   padding: 20px;
 }
+footer{
+  text-align: center;
+}
+form{
+  width: 50%;
+  margin: auto;
+}
 
 nav{
   text-align: center;
