@@ -8,6 +8,7 @@ const volunteerOrganizations = [
 // Function to filter volunteer organizations based on location and topic
 function filterVolunteerOrganizations() {
   const locationFilter = document.getElementById('locationFilter').value;
+  alert(locationFilter);
   const topicFilter = document.getElementById('topicFilter').value;
   const filteredOrganizations = volunteerOrganizations.filter(org => {
       const locationMatch = locationFilter === 'all' || org.location === locationFilter;

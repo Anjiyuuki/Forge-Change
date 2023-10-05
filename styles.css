@@ -70,3 +70,8 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 300px;
 }
+
+#searchPage {
+  margin: auto;
+  width: 50%;
+}
