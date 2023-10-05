@@ -1,93 +1,59 @@
 <?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection details
-    $db_host = "your_db_host";
-    $db_username = "your_db_username";
-    $db_password = "your_db_password";
-    $db_name = "forgechange";
+// Database connection details
+$host = 'your_database_host';
+$user = 'your_database_username';
+$pass = 'your_database_password';
+$db   = 'your_database_name';
 
-    // Create a database connection
-    $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
+// Create a database connection
+$mysqli = new mysqli($host, $user, $pass, $db);
 
-    // Check for connection errors
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
 
-    // Get user input
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+// Check if the form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve username and password from the form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    // Query to fetch user data by username
-    $sql = "SELECT * FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
+    // Perform a SQL query to check if the credentials are valid
+    $query = "SELECT * FROM users WHERE username = ? AND password = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check if a user with the given username exists
+    // If a matching record is found, the login is successful
     if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        $stored_password = $row["password"];
-
-        // Verify the entered password against the stored hash
-        if (password_verify($password, $stored_password)) {
-            // Login successful! Redirect to the welcome page
-            header("Location: welcome.html"); // Replace with the actual welcome HTML page URL
-            exit(); // Terminate script execution after the redirection
-        } else {
-            echo "Login failed. Please check your credentials.";
-        }
+        session_start();
+        $_SESSION['username'] = $username;
+        // Redirect to a secure page or display a welcome message
+        header('Location: welcome.php');
+        exit();
     } else {
-        echo "Login failed. User not found.";
+        // Display an error message for invalid credentials
+        $error_message = "Invalid username or password";
     }
-
-    // Close the database connection
-    $stmt->close();
-    $conn->close();
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- Reuse the CSS from your registration page -->
     <title>Login Page</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="images/logo.png" alt="" width="200">
-        </div>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="explore.html" id="explore">Explore</a></li>
-            <li><a href="groups.html" id="groups">Groups</a></li>
-            <li><a href="inbox.html" id="inbox">Inbox</a></li>
-            <li><a href="info.html" id="info">Info</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <h2>Login to Your Account</h2>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <input type="submit" value="Login">
-        </form>
-        
-        <p>Don't have an account? <a href="register.html">Register</a></p>
-    </main>
-
-    <script src="script.js"></script>
+    <h2>Login</h2>
+    <?php if (isset($error_message)) echo "<p>$error_message</p>"; ?>
+    <form method="POST" action="">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
 </body>
 </html>
