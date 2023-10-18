@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Explore Volunteer Opportunities</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        .filter-button {
+            font-size: 18px;
+            background-color: #44672d;
+            color: #f4f7e1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-button:hover {
+            background-color: #f4f7e1;
+            color: #44672d;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,44 +35,69 @@
             <img src="images/logo.png" alt="" width="200">
         </div>
     </header>
+
     <nav>
-      <ul>
-        <li><a href="index.html" id="home">Home</a></li>
-          <li><a href="explore.html" id="explore">Explore</a></li>
-          <li><a href="groups.html" id="groups">Groups</a></li>
-          <li><a href="inbox.html" id="inbox">Inbox</a></li>
-          <li><a href="info.html" id="info">Info</a></li>
-      </ul>
-  </nav>
+        <ul>
+            <li><a href="index.html" id="home">Home</a></li>
+            <li><a href="explore.html" id="explore">Explore</a></li>
+            <li><a href="groups.html" id="groups">Groups</a></li>
+            <li><a href="inbox.html" id="inbox">Inbox</a></li>
+            <li><a href="info.html" id="info">Info</a></li>
+        </ul>
+    </nav>
+
+    <div id="map"></div>
 
     <main id="searchPage">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for volunteer opportunities">
-            <button onclick="searchVolunteerOpportunities()">Search</button>
-        </div>
-
         <div class="filters">
             <label for="locationFilter">Location:</label>
             <select id="locationFilter">
                 <option value="all">All Locations</option>
-                <option value="city1">City 1</option>
-                <option value="city2">City 2</option>
+                <option value="city1">Charleston</option>
                 <!-- Add more location options as needed -->
             </select>
 
-            <label for="topicFilter">Topic:</label>
             <select id="topicFilter">
-                <option value="all">All Topics</option>
-                <option value="education">Education</option>
-                <option value="environment">Environment</option>
-                <!-- Add more topic options as needed -->
+                <option value="all">All</option>
+                <option value="Animals">Animals</option>
+                <option value="Environment">Environment</option>
+                <option value="LGBTQ+">LGBTQ+</option>
+                <option value="Education">Education</option>
+                <option value="Humanitarian">Humanitarian</option>
+                <!-- Other topic options -->
             </select>
+
+            <button id="filterAnimals" class="filter-button">Animals</button>
+            <button id="filterEnvironment" class="filter-button">Environment</button>
+            <button id="filterLGBTQ" class="filter-button">LGBTQ+</button>
+            <button id="filterEducation" class="filter-button">Education</button>
+            <button id="filterHumanitarian" class="filter-button">Humanitarian</button>
+            <button id="filterAll" class="filter-button">All</button>
+            
+        </div>
+
+        <div class="keyword-filter">
+            <input type="text" id="keywordInput" placeholder="Enter a keyword (e.g., animals)">
         </div>
 
         <ul class="volunteer-list">
             <!-- Populate this list with volunteer organizations using JavaScript -->
         </ul>
     </main>
+
+    <script>
+        const apiKey = 'AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA';
+
+        function initMap() {
+            const mapOptions = {
+                center: { lat: 32.7767, lng: -79.9301 },
+                zoom: 12,
+            };
+
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA&callback=initMap" async defer></script>
 
     <script src="explore.js"></script>
 </body>

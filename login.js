@@ -1,23 +1,24 @@
-// Initialize Firebase with your Firebase config
+// Initialize Firebase with your configuration
 firebase.initializeApp(firebaseConfig);
 
 const loginForm = document.getElementById("login-form");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 const errorMessage = document.getElementById("error-message");
 
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = loginForm.email.value;
-    const password = loginForm.password.value;
+    const email = emailInput.value;
+    const password = passwordInput.value;
 
-    // Sign in with Firebase Authentication
+    // Sign in with email and password
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Successful login
-            const user = userCredential.user;
-            console.log("Logged in as:", user.email);
+            // User signed in, redirect to explore.html
+            window.location.href = "explore.html";
         })
         .catch((error) => {
-            // Handle login errors
+            // Handle errors, and display error message
             errorMessage.textContent = error.message;
         });
 });

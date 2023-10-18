@@ -8,21 +8,40 @@
 </head>
 <body>
     <header>
-      <div class="container">
-        <img src="images/logo.png" alt="" width="200">
-    </div>
+        <div class="container">
+            <img src="images/logo.png" alt="" width="200">
+        </div>
     </header>
     <nav>
-      <ul>
-        <li><a href="index.html" id="home">Home</a></li>
-          <li><a href="explore.html" id="explore">Explore</a></li>
-          <li><a href="groups.html" id="groups">Groups</a></li>
-          <li><a href="inbox.html" id="inbox">Inbox</a></li>
-          <li><a href="info.html" id="info">Info</a></li>
-      </ul>
-  </nav>
+        <ul>
+            <li><a href="index.html" id="home">Home</a></li>
+            <li><a href="explore.html" id="explore">Explore</a></li>
+            <li><a href="groups.html" id="groups">Groups</a></li>
+            <li><a href="inbox.html" id="inbox">Inbox</a></li>
+            <li><a href="info.html" id="info">Info</a></li>
+        </ul>
+    </nav>
 
-
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <div class="profile-picture">
+                <!-- Display user's profile picture or provide an option to upload one -->
+                <img src="path_to_user_profile_picture.jpg" alt="User Profile Picture" id="profile-picture">
+                <input type="file" id="profile-picture-upload" accept="image/*">
+                <button onclick="uploadProfilePicture()">Upload Picture</button>
+            </div>
+            <div class="profile-details">
+                <!-- Display user's name -->
+                <h3>Name: John Doe</h3>
+            </div>
+        </div>
+        <div class="volunteer-hours">
+            <h3>Volunteer Hours</h3>
+            <p>You have completed <span id="volunteer-hours">100</span> hours of volunteer work.</p>
+            <button onclick="addVolunteerHours(10)">Add 10 Hours</button>
+        </div>
+    </div>
 
     <script src="explore.js"></script>
 </body>

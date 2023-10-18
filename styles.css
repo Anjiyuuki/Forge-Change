@@ -1,25 +1,38 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f7e1;
+  color: #333;
 }
 
 header {
-  background-color: #ff0000;
-  color: #fff;
+  background-color: #44672d; /* Dark green background color */
+  color: #f4f7e1; /* Beige text color */
   text-align: center;
   padding: 20px;
-}
-footer{
-  text-align: center;
-}
-form{
-  width: 50%;
-  margin: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-nav{
+footer {
+  background-color: #44672d; /* Dark green background color */
+  color: #f4f7e1; /* Beige text color */
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+form {
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  background-color: #f4f7e1; /* Beige background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+nav {
   text-align: center;
   margin: auto;
 }
@@ -27,51 +40,53 @@ nav{
 nav ul {
   list-style-type: none;
   padding: 0;
-  background-color: white;
+  background-color: #44672d; /* Dark green background color */
   overflow: hidden;
   text-align: center;
+  border-top: 2px solid #f4f7e1; /* Beige top border */
+  border-bottom: 2px solid #f4f7e1; /* Beige bottom border */
 }
 
 nav ul li {
   display: inline-block;
-  border-right: 2px solid #777777;
-  border-left: 2px solid #777777;
-
 }
-nav li:first-of-type {
-  border-left: 2px solid #777777;
-} 
 
 nav ul li a {
   display: block;
-  color: gray;
+  color: #f4f7e1; /* Beige text color */
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 20px;
   text-decoration: none;
+  transition: background-color 0.3s;
+  font-weight: bold; /* Added font weight for a more professional look */
 }
 
 nav ul li a:hover {
-  background-color: #444;
+  background-color: #f4f7e1; /* Beige background color */
+  color: #44672d; /* Dark green text color */
+  border-radius: 5px;
 }
 
 main {
   padding: 20px;
 }
+
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    
-}
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f4f7e1; /* Beige background color */
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
 }
 
 #searchPage {
   margin: auto;
-  width: 50%;
+  width: 70%;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
 }
