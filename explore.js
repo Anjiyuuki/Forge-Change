@@ -32,8 +32,16 @@ async function initMap() {
     { name: 'Pet Helpers', position: { lat: 32.713065323335094, lng: -79.96543213967637}, topic: 'Animals' },
     { name: 'Charleston Pride', position: { lat: 32.85946977616801, lng: -79.96849757791162}, topic: 'LGBTQ+' },
     { name: 'Charleston County School District', position: { lat: 32.78805602208032, lng: -79.93073096441769}, topic: 'Education' },
-    { name: 'Lowcountry Food Bank', position: { lat: 32.84422186379979, lng: -79.97256140329912}, topic: 'Humanitarian' }
-  ];
+    { name: 'Lowcountry Food Bank', position: { lat: 32.84422186379979, lng: -79.97256140329912}, topic: 'Humanitarian' },
+    { name: 'Crisis Ministries', position: { lat: 32.80078260181505, lng: -79.94385945767195}, topic: 'Humanitarian' },
+    { name: 'One80 Place', position: { lat: 32.80023989056299, lng:-79.9440445761139}, topic: 'Humanitarian' },
+    { name: 'Kids on Point', position: { lat: 32.78558916605061, lng: -79.93418023454993}, topic: 'Education' },
+    { name: 'Lowcountry Land Trust', position: { lat: 32.79968352177207, lng: -79.95212044988715}, topic: 'Environment' },
+    { name: 'The Sustainability Institute', position: { lat: 32.86499250406155, lng: -79.98893208466896}, topic: 'Environment' },
+    { name: 'LEARN Horse Rescue ', position: { lat: 32.75064733670091, lng: -80.26527458996944}, topic: 'Animals' },
+    
+    
+ ];
 
   // Create markers and info windows for each organization
   organizations.forEach(org => {
@@ -70,6 +78,13 @@ const volunteerOrganizations = [
   { name: 'Charleston Pride', location: 'Charleston', topic: 'LGBTQ+' },
   { name: 'Charleston County School District', location: 'Charleston', topic: 'Education' },
   { name: 'Lowcountry Food Bank', location: 'Charleston', topic: 'Humanitarian' },
+  { name: 'Crisis Ministries', location: 'Charleston', topic: 'Humanitarian' },
+  { name: 'One80 Place', location: 'Charleston', topic: 'Humanitarian' },
+  { name: 'Kids on Point', location: 'Charleston', topic: 'Education' },
+  { name: 'Lowcountry Land Trust', location: 'Charleston', topic: 'Environment' },
+  { name: 'The Sustainability Institute', location: 'Charleston', topic: 'Environment' },
+  { name: 'LEARN Horse Rescue', location: 'Charleston', topic: 'Animals' },
+
 
   // Add more organizations with properties (name, location, topic)
 ];

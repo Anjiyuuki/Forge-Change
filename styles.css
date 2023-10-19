@@ -91,6 +91,7 @@ main {
   align-items: center;
   flex-direction: column; /* Stack header and forms vertically */
   height: 100vh;
+  color: #44672d ;
 }
 
 .center-container {
@@ -102,14 +103,33 @@ main {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 300px;
+  width: 400px;
   text-align: center;
-  background-color: #f4f7e1; /* You can adjust the background color */
+  background-color: #bdd09e; /* You can adjust the background color */
 }
 
 #registrationForm {
   margin-top: 20px; /* Add some spacing between the forms */
+  background-color: #bdd09e;
 }
 header img {
   max-width: 800px; /* Adjust the size of your logo as needed */
+}
+.version-two {
+  /* your styles for the class version-one */
+  font-size: 3em;
+  color: #21440c;
+  max-width: 800px; /* Adjust the maximum width as needed */
+}
+.version-three {
+  text-align: block;
+  color: #21440c;
+  white-space: pre-line;
+  max-width: 10x;
+}
+.text-container-body {
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+  position: relative;
+  text-align: center;
 }
