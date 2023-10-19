@@ -1,80 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- Reuse the CSS from your registration page -->
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <title>Login Page</title>
+    <title>Firebase Authentication Demo</title>
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+
+    <!-- Replace with your Firebase Project Configuration -->
+    <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
+          authDomain: "forge-change.firebaseapp.com",
+          databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
+          projectId: "forge-change",
+          storageBucket: "forge-change.appspot.com",
+          messagingSenderId: "325085017096",
+          appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
+          measurementId: "G-9Z8QFCGL1Q"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="images/logo.png" alt="" width="200">
-        </div>
-    </header>
+    <h1>Firebase Authentication Demo</h1>
 
-    <nav>
-        <ul>
-            <li><a href="index.html" id="home">Home</a></li>
-            <li><a href="explore.html" id="explore">Explore</a></li>
-            <li><a href="groups.html" id="groups">Groups</a></li>
-            <li><a href="inbox.html" id="inbox">Inbox</a></li>
-            <li><a href="info.html" id="info">Info</a></li>
-        </ul>
-    </nav>
+    <div id="registrationForm">
+        <h2>Register for an Account</h2>
+        <input type="email" id="email" placeholder="Email" /><br>
+        <input type="password" id="password" placeholder="Password" /><br>
+        <button id="registerButton">Register</button>
+    </div>
 
-    <main style="text-align: center; padding: 40px;">
-        <h1 style="font-size: 36px; text-align: center; color: #44672d;">Welcome to Forge Change</h1>
-        <p style="font-size: 18px; text-align: center; color: #333;">Your Partner in Building a Better Community</p>
-        <p style="font-size: 16px; text-align: center; color: #333;">Many people desire to engage in volunteer activities but struggle to identify opportunities that align with their preferences. This software intends to simplify this process through an intuitive web platform that enables users to craft profiles outlining their interests, skills, and availability. Users can explore and narrow down organizations using a range of criteria. This software seeks to encourage increased participation in volunteer activities and the fostering of community contributions.</p>
-    </main>
-    
-    
-    <footer>
-        <h2>Login to Your Account</h2>
-        <form id="login-form">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
-            <button type="submit">Login</button>
-        </form>
+    <p id="message"></p>
 
-        <form id="register-form">
-          <label for="register-email">Email:</label>
-          <input type="email" id="register-email" name="email" required><br>
-          <label for="register-password">Password:</label>
-          <input type="password" id="register-password" name="password" required><br>
-          <button type="submit">Register</button>
-      </form>
-      <p id="register-error-message" style="color: red;"></p>
-      
-        <p id="error-message" style="color: red;"></p>
-    
-        <!-- Include Firebase SDK -->
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-        
-        <!-- Include your Firebase config here -->
-        <script src="firebase-config.js"></script>
-    
-        <!-- Include your JavaScript file -->
-        <script src="login.js"></script>
+    <script>
+        // Reference to Firebase Authentication
+        var auth = firebase.auth();
 
-        <!-- Include Firebase SDK for Authentication -->
-        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+        document.getElementById('registerButton').addEventListener('click', function() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
 
-        <!-- Include your Firebase config here -->
-        <script src="firebase-config.js"></script>
-
-        <!-- Include your JavaScript file -->
-        <script src="login.js"></script>
-                
-        <div class="copyright">
-            &copy; 2022 Forge Change. All rights reserved.
-        </div>
-    </footer>
+            // Create a new user with email and password
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(function(userCredential) {
+                    // User registered successfully
+                    var user = userCredential.user;
+                    document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
+                    // Redirect to explore.html
+                    window.location.href = 'explore.html';
+                })
+                .catch(function(error) {
+                    // Handle errors during registration
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    document.getElementById('message').textContent = 'Registration failed: ' + errorMessage;
+                });
+        });
+    </script>
 </body>
 </html>

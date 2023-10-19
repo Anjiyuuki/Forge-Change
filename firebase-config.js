@@ -11,6 +11,7 @@ import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
   authDomain: "forge-change.firebaseapp.com",
+  databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
   projectId: "forge-change",
   storageBucket: "forge-change.appspot.com",
   messagingSenderId: "325085017096",
