@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Firebase Authentication Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    
 
     <!-- Replace with your Firebase Project Configuration -->
     <script>
@@ -23,9 +26,14 @@
         firebase.initializeApp(firebaseConfig);
     </script>
 </head>
-<body>
-    <h1>Firebase Authentication Demo</h1>
-
+<header>
+    <div class="container">
+      <img src="images/logo.png" alt="" width="200">
+  </div>
+</header>
+<body id="index-body">
+    
+    
     <div id="registrationForm">
         <h2>Register for an Account</h2>
         <input type="email" id="regEmail" placeholder="Email" /><br>

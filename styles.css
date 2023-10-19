@@ -1,3 +1,5 @@
+/* Global styles (apply to all pages) */
+
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
@@ -7,29 +9,19 @@ body {
 }
 
 header {
-  background-color: #44672d; /* Dark green background color */
-  color: #f4f7e1; /* Beige text color */
+  background-color: #44672d;
+  color: #f4f7e1;
   text-align: center;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-  background-color: #44672d; /* Dark green background color */
-  color: #f4f7e1; /* Beige text color */
+  background-color: #44672d;
+  color: #f4f7e1;
   text-align: center;
   padding: 10px;
   font-size: 14px;
-}
-
-form {
-  width: 60%;
-  margin: auto;
-  text-align: left;
-  background-color: #f4f7e1; /* Beige background color */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 nav {
@@ -40,11 +32,11 @@ nav {
 nav ul {
   list-style-type: none;
   padding: 0;
-  background-color: #44672d; /* Dark green background color */
+  background-color: #44672d;
   overflow: hidden;
   text-align: center;
-  border-top: 2px solid #f4f7e1; /* Beige top border */
-  border-bottom: 2px solid #f4f7e1; /* Beige bottom border */
+  border-top: 2px solid #f4f7e1;
+  border-bottom: 2px solid #f4f7e1;
 }
 
 nav ul li {
@@ -53,17 +45,17 @@ nav ul li {
 
 nav ul li a {
   display: block;
-  color: #f4f7e1; /* Beige text color */
+  color: #f4f7e1;
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
   transition: background-color 0.3s;
-  font-weight: bold; /* Added font weight for a more professional look */
+  font-weight: bold;
 }
 
 nav ul li a:hover {
-  background-color: #f4f7e1; /* Beige background color */
-  color: #44672d; /* Dark green text color */
+  background-color: #f4f7e1;
+  color: #44672d;
   border-radius: 5px;
 }
 
@@ -75,7 +67,7 @@ main {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f4f7e1; /* Beige background color */
+  background-color: #f4f7e1;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -89,4 +81,35 @@ main {
   height: 400px;
   width: 100%;
   border-radius: 10px;
+}
+
+/* Styles specific to the index.html page */
+
+#index-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack header and forms vertically */
+  height: 100vh;
+}
+
+.center-container {
+  text-align: center;
+}
+
+#registrationForm, #loginForm {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  background-color: #f4f7e1; /* You can adjust the background color */
+}
+
+#registrationForm {
+  margin-top: 20px; /* Add some spacing between the forms */
+}
+header img {
+  max-width: 800px; /* Adjust the size of your logo as needed */
 }
