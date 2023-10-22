@@ -7,7 +7,7 @@
     <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
 
     <!-- Replace with your Firebase Project Configuration -->
     <script>
@@ -35,16 +35,24 @@
     <h1 class="version-two">Ready to Make a Difference?</h1>
     <div class="text-container-body">
         
-        <p>Forge Change is a web application developed by Computer Science students at the College of Charleston.
-             Many people desire to engage in volunteer activities but struggle to identify opportunities 
-             that align with their preferences. This software seeks to encourage increased participation in 
-             volunteer activities and the fostering of community contributions.</p>
+        <p>Forge Change is a web application developed by Computer Science students at the College of Charleston. Many people desire to engage in volunteer activities but struggle to identify opportunities that align with their preferences. This software seeks to encourage increased participation in volunteer activities and the fostering of community contributions.</p>
     </div>
     <div id="registrationForm">
-        <h2>Register for an Account</h2>
-        <input type="email" id="regEmail" placeholder="Email" /><br>
-        <input type="password" id="regPassword" placeholder="Password" /><br>
-        <button id="registerButton">Register</button>
+      <h2>Register for an Account</h2>
+      <input type="email" id="regEmail" placeholder="Email" /><br>
+      <input type="password" id="regPassword" placeholder="Password" /><br>
+      <input type="text" id="regName" placeholder="Name" /><br>
+      <input type="text" id="regLocation" placeholder="Location" /><br>
+      <!-- Add a dropdown for choosing interests -->
+      <label for="interests">Choose Your Interests:</label>
+      <select id="interests" multiple>
+          <option value="Animals">Animals</option>
+          <option value="Environment">Environment</option>
+          <option value="LGBTQ+">LGBTQ+</option>
+          <option value="Education">Education</option>
+          <option value="Humanitarian">Humanitarian</option>
+      </select>
+      <button id="registerButton">Register</button>
     </div>
 
     <div id="loginForm">
@@ -59,20 +67,38 @@
     <script>
         // Reference to Firebase Authentication
         var auth = firebase.auth();
+        var firestore = firebase.firestore();
 
         document.getElementById('registerButton').addEventListener('click', function() {
             var email = document.getElementById('regEmail').value;
             var password = document.getElementById('regPassword').value;
+            var name = document.getElementById('regName').value;
+            var location = document.getElementById('regLocation').value;
 
-            // Create a new user with email and password
+            // Get selected interests from the dropdown
+            var interests = Array.from(document.getElementById('interests').selectedOptions).map(option => option.value);
+
+            // Create a new user with email, password, and interests
             auth.createUserWithEmailAndPassword(email, password)
                 .then(function(userCredential) {
                     // User registered successfully
                     var user = userCredential.user;
-                    document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
 
-                    // Redirect to explore.html
-                    window.location.href = 'explore.html';
+                    // Store additional user information in Firestore
+                    firestore.collection('users').doc(user.uid).set({
+                        name: name,
+                        location: location,
+                        interests: interests,
+                        hours: 0
+                    })
+                    .then(function() {
+                        document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
+                        // Redirect to explore.html
+                        window.location.href = 'explore.html';
+                    })
+                    .catch(function(error) {
+                        console.error('Error adding user information to Firestore: ', error);
+                    });
                 })
                 .catch(function(error) {
                     // Handle errors during registration

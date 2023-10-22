@@ -5,6 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Info</title>
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
+          authDomain: "forge-change.firebaseapp.com",
+          databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
+          projectId: "forge-change",
+          storageBucket: "forge-change.appspot.com",
+          messagingSenderId: "325085017096",
+          appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
+          measurementId: "G-9Z8QFCGL1Q"        };
+        firebase.initializeApp(firebaseConfig);
+        var firestore = firebase.firestore();
+        var auth = firebase.auth();
+
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in, retrieve user's name
+                firestore.collection('users').doc(user.uid).get()
+                    .then(function(doc) {
+                        if (doc.exists) {
+                            var userData = doc.data();
+                            var userName = userData.name;
+                            var userLocation = userData.location;
+                            var userHours = userData.hours;
+                            var userInterests = userData.interests;
+                            // Update the user's name in the profile
+                            document.getElementById('user-name').textContent = userName;
+                            document.getElementById('user-location').textContent = userLocation;
+                            document.getElementById('user-interests').textContent = userInterests;
+                            document.getElementById('user-hours').textContent = userHours;
+
+                        } else {
+                            console.log('User data not found');
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log('Error getting user data:', error);
+                    });
+            } else {
+                // User is not signed in, handle this case if needed
+            }
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -13,14 +60,14 @@
         </div>
     </header>
     <nav>
-        <ul>
-            <li><a href="index.html" id="home">Home</a></li>
-            <li><a href="explore.html" id="explore">Explore</a></li>
-            <li><a href="groups.html" id="groups">Groups</a></li>
-            <li><a href="inbox.html" id="inbox">Inbox</a></li>
-            <li><a href="info.html" id="info">Info</a></li>
-        </ul>
-    </nav>
+      <ul>
+        <li><a href="index.html" id="home">Home</a></li>
+        <li><a href="explore.html" id="explore">Explore</a></li>
+        <li><a href="groups.html" id="groups">Groups</a></li>
+        <li><a href="inbox.html" id="inbox">Inbox</a></li>
+        <li><a href="info.html" id="info">Info</a></li>
+    </ul>
+</nav>
 
     <div class="profile-container">
         <h2>User Profile</h2>
@@ -33,16 +80,55 @@
             </div>
             <div class="profile-details">
                 <!-- Display user's name -->
-                <h3>Name: John Doe</h3>
+                <h3>Name: <span id="user-name"></span></h3>
+                <h3>Location: <span id="user-location"></span></h3>
+                <h3>Interests: <span id="user-interests"></span></h3>
+                <h3>Volunteer Hours: <span id="user-hours"></span></h3>
+
             </div>
         </div>
         <div class="volunteer-hours">
-            <h3>Volunteer Hours</h3>
-            <p>You have completed <span id="volunteer-hours">100</span> hours of volunteer work.</p>
-            <button onclick="addVolunteerHours(10)">Add 10 Hours</button>
-        </div>
+          <!-- Add a button to add 10 hours -->
+          <button id="addHoursButton">Add 10 Hours</button>
+      </div>
     </div>
-
     <script src="explore.js"></script>
+    <script>
+        // Reference to Firebase Firestore
+        var firestore = firebase.firestore();
+
+        // Get the user's ID (you may need to modify this part to get the user's ID)
+        var userId = "YOUR_USER_ID"; // Replace with the actual user's ID
+
+        document.getElementById('addHoursButton').addEventListener('click', function() {
+            // Add 10 hours to the user's volunteer hours
+            firestore.collection('users').doc(userId).get()
+                .then(function(doc) {
+                    if (doc.exists) {
+                        var userData = doc.data();
+                        var currentHours = userData.hours || 0;
+                        var newHours = currentHours + 10;
+
+                        // Update the user's volunteer hours in the Firestore database
+                        firestore.collection('users').doc(userId).update({
+                            hours: newHours
+                        })
+                        .then(function() {
+                            // Update the displayed volunteer hours on the page
+                            document.getElementById('user-hours').textContent = newHours;
+                            console.log('Volunteer hours updated successfully.');
+                        })
+                        .catch(function(error) {
+                            console.error('Error updating volunteer hours: ', error);
+                        });
+                    } else {
+                        console.log('User data not found');
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error getting user data:', error);
+                });
+        });
+    </script>
 </body>
 </html>
