@@ -1,18 +1,9 @@
+
 // Reference to Firebase Authentication
 var auth = firebase.auth();
 // Reference to Firebase Realtime Database
 var database = firebase.database();
 
-var firebaseConfig = {
-  apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
-  authDomain: "forge-change.firebaseapp.com",
-  databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
-  projectId: "forge-change",
-  storageBucket: "forge-change.appspot.com",
-  messagingSenderId: "325085017096",
-  appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
-  measurementId: "G-9Z8QFCGL1Q"
-};
 
 document.getElementById('registerButton').addEventListener('click', function() {
     var email = document.getElementById('regEmail').value;

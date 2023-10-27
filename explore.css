@@ -1,0 +1,25 @@
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.filter-button {
+  font-size: 18px;
+  background-color: #44672d;
+  color: #f4f7e1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+  background-color: #f4f7e1;
+  color: #44672d;
+}
+.version-one {
+  font-size: 3em;
+  color: #44672d;
+}
