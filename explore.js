@@ -19,7 +19,6 @@ async function initMap() {
   });
   let infoWindows = [];
 
-  // Fetch organizations from Firestore and populate the map and list
   // Function to get suggested organizations based on user interests
   async function getSuggestedOrganizations() {
     auth.onAuthStateChanged(function(user) {

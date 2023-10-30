@@ -65,6 +65,32 @@
           <!-- Add a button to add 10 hours -->
           <button id="addHoursButton">Add 10 Hours</button>
       </div>
+      <button id="editProfileButton">Edit Profile</button>
+      <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Edit Profile</h2>
+            <!-- Add form elements to edit user information -->
+            <form id="profileEditForm">
+                <label for="newName">Name:</label>
+                <input type="text" id="newName">
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername">
+                <label for="newEmail">Email:</label>
+                <input type="email" id="newEmail">
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword">
+                <label for="newInterests">Interests:</label>
+                <input type="text" id="newInterests">
+                <label for="newLocation">Location:</label>
+                <input type="text" id="newLocation">
+                <button type="button" id="submitChangesButton">Submit Changes</button>
+            </form>
+        </div>
+    </div>
+    
     </div>    
     <script src="info.js"></script>
 </body>

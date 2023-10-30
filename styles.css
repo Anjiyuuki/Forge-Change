@@ -228,3 +228,20 @@ header img {
   position: relative;
   text-align: center;
 }
+
+#groups-list {
+  display: flex;
+}
+
+.group-card {
+  background-color: #bdd09e;
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
+  border-radius:1em;
+}
+
+#editProfileModal {
+  display: none;
+
+}
