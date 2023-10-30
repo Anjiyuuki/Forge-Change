@@ -12,8 +12,16 @@ header {
   background-color: #44672d;
   color: #f4f7e1;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f4f7e1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -58,18 +66,25 @@ nav ul li a:hover {
   color: #44672d;
   border-radius: 5px;
 }
+.sign-out {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Style the button */
+#signOutButton {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 
 main {
   padding: 20px;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #f4f7e1;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #searchPage {
@@ -84,37 +99,117 @@ main {
 }
 
 /* Styles specific to the index.html page */
+#register-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#registrationForm, #loginForm {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  height: 250px;
+  background-color: #bdd09e;
+}
+
+#registrationForm {
+  display: grid; 
+  place-items: center;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 0.5fr 2fr 0.5fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Title Title"
+    "Form Checkboxes"
+    "Submit Submit"; 
+}
+.Title { 
+  grid-area: Title; 
+  margin: 0px;
+}
+
+.Submit { 
+  grid-area: Submit; 
+  margin-bottom: 20px;
+}
+
+.Form { 
+  grid-area: Form; 
+  margin-bottom:15px;
+  float:left;
+}
+
+.Checkboxes { 
+  grid-area: Checkboxes; 
+}
+
+.labelReg{
+  float:left;
+  text-align: left;
+  width:100px;
+}
+
+#main-register input{
+float:left;
+width:150px;
+margin-bottom:5px;
+}
+
+#main-register {
+  margin-top: 20px;
+}
+#interests {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+#interests label {
+  display: flex;
+  align-items: center;
+}
+#interestsPrompt {
+  margin-bottom: 10px;
+}
+
+#interests input[type="checkbox"] {
+  margin-right: 15px;
+}
+
+#loginForm {
+  width: 200px;
+}
+
+#loginForm input {
+  margin-bottom: 10px;
+}
+
+.home-container {
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #f4f7e1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+header img {
+  max-width: 300px;
+}
 
 #index-body {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; /* Stack header and forms vertically */
-  height: 100vh;
-  color: #44672d ;
+  color: #2b4719 ;
 }
 
 .center-container {
   text-align: center;
 }
 
-#registrationForm, #loginForm {
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 400px;
-  text-align: center;
-  background-color: #bdd09e; /* You can adjust the background color */
-}
-
-#registrationForm {
-  margin-top: 20px; /* Add some spacing between the forms */
-  background-color: #bdd09e;
-}
-header img {
-  max-width: 800px; /* Adjust the size of your logo as needed */
-}
 .version-two {
   /* your styles for the class version-one */
   font-size: 3em;
@@ -128,7 +223,7 @@ header img {
   max-width: 10x;
 }
 .text-container-body {
-  max-width: 600px; /* Adjust the maximum width as needed */
+  max-width: 700px; /* Adjust the maximum width as needed */
   margin: 0 auto; /* Center the container horizontally */
   position: relative;
   text-align: center;

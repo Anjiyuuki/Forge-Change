@@ -1,53 +1,60 @@
-
 // Reference to Firebase Authentication
 var auth = firebase.auth();
-// Reference to Firebase Realtime Database
-var database = firebase.database();
-
+// Reference to Firebase Firestore
+var firestore = firebase.firestore();
 
 document.getElementById('registerButton').addEventListener('click', function() {
     var email = document.getElementById('regEmail').value;
     var password = document.getElementById('regPassword').value;
-    var interests = document.getElementById('regInterests').value;
+    var username = document.getElementById('regUsername').value; // Get the username input value
+    var name = document.getElementById('regName').value;
     var location = document.getElementById('regLocation').value;
+    var interests = Array.from(document.querySelectorAll('input[name="interest"]:checked')).map(checkbox => checkbox.value);
+    // Check if the username already exists in Firestore
+    firestore.collection('users')
+        .where('username', '==', username)
+        .get()
+        .then(function(querySnapshot) {
+            if (!querySnapshot.empty) {
+                // Username already exists, show an error message
+                document.getElementById('message').textContent = 'Username is already taken. Please choose a different one.';
+            } else {
+                // Username is unique, proceed with user registration
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then(function(userCredential) {
+                        // User registered successfully
+                        var user = userCredential.user;
 
-    // Create a new user with email and password
-    auth.createUserWithEmailAndPassword(email, password)
-        .then(function(userCredential) {
-            // User registered successfully
-            var user = userCredential.user;
-            document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
-            firebase.auth().onAuthStateChanged(function(user) {
-              if (user) {
-                  // User is signed in. You can now write data to the database.
-                  // Store additional user data (interests and location) in the Realtime Database
-                database.ref('users/' + user.uid).set({
-                interests: interests,
-                location: location
-          })
-          .then(function() {
-            console.log('Data write succeeded');
-          })
-          .catch(function(error) {
-              console.error('Data write failed: ' + error.message);
-          });
-              } else {
-                  // User is not signed in. Handle authentication.
-                  console.log("error");
-              }
-          });
-            
-
-            // Redirect to explore.html
-            //window.location.href = 'explore.html';
+                        // Store user information in Firestore
+                        firestore.collection('users').doc(user.uid).set({
+                            username: username,
+                            name: name,
+                            location: location,
+                            interests: interests,
+                            hours: 0
+                        })
+                        .then(function() {
+                            document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
+                            // Redirect to explore.html or any other page
+                            window.location.href = 'explore.html';
+                        })
+                        .catch(function(error) {
+                            console.error('Error adding user information to Firestore: ', error);
+                        });
+                    })
+                    .catch(function(error) {
+                        // Handle errors during registration
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        document.getElementById('message').textContent = 'Registration failed: ' + errorMessage;
+                    });
+            }
         })
         .catch(function(error) {
-            // Handle errors during registration
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            document.getElementById('message').textContent = 'Registration failed: ' + errorMessage;
+            console.error('Error checking username availability: ', error);
         });
 });
+
 
 document.getElementById('loginButton').addEventListener('click', function() {
     var email = document.getElementById('loginEmail').value;

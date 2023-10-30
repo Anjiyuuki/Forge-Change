@@ -1,5 +1,7 @@
 const apiKey = 'AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA';
 var organizations = [];
+var auth = firebase.auth();
+const firestore = firebase.firestore();
 
 async function initMap() {
   // The location of Uluru
@@ -18,11 +20,61 @@ async function initMap() {
   let infoWindows = [];
 
   // Fetch organizations from Firestore and populate the map and list
-  const db = firebase.firestore();
+  // Function to get suggested organizations based on user interests
+  async function getSuggestedOrganizations() {
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in, retrieve user's name
+        firestore.collection('users').doc(user.uid).get()
+            .then(function(doc) {
+                if (doc.exists) {
+                  var userData = doc.data();
+                    var userInterests = userData.interests;
+                    var suggestedOrganizations = organizations.filter(org => userInterests.includes(org.keyword));
+                    // Call the function to display suggested organizations
+                    displaySuggestedOrganizations(suggestedOrganizations);
+                } else {
+                    console.log('User data not found');
+                }
+            })
+            .catch(function(error) {
+                console.log('Error getting user data:', error);
+            });
+        
+      }
+  });
+  }
+  getSuggestedOrganizations();
+  // Function to display suggested organizations
+  function displaySuggestedOrganizations(suggestedOrganizations) {
+    const suggestedList = document.querySelector('.suggested-organizations-list');
+    suggestedList.innerHTML = '';
 
+    if (suggestedOrganizations.length === 0) {
+      suggestedList.innerHTML = '<li>No suggested organizations based on your interests.</li>';
+    } else {
+      suggestedOrganizations.forEach(org => {
+        const listItem = document.createElement('li');
+        listItem.style.marginBottom = '10px';
+        listItem.style.padding = '10px';
+        listItem.style.border = '1px solid #ccc';
+        listItem.style.borderRadius = '5px';
+        listItem.style.background = '#f4f7e1';
+        listItem.style.color = '#333';
+        listItem.style.fontSize = '16px';
+
+        listItem.innerHTML = `<strong>Name:</strong> ${org.name}
+                              <br><strong>Location:</strong> ${org.location}
+                              <br><strong>Topic:</strong> ${org.keyword}
+                              <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
+
+        suggestedList.appendChild(listItem);
+      });
+    }
+  }
   async function getOrganizationsFromFirestore() {
     try {
-      const querySnapshot = await db.collection('organizations').get();
+      const querySnapshot = await firestore.collection('organizations').get();
 
       organizations = querySnapshot.docs.map(doc => {
         const data = doc.data();
@@ -31,6 +83,7 @@ async function initMap() {
           position: { lat: data.lat, lng: data.lng }, // Assuming you store latitude and longitude in Firestore
           keyword: data.keyword,
           location: data.city,
+          website: data.website
         };
       });
 
@@ -82,13 +135,16 @@ async function initMap() {
         listItem.style.color = '#333';
         listItem.style.fontSize = '16px';
 
-        listItem.innerHTML = `<strong>Name:</strong> ${org.name}<br><strong>Location:</strong> ${org.location}<br><strong>Topic:</strong> ${org.keyword}`;
+        listItem.innerHTML = `<strong>Name:</strong> ${org.name}
+                              <br><strong>Location:</strong> ${org.location}
+                              <br><strong>Topic:</strong> ${org.keyword}
+                              <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
 
         volunteerList.appendChild(listItem);
       });
     }
   }
-
+  
   function filterVolunteerOrganizations() {
     const locationFilter = document.getElementById('locationFilter').value;
     const keywordFilter = document.getElementById('keywordFilter').value;
@@ -116,3 +172,26 @@ async function initMap() {
     });
   });
 }
+
+// Function to handle sign-out confirmation
+function handleSignOutConfirmation() {
+  const confirmationMessage = document.getElementById('signOutButton').getAttribute('data-confirm');
+  if (confirm(confirmationMessage)) {
+    // User clicked "OK," sign them out
+    signOut();
+  }
+}
+
+// Function to sign out the user and redirect to the index page
+function signOut() {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful, redirect to the index page
+    window.location.href = 'index.html';
+  }).catch((error) => {
+    // An error occurred while signing out
+    console.error('Sign-out error:', error);
+  });
+}
+
+// Add an event listener to the sign-out button
+document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);

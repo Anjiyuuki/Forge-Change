@@ -5,25 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Inbox</title>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
+        authDomain: "forge-change.firebaseapp.com",
+        databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
+        projectId: "forge-change",
+        storageBucket: "forge-change.appspot.com",
+        messagingSenderId: "325085017096",
+        appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
+        measurementId: "G-9Z8QFCGL1Q"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      </script>
 </head>
 <body>
     <header>
-      <div class="container">
-        <img src="images/logo.png" alt="" width="200">
-    </div>
+        <div class="container">
+            <img src="images/logo.png" alt="" width="200">
+        </div>
+        <div class="sign-out">
+          <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+        </div>
     </header>
     <nav>
-      <ul>
-        <li><a href="index.html" id="home">Home</a></li>
-          <li><a href="explore.html" id="explore">Explore</a></li>
-          <li><a href="groups.html" id="groups">Groups</a></li>
-          <li><a href="inbox.html" id="inbox">Inbox</a></li>
-          <li><a href="info.html" id="info">Info</a></li>
-      </ul>
-  </nav>
-
-
-
-    <script src="explore.js"></script>
+        <ul>
+            <li><a href="explore.html" id="explore">Explore</a></li>
+            <li><a href="groups.html" id="groups">Groups</a></li>
+            <li><a href="inbox.html" id="inbox">Inbox</a></li>
+            <li><a href="info.html" id="info">Info</a></li>
+        </ul>
+    </nav>
+    
+    <div class="conversations-container">
+      <div class="conversation-list" id="conversation-list">
+          <!-- List of conversations with other users -->
+      </div>
+  </div>
+  
+  <div class="message-container" id="message-container" style="display: none;">
+      <div class="message-list" id="message-list">
+          <!-- Messages will be displayed here -->
+      </div>
+      <div class="message-input">
+          <select id="recipient-list">
+              <!-- List of available recipients will be dynamically added here -->
+          </select>
+          <div id="messages-popup" style="display: none;">
+              <!-- Message thread popup -->
+              <div id="message-thread">
+                  <!-- Messages within the thread -->
+              </div>
+              <input type="text" id="message-input" placeholder="Type your message">
+              <button id="send-button">Send</button>
+          </div>
+      </div>
+  </div>
+  
+  <p id="user-display-name"></p>
+  
+  <button id="sign-out-button">Sign Out</button>
+    <script src="inbox.js"></script>
 </body>
 </html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Info</title>
-    <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
@@ -23,18 +22,20 @@
 
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
+
   </script>
-    <script src="info.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <img src="images/logo.png" alt="" width="200">
         </div>
+        <div class="sign-out">
+          <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+        </div>
     </header>
     <nav>
       <ul>
-        <li><a href="index.html" id="home">Home</a></li>
         <li><a href="explore.html" id="explore">Explore</a></li>
         <li><a href="groups.html" id="groups">Groups</a></li>
         <li><a href="inbox.html" id="inbox">Inbox</a></li>
@@ -64,44 +65,7 @@
           <!-- Add a button to add 10 hours -->
           <button id="addHoursButton">Add 10 Hours</button>
       </div>
-    </div>
-    <script src="explore.js"></script>
-    <script>
-        // Reference to Firebase Firestore
-        var firestore = firebase.firestore();
-
-        // Get the user's ID (you may need to modify this part to get the user's ID)
-        var userId = "YOUR_USER_ID"; // Replace with the actual user's ID
-
-        document.getElementById('addHoursButton').addEventListener('click', function() {
-            // Add 10 hours to the user's volunteer hours
-            firestore.collection('users').doc(userId).get()
-                .then(function(doc) {
-                    if (doc.exists) {
-                        var userData = doc.data();
-                        var currentHours = userData.hours || 0;
-                        var newHours = currentHours + 10;
-
-                        // Update the user's volunteer hours in the Firestore database
-                        firestore.collection('users').doc(userId).update({
-                            hours: newHours
-                        })
-                        .then(function() {
-                            // Update the displayed volunteer hours on the page
-                            document.getElementById('user-hours').textContent = newHours;
-                            console.log('Volunteer hours updated successfully.');
-                        })
-                        .catch(function(error) {
-                            console.error('Error updating volunteer hours: ', error);
-                        });
-                    } else {
-                        console.log('User data not found');
-                    }
-                })
-                .catch(function(error) {
-                    console.error('Error getting user data:', error);
-                });
-        });
-    </script>
+    </div>    
+    <script src="info.js"></script>
 </body>
 </html>

@@ -25,109 +25,55 @@
         firebase.initializeApp(firebaseConfig);
     </script>
 </head>
-<header>
-    <div class="container" >
+<header style="margin-top: 10px">
+    <div class="home-container" >
       <img src="images/logo.png" alt="" width="200">
   </div>
 </header>
 <body id="index-body">
     <h1 class="version-two">Ready to Make a Difference?</h1>
     <div class="text-container-body">
-        
         <p>Forge Change is a web application developed by Computer Science students at the College of Charleston. Many people desire to engage in volunteer activities but struggle to identify opportunities that align with their preferences. This software seeks to encourage increased participation in volunteer activities and the fostering of community contributions.</p>
     </div>
+    <div id="register-login">
     <div id="registrationForm">
-      <h2>Register for an Account</h2>
-      <input type="email" id="regEmail" placeholder="Email" /><br>
-      <input type="password" id="regPassword" placeholder="Password" /><br>
-      <input type="text" id="regName" placeholder="Name" /><br>
-      <input type="text" id="regLocation" placeholder="Location" /><br>
+      <div class="Title"><h2 style="margin: 10px">Register</h2></div>
+      <div id="main-register" class="Form">
+        <label for="regEmail" class="labelReg">Email:</label>
+        <input type="email" id="regEmail" /><br>
+        <label for="regPassword" class="labelReg">Password:</label>
+        <input type="password" id="regPassword"  /><br>
+        <label for="regUsername" class="labelReg">Username:</label>
+        <input type="text" id="regUsername"/><br>
+        <label for="regName" class="labelReg">Name:</label>
+        <input type="text" id="regName"/><br>
+        <label for="regLocation" class="labelReg">Location:</label>
+        <input type="text" id="regLocation" /><br>
+      </div>
+      <div class="Border"></div>
       <!-- Add a dropdown for choosing interests -->
-      <label for="interests">Choose Your Interests:</label>
-      <select id="interests" multiple>
-          <option value="Animals">Animals</option>
-          <option value="Environment">Environment</option>
-          <option value="LGBTQ+">LGBTQ+</option>
-          <option value="Education">Education</option>
-          <option value="Humanitarian">Humanitarian</option>
-      </select>
-      <button id="registerButton">Register</button>
+      <div id="interests" class="Checkboxes">
+        <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
+        <label><input type="checkbox" name="interest" value="animals" > Animals</label>
+        <label><input type="checkbox" name="interest" value="environment"> Environment</label>
+        <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
+        <label><input type="checkbox" name="interest" value="education"> Education</label>
+        <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
+      </div>
+      <button id="registerButton" class="Submit" style="width: 20%">Register</button>
     </div>
 
     <div id="loginForm">
-        <h2>Login to Your Account</h2>
+        <h2 style="margin-top: 60px">Login</h2>
         <input type="email" id="loginEmail" placeholder="Email" /><br>
         <input type="password" id="loginPassword" placeholder="Password" /><br>
-        <button id="loginButton">Login</button>
+        <button id="loginButton" style="margin-top: 20px">Login</button>
     </div>
+  </div>
 
     <p id="message"></p>
 
-    <script>
-        // Reference to Firebase Authentication
-        var auth = firebase.auth();
-        var firestore = firebase.firestore();
+    <script src="index.js"></script>
 
-        document.getElementById('registerButton').addEventListener('click', function() {
-            var email = document.getElementById('regEmail').value;
-            var password = document.getElementById('regPassword').value;
-            var name = document.getElementById('regName').value;
-            var location = document.getElementById('regLocation').value;
-
-            // Get selected interests from the dropdown
-            var interests = Array.from(document.getElementById('interests').selectedOptions).map(option => option.value);
-
-            // Create a new user with email, password, and interests
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(function(userCredential) {
-                    // User registered successfully
-                    var user = userCredential.user;
-
-                    // Store additional user information in Firestore
-                    firestore.collection('users').doc(user.uid).set({
-                        name: name,
-                        location: location,
-                        interests: interests,
-                        hours: 0
-                    })
-                    .then(function() {
-                        document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
-                        // Redirect to explore.html
-                        window.location.href = 'explore.html';
-                    })
-                    .catch(function(error) {
-                        console.error('Error adding user information to Firestore: ', error);
-                    });
-                })
-                .catch(function(error) {
-                    // Handle errors during registration
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    document.getElementById('message').textContent = 'Registration failed: ' + errorMessage;
-                });
-        });
-
-        document.getElementById('loginButton').addEventListener('click', function() {
-            var email = document.getElementById('loginEmail').value;
-            var password = document.getElementById('loginPassword').value;
-
-            // Sign in with email and password
-            auth.signInWithEmailAndPassword(email, password)
-                .then(function(userCredential) {
-                    // User logged in successfully
-                    var user = userCredential.user;
-                    document.getElementById('message').textContent = 'Login successful. User UID: ' + user.uid;
-
-                    // Redirect to explore.html
-                    window.location.href = 'explore.html';
-                })
-                .catch(function(error) {
-                    // Handle errors during login
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    document.getElementById('message').textContent = 'Login failed: ' + errorMessage;
-                });
-        });
-    </script>
 </body>
 </html>

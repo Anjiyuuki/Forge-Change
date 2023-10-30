@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA&callback=initMap" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
+        authDomain: "forge-change.firebaseapp.com",
+        databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
+        projectId: "forge-change",
+        storageBucket: "forge-change.appspot.com",
+        messagingSenderId: "325085017096",
+        appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
+        measurementId: "G-9Z8QFCGL1Q"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+  </script>
     <title>Groups</title>
 </head>
 <body>
@@ -11,10 +31,12 @@
       <div class="container">
         <img src="images/logo.png" alt="" width="200">
     </div>
+    <div class="sign-out">
+      <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+    </div>
     </header>
     <nav>
       <ul>
-        <li><a href="index.html" id="home">Home</a></li>
           <li><a href="explore.html" id="explore">Explore</a></li>
           <li><a href="groups.html" id="groups">Groups</a></li>
           <li><a href="inbox.html" id="inbox">Inbox</a></li>
