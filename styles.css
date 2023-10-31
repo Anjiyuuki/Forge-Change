@@ -310,3 +310,11 @@ header img {
   background-color: #cbf0f2;
   border-radius: 5px;
 }
+
+.group-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}

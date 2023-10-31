@@ -138,3 +138,48 @@ async function refreshMembersList(groupName) {
   });
 }
 // Initialize the groups page by displaying available groups
+
+const createGroupButton = document.getElementById('createGroupButton');
+createGroupButton.addEventListener('click', () => {
+  var username;
+  var user = firebase.auth().currentUser;
+
+  if (user) {
+    const newGroupName = prompt('Enter the name of the new group:');
+    if (newGroupName) {
+      firestore.collection('groups').doc(newGroupName).set({
+          title: newGroupName,
+      }).then((docRef) => {
+          alert('New group created: ' + newGroupName + '. Refresh page to see changes.');
+      }).catch((error) => {
+          console.error('Error creating group:', error);
+      });
+  }
+    firestore.collection('users').doc(user.uid).get()
+      .then(function (doc) {
+        if (doc.exists) {
+          var userData = doc.data();
+          username = userData.username;
+          return firestore.collection('groups').doc(newGroupName).collection('members').doc(user.uid).set({
+            userId: user.uid,
+            username: username
+          });
+        } else {
+          console.log('User data not found');
+          return Promise.reject('User data not found');
+        }
+      })
+      .then(() => {
+        // Successfully joined the group
+        alert('You have joined the ' + groupName + ' group.');
+        // After joining, refresh the list of members
+        refreshMembersList(groupName);
+      })
+      .catch((error) => {
+        console.error('Error joining group:', error);
+      });
+  } else {
+    // User is not logged in
+    alert('Please log in to join a group.');
+  }
+});
