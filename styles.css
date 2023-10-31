@@ -2,10 +2,9 @@
 
 body {
   font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #44672d;
+  background-color: #f4f7e1;
   color: #333;
+  margin: 0px;
 }
 
 header {
@@ -13,50 +12,14 @@ header {
   color: #f4f7e1;
   text-align: center;
   padding: 15px;
+  margin: 0px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-.two-column-layout {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #44672d;
-  height: 100vh;
-}
-
-.left-column {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
-  margin-left: 75px
-}
-
-.bold-text {
-  font-family:Verdana, Geneva, Tahoma, sans-serif ;
-  text-transform: uppercase;
-  text-align: left;
-  font-size: 6em;
-  font-weight: bold;
-  color: #bdd09e;
-}
-
-.right-column {
-  height: 700px;
-  width: 600px;
-  flex: 1;
-  background-color: #bdd09e;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  margin-right: 80px; /* Adjust the margin as needed */
-}
-
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
-  background-color: #e1e7f7;
+  padding: 1rem;
+  background-color: #f4f7e1;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -69,19 +32,11 @@ footer {
   font-size: 14px;
 }
 
-nav {
-  text-align: center;
-  margin: auto;
-}
-
 nav ul {
   list-style-type: none;
-  padding: 0;
   background-color: #44672d;
-  overflow: hidden;
   text-align: center;
-  border-top: 2px solid #f4f7e1;
-  border-bottom: 2px solid #f4f7e1;
+  margin-top: 0px;
 }
 
 nav ul li {
@@ -117,22 +72,6 @@ nav ul li a:hover {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-}
-
-
-main {
-  padding: 20px;
-}
-
-#searchPage {
-  margin: auto;
-  width: 70%;
-}
-
-#map {
-  height: 400px;
-  width: 100%;
-  border-radius: 10px;
 }
 
 /* Styles specific to the index.html page */
@@ -192,11 +131,11 @@ main {
 #main-register input{
 float:left;
 width:150px;
-margin-bottom:1px;
+margin-bottom:5px;
 }
 
 #main-register {
-  margin-top: 1px;
+  margin-top: 20px;
 }
 #interests {
   display: flex;
@@ -218,7 +157,6 @@ margin-bottom:1px;
 
 #loginForm {
   width: 200px;
-  height: 400px;
 }
 
 #loginForm input {
@@ -282,4 +220,101 @@ header img {
 #editProfileModal {
   display: none;
 
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 5px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.input-field {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 5px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.right-align {
+  float: right;
+  font-size: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  color: #21440c; /* Text color for active tab */
+  border-color: #151bb3; /* Border color for active tab */
+  background-color: #cbf0f2;
+  border-radius: 5px;
+}
+
+.group-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
