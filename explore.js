@@ -3,6 +3,22 @@ var organizations = [];
 var auth = firebase.auth();
 const firestore = firebase.firestore();
 
+// Get the current page's filename
+const currentPage = window.location.pathname.split('/').pop();
+
+// Remove the 'active' class from all navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.classList.remove('active');
+});
+
+// Highlight the active tab based on the current page
+document.querySelectorAll('.nav-link').forEach(link => {
+  const linkPage = link.getAttribute('href');
+  if (linkPage === currentPage) {
+    link.classList.add('active');
+  }
+});
+
 async function initMap() {
   // The location of Uluru
   const position = { lat: 32.7767, lng: -79.9301 };
@@ -43,11 +59,20 @@ async function initMap() {
       }
   });
   }
-  getSuggestedOrganizations();
   // Function to display suggested organizations
   function displaySuggestedOrganizations(suggestedOrganizations) {
-    const suggestedList = document.querySelector('.suggested-organizations-list');
+    const suggestedList = document.querySelector('.volunteer-list');
     suggestedList.innerHTML = '';
+
+      // Remove the 'active' class from all filter buttons
+  document.querySelectorAll('.filter-button').forEach(button => {
+    button.classList.remove('active');
+  });
+  // Add the 'active' class to the currently selected filter button
+  const activeButton = document.querySelector(`button[data-keyword="suggested"]`);
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
 
     if (suggestedOrganizations.length === 0) {
       suggestedList.innerHTML = '<li>No suggested organizations based on your interests.</li>';
@@ -147,6 +172,16 @@ async function initMap() {
   function filterVolunteerOrganizations() {
     const locationFilter = document.getElementById('locationFilter').value;
     const keywordFilter = document.getElementById('keywordFilter').value;
+
+    // Remove the 'active' class from all filter buttons
+  document.querySelectorAll('.filter-button').forEach(button => {
+    button.classList.remove('active');
+  });
+  // Add the 'active' class to the currently selected filter button
+  const activeButton = document.querySelector(`button[data-keyword="${keywordFilter}"]`);
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
   
     const filteredOrganizations = organizations.filter(org => {
       const locationMatch = locationFilter === 'all' || org.location === locationFilter;
@@ -162,15 +197,21 @@ async function initMap() {
   document.getElementById('locationFilter').addEventListener('change', filterVolunteerOrganizations);
   document.getElementById('keywordFilter').addEventListener('change', filterVolunteerOrganizations);
   
-  // Add event listeners for filter buttons
   document.querySelectorAll('.filter-button').forEach(button => {
     button.addEventListener('click', function () {
       const keyword = this.getAttribute('data-keyword');
       document.getElementById('keywordFilter').value = keyword;
-      filterVolunteerOrganizations();
+  
+      // If "suggested" tab is clicked, call getSuggestedOrganizations
+      if (keyword === 'suggested') {
+        getSuggestedOrganizations();
+      } else {
+        filterVolunteerOrganizations();
+      }
     });
   });
 }
+
 
 // Function to handle sign-out confirmation
 function handleSignOutConfirmation() {

@@ -36,10 +36,10 @@
     </header>
     <nav>
       <ul>
-        <li><a href="explore.html" id="explore">Explore</a></li>
-        <li><a href="groups.html" id="groups">Groups</a></li>
-        <li><a href="inbox.html" id="inbox">Inbox</a></li>
-        <li><a href="info.html" id="info">Info</a></li>
+        <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
+        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
+        <li><a href="inbox.html" class="nav-link" id="inbox">Inbox</a></li>
+        <li><a href="info.html" class="nav-link" id="info">Info</a></li>
     </ul>
 </nav>
 
@@ -65,32 +65,33 @@
           <!-- Add a button to add 10 hours -->
           <button id="addHoursButton">Add 10 Hours</button>
       </div>
-      <button id="editProfileButton">Edit Profile</button>
-      <div id="editProfileModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <h2>Edit Profile</h2>
-            <!-- Add form elements to edit user information -->
-            <form id="profileEditForm">
-                <label for="newName">Name:</label>
-                <input type="text" id="newName">
-                <label for="newUsername">Username:</label>
-                <input type="text" id="newUsername">
-                <label for="newEmail">Email:</label>
-                <input type="email" id="newEmail">
-                <label for="newPassword">New Password:</label>
-                <input type="password" id="newPassword">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword">
-                <label for="newInterests">Interests:</label>
-                <input type="text" id="newInterests">
-                <label for="newLocation">Location:</label>
-                <input type="text" id="newLocation">
-                <button type="button" id="submitChangesButton">Submit Changes</button>
-            </form>
-        </div>
+      
+    <!-- A button to open the popup form -->
+    <button class="open-button" onclick="openForm('editProfileForm')">Edit Profile</button>
+
+    <!-- The form container with the edit profile form -->
+    <div class="form-popup" id="editProfileForm">
+      <form action="/action_page.php" class="form-container">
+        <span class="close right-align" onclick="closeForm('editProfileForm')">&times;</span>
+        <h2>Edit Profile</h2>
+        <!-- Add form elements to edit user information -->
+        <label for="newName">Name:</label>
+        <input type="text" id="newName">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername">
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" class="input-field"> <!-- Add class "input-field" -->
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword">
+        <label for="newInterests">Interests:</label>
+        <input type="text" id="newInterests">
+        <label for="newLocation">Location:</label>
+        <input type="text" id="newLocation">
+        <button type="button" onclick="submitProfileChanges()">Submit Changes</button>
+      </form>
     </div>
-    
     </div>    
     <script src="info.js"></script>
 </body>

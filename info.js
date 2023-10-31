@@ -1,5 +1,20 @@
 var firestore = firebase.firestore();
 var auth = firebase.auth();
+// Get the current page's filename
+const currentPage = window.location.pathname.split('/').pop();
+
+// Remove the 'active' class from all navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.classList.remove('active');
+});
+
+// Highlight the active tab based on the current page
+document.querySelectorAll('.nav-link').forEach(link => {
+  const linkPage = link.getAttribute('href');
+  if (linkPage === currentPage) {
+    link.classList.add('active');
+  }
+});
 
 auth.onAuthStateChanged(function(user) {
     if (user) {
@@ -214,6 +229,7 @@ submitChangesButton.addEventListener('click', () => {
 
 document.getElementById('addHoursButton').addEventListener('click', function() {
   var user = firebase.auth().currentUser;
+  console.log("10");
   if (user) {
     var userID = user.uid;
     // Add 10 hours to the user's volunteer hours
@@ -245,3 +261,82 @@ document.getElementById('addHoursButton').addEventListener('click', function() {
       });
   }
 });
+
+function openForm(formId) {
+  document.getElementById(formId).style.display = "block";
+}
+
+// Function to close the popup form
+function closeForm(formId) {
+  document.getElementById(formId).style.display = "none";
+}
+
+// Function to submit profile changes (similar to the submitChangesButton click handler)
+function submitProfileChanges() {
+  var user = firebase.auth().currentUser;
+  if (user) {
+    const newName = document.getElementById('newName').value;
+    const newUsername = document.getElementById('newUsername').value;
+    const newEmail = document.getElementById('newEmail').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const newInterests = document.getElementById('newInterests').value;
+    const newLocation = document.getElementById('newLocation').value;
+
+    // Check if the new password and confirm password match
+    if (newPassword !== confirmPassword) {
+      alert('New password and confirm password do not match.');
+      return;
+    }
+
+    // Create an object to store the fields to update
+    const fieldsToUpdate = {};
+
+    if (newName) {
+      fieldsToUpdate.name = newName;
+    }
+
+    if (newUsername) {
+      fieldsToUpdate.username = newUsername;
+    }
+
+    if (newEmail) {
+      fieldsToUpdate.email = newEmail;
+    }
+
+    if (newInterests) {
+      fieldsToUpdate.interests = newInterests;
+    }
+
+    if (newLocation) {
+      fieldsToUpdate.location = newLocation;
+    }
+
+    // Only update the user's information in Firestore if there are fields to update
+    if (Object.keys(fieldsToUpdate).length > 0) {
+      const userRef = firestore.collection('users').doc(user.uid);
+      userRef.update(fieldsToUpdate)
+        .then(() => {
+          // Close the modal and update the displayed information on the page
+          closeForm('editProfileForm');
+
+          if (fieldsToUpdate.name) {
+            document.getElementById('user-name').textContent = fieldsToUpdate.name;
+          }
+
+          if (fieldsToUpdate.location) {
+            document.getElementById('user-location').textContent = fieldsToUpdate.location;
+          }
+
+          if (fieldsToUpdate.interests) {
+            document.getElementById('user-interests').textContent = fieldsToUpdate.interests;
+          }
+        })
+        .catch((error) => {
+          console.error('Error updating user information:', error);
+        });
+    } else {
+      alert('No fields to update. Please enter information in at least one field.');
+    }
+  }
+}

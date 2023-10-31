@@ -1,5 +1,22 @@
 var auth = firebase.auth();
 const firestore = firebase.firestore();
+
+// Get the current page's filename
+const currentPage = window.location.pathname.split('/').pop();
+
+// Remove the 'active' class from all navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.classList.remove('active');
+});
+
+// Highlight the active tab based on the current page
+document.querySelectorAll('.nav-link').forEach(link => {
+  const linkPage = link.getAttribute('href');
+  if (linkPage === currentPage) {
+    link.classList.add('active');
+  }
+});
+
 // Function to handle sign-out confirmation
 function handleSignOutConfirmation() {
   const confirmationMessage = document.getElementById('signOutButton').getAttribute('data-confirm');

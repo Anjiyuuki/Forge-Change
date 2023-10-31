@@ -39,31 +39,17 @@
 
     <nav>
         <ul>
-            <li><a href="explore.html" id="explore">Explore</a></li>
-            <li><a href="groups.html" id="groups">Groups</a></li>
-            <li><a href="inbox.html" id="inbox">Inbox</a></li>
-            <li><a href="info.html" id="info">Info</a></li>
+            <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
+            <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
+            <li><a href="inbox.html" class="nav-link" id="inbox">Inbox</a></li>
+            <li><a href="info.html" class="nav-link" id="info">Info</a></li>
         </ul>
     </nav>
-    <ul class="suggested-organizations">
-      <h2>Suggested Organizations based on your interests...</h2>
-      <!-- Suggested organizations will be displayed here -->
-      <div class="suggested-organizations-list">
-      </div>
-    </ul>
-    <div id="map"></div>
 
     <main id="searchPage">
         <div class="filters">
           <div class="dropdownFilters">
-            <label for="locationFilter">Location:</label>
-            <select id="locationFilter">
-                <option value="all">All Locations</option>
-                <option value="Charleston">Charleston</option>
-                <!-- Add more location options as needed -->
-            </select>
-
-            <select id="keywordFilter">
+            <select id="keywordFilter" style="display: none">
                 <option value="all">All Topics</option>
                 <option value="animals">Animals</option>
                 <option value="environment">Environment</option>
@@ -73,19 +59,28 @@
             </select>
           </div>
           <div class="filterButtons">
+            <label id="locationFilterLabel"for="locationFilter" style="margin-left: 10px; margin-right: 10px;color: black;"><b>Location:</b></Location:></label>
+            <select id="locationFilter" style="margin-right: 40px; ">
+                <option value="all" class="location">All Locations</option>
+                <option value="Charleston" class="location">Charleston</option>
+                <option value="Greenville" class="location">Greenville</option>
+                <option value="Columbia" class="location">Columbia</option>
+                <!-- Add more location options as needed -->
+            </select>
+            <button id="filterAll" class="filter-button" data-keyword="all">All</button>
+            <button id="filterSuggested" class="filter-button" data-keyword="suggested">Suggested For You</button>
             <button id="filterAnimals" class="filter-button" data-keyword="animals">Animals</button>
             <button id="filterEnvironment" class="filter-button" data-keyword="environment">Environment</button>
             <button id="filterLGBTQ" class="filter-button" data-keyword="LGBTQ+">LGBTQ+</button>
             <button id="filterEducation" class="filter-button" data-keyword="education">Education</button>
             <button id="filterHumanitarian" class="filter-button" data-keyword="humanitarian">Humanitarian</button>
-            <button id="filterAll" class="filter-button" data-keyword="all">All</button>
           </div>
         </div>
-
 
         <ul class="volunteer-list">
             <!-- Populate this list with volunteer organizations using JavaScript -->
         </ul>
+        <div id="map"></div>
 
     </main>
     

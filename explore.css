@@ -1,6 +1,53 @@
+#searchPage {
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1.1fr 1.9fr; 
+  grid-template-rows: 0.4fr 2fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Filters Filters"
+    "Results Map"; 
+  margin: auto;
+  width: 90%;
+}
+
+.volunteer-list {
+  grid-area: Results;
+  overflow-y: scroll;
+  height: 450px;
+  border-style: solid;
+  border-color: #44672d;
+  border-radius: 20px;
+  border-width: 5px;
+  padding: 20px;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+ul {
+  list-style-type: none;
+}
+
 #map {
-  height: 400px;
-  width: 100%;
+  grid-area: Map;
+  height: 500px;
+  width: 80%;
+  margin:auto;
+  border-radius: 10px;
+}
+
+.filters {
+  grid-area: Filters;
 }
 
 .filter-button {
@@ -19,7 +66,36 @@
   background-color: #f4f7e1;
   color: #44672d;
 }
+
 .version-one {
   font-size: 3em;
   color: #44672d;
+}
+
+.filter-button {
+  font-size: 18px;
+  background-color: #44672d;
+  color: #f4f7e1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-button.active {
+  background-color: #47c1c7; /* Change to your desired active button background color */
+  border-style: solid;
+  border-color: #44672d;
+  color: #44672d; /* Change to your desired active button text color */
+}
+
+#locationFilter {
+  padding: 8px;
+  border-style: solid;
+  border-color: rgb(24, 79, 28);
+  border-radius: 10px;
+  border-width: 3px;
+  background: #f1f1f1;
 }
