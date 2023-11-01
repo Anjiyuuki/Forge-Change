@@ -63,7 +63,7 @@ ul {
 }
 
 .filter-button:hover {
-  background-color: #f4f7e1;
+  background-color: #e1f5f7;
   color: #44672d;
 }
 
@@ -85,7 +85,7 @@ ul {
 }
 
 .filter-button.active {
-  background-color: #47c1c7; /* Change to your desired active button background color */
+  background-color: #bdf2f5;
   border-style: solid;
   border-color: #44672d;
   color: #44672d; /* Change to your desired active button text color */

@@ -25,23 +25,36 @@
       </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="images/logo.png" alt="" width="200">
-        </div>
-        <div class="sign-out">
-          <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
-        </div>
-    </header>
-    <nav>
-        <ul>
-          <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
-          <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
-          <li><a href="inbox.html" class="nav-link" id="inbox">Inbox</a></li>
-          <li><a href="info.html" class="nav-link" id="info">Info</a></li>
-        </ul>
-    </nav>
-    
+  <header>
+    <div class="container">
+        <img src="images/logo.png" alt="" width="200">
+    </div>
+    <div class="sign-out">
+        <button id="sign-out-button" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
+        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
+        <li><a href="inbox.html" class="nav-link active" id="inbox">Inbox</a></li>
+        <li><a href="info.html" class "nav-link" id="info">Info</a></li>
+    </ul>
+</nav>
+<div class="inbox-container">
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for a username">
+        <button id="search-button">Search</button>
+    </div>
+    <div class="conversations-list">
+        <!-- List of conversations will be displayed here -->
+    </div>
+    <div class="message-container">
+        <!-- Messages for the selected conversation will be displayed here -->
+        <input type="text" id="message-input" placeholder="Type a message..." />
+        <button id="send-button">Send</button>
+    </div>
+</div>
     <script src="inbox.js"></script>
 </body>
 </html>

@@ -75,6 +75,7 @@ function displayGroups() {
       });
 
       const joinButton = document.createElement('button');
+      joinButton.id = 'joinGroupButton'
       joinButton.textContent = 'Join';
       joinButton.addEventListener('click', () => joinGroup(groupName));
 

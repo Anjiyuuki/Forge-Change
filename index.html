@@ -25,51 +25,53 @@
         firebase.initializeApp(firebaseConfig);
     </script>
 </head>
-<header style="margin-top: 10px">
-    <div class="home-container" >
-      <img src="images/logo.png" alt="" width="200">
-  </div>
-</header>
-<body id="index-body">
-    <h1 class="version-two">Ready to Make a Difference?</h1>
-    <div class="text-container-body">
-        <p>Forge Change is a web application developed by Computer Science students at the College of Charleston. Many people desire to engage in volunteer activities but struggle to identify opportunities that align with their preferences. This software seeks to encourage increased participation in volunteer activities and the fostering of community contributions.</p>
-    </div>
-    <div id="register-login">
-    <div id="registrationForm">
-      <div class="Title"><h2 style="margin: 10px">Register</h2></div>
-      <div id="main-register" class="Form">
-        <label for="regEmail" class="labelReg">Email:</label>
-        <input type="email" id="regEmail" /><br>
-        <label for="regPassword" class="labelReg">Password:</label>
-        <input type="password" id="regPassword"  /><br>
-        <label for="regUsername" class="labelReg">Username:</label>
-        <input type="text" id="regUsername"/><br>
-        <label for="regName" class="labelReg">Name:</label>
-        <input type="text" id="regName"/><br>
-        <label for="regLocation" class="labelReg">Location:</label>
-        <input type="text" id="regLocation" /><br>
-      </div>
-      <div class="Border"></div>
-      <!-- Add a dropdown for choosing interests -->
-      <div id="interests" class="Checkboxes">
-        <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
-        <label><input type="checkbox" name="interest" value="animals" > Animals</label>
-        <label><input type="checkbox" name="interest" value="environment"> Environment</label>
-        <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
-        <label><input type="checkbox" name="interest" value="education"> Education</label>
-        <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
-      </div>
-      <button id="registerButton" class="Submit" style="width: 20%">Register</button>
-    </div>
 
-    <div id="loginForm">
-        <h2 style="margin-top: 60px">Login</h2>
-        <input type="email" id="loginEmail" placeholder="Email" /><br>
-        <input type="password" id="loginPassword" placeholder="Password" /><br>
-        <button id="loginButton" style="margin-top: 20px">Login</button>
+<body id="index-body">
+  <div class="two-column-layout">
+    <div class="left-column">
+        <h1 class="bold-text">Ready to Make a Difference?</h1>
     </div>
-  </div>
+    <div class="right-column">
+      <div class="home-container" >
+        <img src="images/logo.png" alt="" width="200">
+    </div>
+      <div id="register-login">
+        <div id="registrationForm">
+          <div class="Title"><h2 style="margin: 10px">Register</h2></div>
+          <div id="main-register" class="Form">
+            <label for="regEmail" class="labelReg">Email:</label>
+            <input type="email" id="regEmail" /><br>
+            <label for="regPassword" class="labelReg">Password:</label>
+            <input type="password" id="regPassword"  /><br>
+            <label for="regUsername" class="labelReg">Username:</label>
+            <input type="text" id="regUsername"/><br>
+            <label for="regName" class="labelReg">Name:</label>
+            <input type="text" id="regName"/><br>
+            <label for="regLocation" class="labelReg">Location:</label>
+            <input type="text" id="regLocation" /><br>
+          </div>
+          <!-- Add a dropdown for choosing interests -->
+          <div id="interests" class="Checkboxes">
+            <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
+            <label><input type="checkbox" name="interest" value="animals" > Animals</label>
+            <label><input type="checkbox" name="interest" value="environment"> Environment</label>
+            <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
+            <label><input type="checkbox" name="interest" value="education"> Education</label>
+            <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
+          </div>
+          <button id="registerButton" class="Submit">Register</button>
+        </div>
+    
+        <div id="loginForm">
+            <h2 style="margin-top: 60px">Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" /><br>
+            <input type="password" id="loginPassword" placeholder="Password" /><br>
+            <button id="loginButton" style="margin-top: 20px">Login</button>
+        </div>
+      </div>
+    </div>
+</div>
+    
 
     <p id="message"></p>
 
