@@ -18,6 +18,34 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 auth.onAuthStateChanged(function(user) {
     if (user) {
+      var userID = user.uid;
+    var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
+    var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory');
+
+    // Clear the existing table data
+    volunteerHistoryTable.querySelector('tbody').innerHTML = '';
+
+    // Fetch the user's volunteer history
+    volunteerHistoryRef.get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          var data = doc.data();
+          var organization = data.organization;
+          var activity = data.activity;
+          var hours = data.hours;
+          var date = data.date;
+
+          // Create a new row for each volunteer activity and append it to the table
+          var newRow = volunteerHistoryTable.querySelector('tbody').insertRow();
+          newRow.insertCell(0).textContent = organization;
+          newRow.insertCell(1).textContent = activity;
+          newRow.insertCell(2).textContent = hours;
+          newRow.insertCell(3).textContent = date;
+        });
+      })
+      .catch(function (error) {
+        console.error('Error fetching volunteer history:', error);
+      });
         // User is signed in, retrieve user's name
         firestore.collection('users').doc(user.uid).get()
             .then(function(doc) {
@@ -31,7 +59,6 @@ auth.onAuthStateChanged(function(user) {
                     document.getElementById('user-name').textContent = userName;
                     document.getElementById('user-location').textContent = userLocation;
                     document.getElementById('user-interests').textContent = userInterests;
-                    document.getElementById('user-hours').textContent = userHours;
                 } else {
                     console.log('User data not found');
                 }
@@ -75,192 +102,9 @@ function signOut() {
 // Add an event listener to the sign-out button
 document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);
 
-// Get a reference to the edit profile button and the modal
-const editProfileButton = document.getElementById('editProfileButton');
-const editProfileModal = document.getElementById('editProfileModal');
-const closeModalButton = document.getElementById('closeModal');
-
-editProfileButton.addEventListener('click', () => {
-  // Set the size and other properties for the popup window
-  const width = 400;
-  const height = 500;
-  const left = (window.innerWidth - width) / 2;
-  const top = (window.innerHeight - height) / 2;
-
-  // Open a new popup window
-  const editProfileWindow = window.open('', 'EditProfileWindow', `width=${width},height=${height},left=${left},top=${top}`);
-
-  // Set the HTML content for the popup window
-  const popupContent = `
-      <html>
-      <head>
-          <title>Edit Profile</title>
-          <style>
-              /* Add your popup window styles here */
-              body {
-                  font-family: Arial, sans-serif;
-              }
-              .container {
-                  text-align: center;
-                  padding: 20px;
-              }
-              /* Add your CSS styles here */
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <span class="close" id="closeModal" style="cursor: pointer;">&times;</span>
-              <h2>Edit Profile</h2>
-              <!-- Add form elements to edit user information -->
-              <form id="profileEditForm">
-                  <label for="newName">Name:</label>
-                  <input type="text" id="newName">
-                  <label for="newUsername">Username:</label>
-                  <input type="text" id="newUsername">
-                  <label for="newEmail">Email:</label>
-                  <input type="email" id="newEmail">
-                  <label for="newPassword">New Password:</label>
-                  <input type="password" id="newPassword">
-                  <label for="confirmPassword">Confirm Password:</label>
-                  <input type="password" id="confirmPassword">
-                  <label for="newInterests">Interests:</label>
-                  <input type="text" id="newInterests">
-                  <label for="newLocation">Location:</label>
-                  <input type="text" id="newLocation">
-                  <button type="button" id="submitChangesButton">Submit Changes</button>
-              </form>
-          </div>
-          <script src="info.js"></script>
-      </body>
-      </html>
-  `;
-
-  editProfileWindow.document.open();
-  editProfileWindow.document.write(popupContent);
-  editProfileWindow.document.close();
-
-  // Handle closing of the popup window
-  editProfileWindow.document.getElementById('closeModal').addEventListener('click', () => {
-      editProfileWindow.close();
-  });
-});
-
-// Add an event listener to close the modal when the close button is clicked
-closeModalButton.addEventListener('click', () => {
-    editProfileModal.style.display = 'none';
-});
-
-// Add an event listener to close the modal when the user clicks outside the modal
-window.addEventListener('click', (event) => {
-    if (event.target == editProfileModal) {
-        editProfileModal.style.display = 'none';
-    }
-});
 
 const profileEditForm = document.getElementById('profileEditForm');
-const submitChangesButton = document.getElementById('submitChangesButton');
 
-// Add an event listener to handle form submission
-submitChangesButton.addEventListener('click', () => {
-  var user = firebase.auth().currentUser;
-  if (user) {
-      const newName = document.getElementById('newName').value;
-      const newUsername = document.getElementById('newUsername').value;
-      const newEmail = document.getElementById('newEmail').value;
-      const newPassword = document.getElementById('newPassword').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      const newInterests = document.getElementById('newInterests').value;
-      const newLocation = document.getElementById('newLocation').value;
-
-      // Check if the new password and confirm password match
-      if (newPassword !== confirmPassword) {
-          alert('New password and confirm password do not match.');
-          return;
-      }
-
-      // Create an object to store the fields to update
-      const fieldsToUpdate = {};
-
-      if (newName) {
-          fieldsToUpdate.name = newName;
-      }
-
-      if (newUsername) {
-          fieldsToUpdate.username = newUsername;
-      }
-
-      if (newEmail) {
-          fieldsToUpdate.email = newEmail;
-      }
-
-      if (newInterests) {
-          fieldsToUpdate.interests = newInterests;
-      }
-
-      if (newLocation) {
-          fieldsToUpdate.location = newLocation;
-      }
-
-      // Only update the user's information in Firestore if there are fields to update
-      if (Object.keys(fieldsToUpdate).length > 0) {
-          const userRef = firestore.collection('users').doc(user.uid);
-          userRef.update(fieldsToUpdate)
-              .then(() => {
-                  // Close the modal and update the displayed information on the page
-                  editProfileModal.style.display = 'none';
-                  if (fieldsToUpdate.name) {
-                      document.getElementById('user-name').textContent = fieldsToUpdate.name;
-                  }
-                  if (fieldsToUpdate.location) {
-                      document.getElementById('user-location').textContent = fieldsToUpdate.location;
-                  }
-                  if (fieldsToUpdate.interests) {
-                      document.getElementById('user-interests').textContent = fieldsToUpdate.interests;
-                  }
-              })
-              .catch((error) => {
-                  console.error('Error updating user information:', error);
-              });
-      } else {
-          alert('No fields to update. Please enter information in at least one field.');
-      }
-  }
-});
-
-document.getElementById('addHoursButton').addEventListener('click', function() {
-  var user = firebase.auth().currentUser;
-  console.log("10");
-  if (user) {
-    var userID = user.uid;
-    // Add 10 hours to the user's volunteer hours
-    firestore.collection('users').doc(userID).get()
-      .then(function(doc) {
-        if (doc.exists) {
-          var userData = doc.data();
-          var currentHours = userData.hours || 0;
-          var newHours = currentHours + 10;
-
-          // Update the user's volunteer hours in the Firestore database
-          firestore.collection('users').doc(userID).update({
-            hours: newHours
-          })
-          .then(function() {
-            // Update the displayed volunteer hours on the page
-            document.getElementById('user-hours').textContent = newHours;
-            console.log('Volunteer hours updated successfully.');
-          })
-          .catch(function(error) {
-            console.error('Error updating volunteer hours: ', error);
-          });
-        } else {
-          console.log('User data not found');
-        }
-      })
-      .catch(function(error) {
-        console.error('Error getting user data:', error);
-      });
-  }
-});
 
 function openForm(formId) {
   document.getElementById(formId).style.display = "block";
@@ -340,3 +184,116 @@ function submitProfileChanges() {
     }
   }
 }
+// Function to add a new volunteer activity to Firestore
+function addVolunteerActivityToFirestore(activityData) {
+  const user = firebase.auth().currentUser;
+  if (user) {
+      const userId = user.uid;
+      const volunteerHistoryRef = firestore.collection('users').doc(userId).collection('volunteerHistory');
+
+      // Add a new document with a unique ID and the provided activity data
+      volunteerHistoryRef.add(activityData)
+          .then(() => {
+              // Successfully added the activity, you can update the table here
+              console.log('Volunteer activity added to Firestore');
+          })
+          .catch((error) => {
+              console.error('Error adding volunteer activity:', error);
+          });
+  }
+}
+
+// Function to open the volunteer activity form popup
+function openVolunteerActivityForm() {
+  const form = document.getElementById('volunteerActivityForm');
+  form.style.display = 'block';
+}
+
+// Function to close the volunteer activity form popup
+function closeVolunteerActivityForm() {
+  const form = document.getElementById('volunteerActivityForm');
+  form.style.display = 'none';
+}
+
+// Event listener for the "Add Volunteer Activity" button
+document.getElementById('addVolunteerActivityButton').addEventListener('click', () => {
+  openVolunteerActivityForm();
+});
+
+// Event listener for the submit button in the volunteer activity form
+document.getElementById('submitVolunteerActivityButton').addEventListener('click', () => {
+  const organization = document.getElementById('volunteerOrganization').value;
+  const activity = document.getElementById('volunteerActivity').value;
+  const hours = document.getElementById('volunteerHours').value;
+  const date = document.getElementById('volunteerDate').value;
+
+  // Validate the input fields
+  if (!organization || !activity || !hours || !date) {
+      alert('Please fill in all fields');
+      return;
+  }
+
+  const activityData = {
+      organization: organization,
+      activity: activity,
+      hours: parseFloat(hours),
+      date: date,
+  };
+
+  addVolunteerActivityToFirestore(activityData);
+  closeVolunteerActivityForm();
+});
+
+// Event listener for the close button in the volunteer activity form
+document.getElementById('closeVolunteerActivityForm').addEventListener('click', () => {
+  closeVolunteerActivityForm();
+});
+
+
+function calculateTotalVolunteerHours(volunteerHistory) {
+  let totalHours = 0;
+  volunteerHistory.forEach((activity) => {
+    totalHours += activity.hours;
+  });
+  return totalHours;
+}
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+      var userID = user.uid;
+      var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
+      var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory');
+
+      // Clear the existing table data
+      volunteerHistoryTable.querySelector('tbody').innerHTML = '';
+
+      // Fetch the user's volunteer history
+      volunteerHistoryRef.get()
+          .then(function(querySnapshot) {
+              const volunteerHistory = [];
+              querySnapshot.forEach(function(doc) {
+                  var data = doc.data();
+                  var organization = data.organization;
+                  var activity = data.activity;
+                  var hours = data.hours;
+                  var date = data.date;
+
+                  // Store the activity in the volunteerHistory array
+                  volunteerHistory.push(data);
+              });
+
+              // Calculate the total volunteer hours
+              const totalHours = calculateTotalVolunteerHours(volunteerHistory);
+
+              // Update the displayed volunteer hours on the page
+              document.getElementById('user-hours').textContent = totalHours;
+          })
+          .catch(function(error) {
+              console.error('Error fetching volunteer history:', error);
+          });
+
+      // Rest of your code...
+  } else {
+      // User is not signed in, handle this case if needed
+  }
+});
