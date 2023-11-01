@@ -35,16 +35,17 @@ header {
   font-family:Verdana, Geneva, Tahoma, sans-serif ;
   text-transform: uppercase;
   text-align: left;
-  font-size: 6em;
+  font-size: 5em;
   font-weight: bold;
   color: #bdd09e;
 }
 
 .right-column {
-  height: 700px;
+  height: 100vh;
+  bottom: 0;
   width: 600px;
   flex: 1;
-  background-color: #bdd09e;
+  background-color: #f4f7e1;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
