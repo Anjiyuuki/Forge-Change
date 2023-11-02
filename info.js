@@ -1,5 +1,7 @@
 var firestore = firebase.firestore();
 var auth = firebase.auth();
+const storageRef = firebase.storage().ref(); // Initialize Firebase Storage
+
 // Get the current page's filename
 const currentPage = window.location.pathname.split('/').pop();
 
@@ -297,3 +299,88 @@ auth.onAuthStateChanged(function(user) {
       // User is not signed in, handle this case if needed
   }
 });
+
+function chooseAndUploadProfilePicture() {
+  const fileInput = document.getElementById('profile-picture-upload');
+  fileInput.click(); // Trigger the file input click event
+
+  // Add an event listener to the file input to handle the selected file
+  fileInput.addEventListener('change', function () {
+    const file = fileInput.files[0];
+
+    if (file) {
+      const user = firebase.auth().currentUser;
+      const storageRef = firebase.storage().ref();
+
+      // Create a reference for the user's profile picture in Firebase Storage
+      const profilePictureRef = storageRef.child(`profile_pictures/${user.uid}/${file.name}`);
+
+      // Upload the selected file to Firebase Storage
+      profilePictureRef.put(file).then(function (snapshot) {
+        console.log('Profile picture uploaded!');
+
+        // Get the download URL of the uploaded profile picture
+        snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          // Save the URL to the user's document in Firestore
+          const db = firebase.firestore();
+          const userRef = db.collection('users').doc(user.uid);
+
+          // Update the user's document with the profile picture URL and file name
+          userRef.update({
+            profilePictureURL: downloadURL,
+            profilePictureFileName: file.name
+          }).then(function() {
+            console.log('User document updated with profile picture info.');
+          }).catch(function(error) {
+            console.error('Error updating user document:', error);
+          });
+
+          // Display the profile picture on the page
+          const profilePictureElement = document.getElementById('profile-picture');
+          profilePictureElement.src = downloadURL;
+        }).catch(function (error) {
+          console.error('Error getting download URL:', error);
+        });
+      }).catch(function (error) {
+        console.error('Profile picture upload failed:', error);
+      });
+    }
+  });
+}
+
+function loadUserProfilePicture() {
+  auth.onAuthStateChanged(function (user) {
+    if (user) {
+      firestore.collection('users').doc(user.uid).get()
+        .then(function (doc) {
+          if (doc.exists) {
+            var userData = doc.data();
+            var profilePictureRef = firebase.storage().ref().child(`profile_pictures/${user.uid}/${userData.profilePictureFileName}`);
+
+            // Get the download URL of the user's profile picture
+            profilePictureRef.getDownloadURL()
+              .then(function (url) {
+                // Display the user's profile picture or the default picture
+                var profilePictureElement = document.getElementById('profile-picture');
+                profilePictureElement.src = url;
+              })
+              .catch(function (error) {
+                console.log('Error getting download URL:', error);
+                // If there's an error, display the default picture
+                var defaultPictureURL = 'https://firebasestorage.googleapis.com/v0/b/forge-change.appspot.com/o/profile_pictures%2Fdefault_profile_pic.jpeg?alt=media&token=b7c61187-8831-458f-a220-a319de08e22d&_gl=1*1ebxgrs*_ga*MTYwMjkwNTkxOS4xNjk2NTQwNDM2*_ga_CW55HF8NVT*MTY5ODk5NjA5MC4xLjIyLjAuMTY5ODk5NjA5MC4w';
+                var profilePictureElement = document.getElementById('profile-picture');
+                profilePictureElement.src = defaultPictureURL;
+              });
+          } else {
+            console.log('User data not found');
+          }
+        })
+        .catch(function (error) {
+          console.log('Error getting user data:', error);
+        });
+    }
+  });
+}
+
+// Call the function to load the user's profile picture
+loadUserProfilePicture();

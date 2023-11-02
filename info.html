@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css" >
     <title>Info</title>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+
     <script>
       var firebaseConfig = {
         apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
@@ -43,22 +46,19 @@
     </ul>
 </nav>
     <div class="profile-container">
-        <h2>User Profile</h2>
         <div class="profile-info">
-            <div class="profile-picture">
-                <!-- Display user's profile picture or provide an option to upload one -->
-                <img src="path_to_user_profile_picture.jpg" alt="User Profile Picture" id="profile-picture">
-                <input type="file" id="profile-picture-upload" accept="image/*">
-                <button onclick="uploadProfilePicture()">Upload Picture</button>
-            </div>
-            <div class="profile-details">
-                <!-- Display user's name -->
-                <h3>Name: <span id="user-name"></span></h3>
-                <h3>Location: <span id="user-location"></span></h3>
-                <h3>Interests: <span id="user-interests"></span></h3>
-                <h3>Volunteer Hours: <span id="user-hours"></span></h3>
-
-            </div>
+          <img src="" alt="User Profile Picture" class="Picture" id="profile-picture" style="max-width: 200px; max-height: 200px;">
+          <div class="Upload">
+            <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;">
+            <button onclick="chooseAndUploadProfilePicture()">Choose and Upload Picture</button>
+          </div>
+          <div class="Info">
+            <!-- Display user's name -->
+            <h3>Name: <span id="user-name"></span></h3>
+            <h3>Location: <span id="user-location"></span></h3>
+            <h3>Interests: <span id="user-interests"></span></h3>
+            <h3>Volunteer Hours: <span id="user-hours"></span></h3>
+          </div>
         </div>
       
     <!-- A button to open the popup form -->
