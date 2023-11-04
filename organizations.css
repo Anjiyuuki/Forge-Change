@@ -54,7 +54,7 @@ ul {
   font-size: 18px;
   background-color: #44672d;
   color: #f4f7e1;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border: none;
   border-radius: 5px;
   margin: 5px;
@@ -72,18 +72,6 @@ ul {
   color: #44672d;
 }
 
-.filter-button {
-  font-size: 18px;
-  background-color: #44672d;
-  color: #f4f7e1;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
 .filter-button.active {
   background-color: #bdf2f5;
   border-style: solid;
@@ -98,4 +86,8 @@ ul {
   border-radius: 10px;
   border-width: 3px;
   background: #f1f1f1;
+}
+
+#filterSuggested {
+  margin-right: 150px;
 }

@@ -82,6 +82,7 @@ function createGroup(eventName) {
             .doc(eventName)
             .set({
               title: eventName,
+              category: "event"
             })
             .then((docRef) => {
               // Add the current user to the members list of the newly created group

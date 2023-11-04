@@ -36,7 +36,7 @@ document.getElementById('registerButton').addEventListener('click', function() {
                         .then(function() {
                             document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
                             // Redirect to explore.html or any other page
-                            window.location.href = 'explore.html';
+                            window.location.href = 'organizations.html';
                         })
                         .catch(function(error) {
                             console.error('Error adding user information to Firestore: ', error);

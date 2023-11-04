@@ -37,34 +37,38 @@ async function initMap() {
 
   // Function to get suggested organizations based on user interests
   async function getSuggestedOrganizations() {
-    auth.onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in, retrieve user's name
-        firestore.collection('users').doc(user.uid).get()
-            .then(function(doc) {
-                if (doc.exists) {
-                  var userData = doc.data();
-                    var userInterests = userData.interests;
-                    var suggestedOrganizations = organizations.filter(org => userInterests.includes(org.keyword));
-                    // Call the function to display suggested organizations
-                    displaySuggestedOrganizations(suggestedOrganizations);
-                } else {
-                    console.log('User data not found');
-                }
-            })
-            .catch(function(error) {
-                console.log('Error getting user data:', error);
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in, retrieve user's name
+      firestore.collection('users').doc(user.uid).get()
+        .then(function(doc) {
+          if (doc.exists) {
+            var userData = doc.data();
+            var userInterests = userData.interests;
+            var locationFilter = document.getElementById('locationFilter').value; // Get the selected location
+
+            var suggestedOrganizations = organizations.filter(org => {
+              return userInterests.includes(org.keyword) && (locationFilter === 'all' || org.location === locationFilter);
             });
-        
-      }
+
+            // Call the function to display suggested organizations
+            displaySuggestedOrganizations(suggestedOrganizations);
+          } else {
+            console.log('User data not found');
+          }
+        })
+        .catch(function(error) {
+          console.log('Error getting user data:', error);
+        });
+    }
   });
-  }
+}
   // Function to display suggested organizations
   function displaySuggestedOrganizations(suggestedOrganizations) {
     const suggestedList = document.querySelector('.volunteer-list');
     suggestedList.innerHTML = '';
 
-      // Remove the 'active' class from all filter buttons
+  // Remove the 'active' class from all filter buttons
   document.querySelectorAll('.filter-button').forEach(button => {
     button.classList.remove('active');
   });
@@ -174,14 +178,14 @@ async function initMap() {
     const keywordFilter = document.getElementById('keywordFilter').value;
 
     // Remove the 'active' class from all filter buttons
-  document.querySelectorAll('.filter-button').forEach(button => {
-    button.classList.remove('active');
-  });
-  // Add the 'active' class to the currently selected filter button
-  const activeButton = document.querySelector(`button[data-keyword="${keywordFilter}"]`);
-  if (activeButton) {
-    activeButton.classList.add('active');
-  }
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.remove('active');
+    });
+    // Add the 'active' class to the currently selected filter button
+    const activeButton = document.querySelector(`button[data-keyword="${keywordFilter}"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
   
     const filteredOrganizations = organizations.filter(org => {
       const locationMatch = locationFilter === 'all' || org.location === locationFilter;
