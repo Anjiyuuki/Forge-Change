@@ -233,3 +233,6 @@ function signOut() {
   });
 }
 
+
+// Add an event listener to the sign-out button
+document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);

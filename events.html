@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="events.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Inbox</title>
+    <title>Events</title>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
@@ -22,7 +23,7 @@
 
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      </script>
+    </script>
 </head>
 <body>
   <header>
@@ -30,31 +31,18 @@
         <img src="images/logo.png" alt="" width="200">
     </div>
     <div class="sign-out">
-        <button id="sign-out-button" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+        <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
     </div>
-</header>
-<nav>
-    <ul>
-        <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
-        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
-        <li><a href="inbox.html" class="nav-link active" id="inbox">Inbox</a></li>
-        <li><a href="info.html" class "nav-link" id="info">Info</a></li>
-    </ul>
-</nav>
-<div class="inbox-container">
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search for a username">
-        <button id="search-button">Search</button>
-    </div>
-    <div class="conversations-list">
-        <!-- List of conversations will be displayed here -->
-    </div>
-    <div class="message-container">
-        <!-- Messages for the selected conversation will be displayed here -->
-        <input type="text" id="message-input" placeholder="Type a message..." />
-        <button id="send-button">Send</button>
-    </div>
-</div>
-    <script src="inbox.js"></script>
+  </header>
+  <nav>
+      <ul>
+          <li><a href="organizations.html" class="nav-link" id="organizations">Organizations</a></li>
+          <li><a href="events.html" class="nav-link active" id="events">Events</a></li>
+          <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
+          <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
+      </ul>
+  </nav>
+  <div class="events-container"></div>
+  <script src="events.js"></script>
 </body>
 </html>

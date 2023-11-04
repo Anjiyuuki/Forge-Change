@@ -1,0 +1,29 @@
+.events-container {
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". . . ."
+    ". . . ."
+    ". . . ."
+    ". . . ."; 
+}
+
+.event {
+  background-color: #bdd09e;
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
+  position: relative; 
+  border: 1px solid #ccc;
+  padding-bottom: 30px;
+  border-radius: 5px;
+
+}
+
+#event-links {
+  position: absolute;
+  bottom: 20px; 
+}

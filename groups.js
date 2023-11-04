@@ -40,54 +40,6 @@ function signOut() {
 // Add an event listener to the sign-out button
 document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);
 
-// Function to fetch and display the list of available groups
-// Function to fetch and display the list of available groups
-function displayGroups() {
-  const groupsList = document.getElementById('groups-list');
-
-  // Query Firestore to get the available groups
-  firestore.collection('groups').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      const groupData = doc.data();
-      const groupName = groupData.title; // Group name is the document ID
-
-      // Create a group card element and add a join button
-      const groupCard = document.createElement('div');
-      groupCard.className = 'group-card';
-
-      const groupNameElement = document.createElement('h3');
-      groupNameElement.textContent = groupName;
-
-      const usernamesList = document.createElement('ul');
-      const membersTitle = document.createElement('p');
-      membersTitle.textContent = 'Members:';
-
-      // Fetch and display usernames for all members in the group
-      firestore.collection('groups').doc(groupName).collection('members').get().then((membersSnapshot) => {
-        usernamesList.appendChild(membersTitle);
-        membersSnapshot.forEach((memberDoc) => {
-          const memberData = memberDoc.data();
-          const username = memberData.username;
-          const listItem = document.createElement('li');
-          listItem.textContent = username;
-          usernamesList.appendChild(listItem);
-        });
-      });
-
-      const joinButton = document.createElement('button');
-      joinButton.id = 'joinGroupButton'
-      joinButton.textContent = 'Join';
-      joinButton.addEventListener('click', () => joinGroup(groupName));
-
-      groupCard.appendChild(groupNameElement);
-      groupCard.appendChild(usernamesList);
-      groupCard.appendChild(joinButton);
-      groupsList.appendChild(groupCard);
-    });
-  });
-}
-displayGroups();
-
 // Function to join a group
 async function joinGroup(groupName) {
   var username;
@@ -138,10 +90,7 @@ async function refreshMembersList(groupName) {
     });
   });
 }
-// Initialize the groups page by displaying available groups
-
-const createGroupButton = document.getElementById('createGroupButton');
-createGroupButton.addEventListener('click', () => {
+async function createGroup(category) {
   var username;
   var user = firebase.auth().currentUser;
 
@@ -149,15 +98,21 @@ createGroupButton.addEventListener('click', () => {
     const newGroupName = prompt('Enter the name of the new group:');
     if (newGroupName) {
       firestore.collection('groups').doc(newGroupName).set({
-          title: newGroupName,
-      }).then((docRef) => {
-          alert('New group created: ' + newGroupName + '. Refresh page to see changes.');
+        title: newGroupName,
+        category: category // Set the category for the group
+      }).then(() => {
+        alert('New group created: ' + newGroupName);
+        // After creating the group, refresh the list of groups in the corresponding section
+        if (category === 'topic') {
+          displayGroupsByCategory('topic', 'topics-list', 'createTopicButton');
+        } else if (category === 'event') {
+          displayGroupsByCategory('event', 'events-list', 'createEventButton');
+        }
       }).catch((error) => {
-          console.error('Error creating group:', error);
+        console.error('Error creating group:', error);
       });
-  }
-    firestore.collection('users').doc(user.uid).get()
-      .then(function (doc) {
+
+      firestore.collection('users').doc(user.uid).get().then(function (doc) {
         if (doc.exists) {
           var userData = doc.data();
           username = userData.username;
@@ -169,18 +124,70 @@ createGroupButton.addEventListener('click', () => {
           console.log('User data not found');
           return Promise.reject('User data not found');
         }
-      })
-      .then(() => {
-        // Successfully joined the group
-        alert('You have joined the ' + groupName + ' group.');
-        // After joining, refresh the list of members
-        refreshMembersList(groupName);
-      })
-      .catch((error) => {
+      }).then(() => {
+        // Successfully joined the newly created group
+        alert('You have joined the ' + newGroupName + ' group.');
+      }).catch((error) => {
         console.error('Error joining group:', error);
       });
+    }
   } else {
     // User is not logged in
-    alert('Please log in to join a group.');
+    alert('Please log in to create and join a group.');
   }
-});
+}
+
+// Function to fetch and display groups based on category
+function displayGroupsByCategory(category, containerId, createButtonId) {
+  const groupsList = document.getElementById(containerId);
+
+  // Clear the existing list of groups
+  groupsList.innerHTML = '';
+
+  firestore.collection('groups').where('category', '==', category).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const groupData = doc.data();
+      const groupName = groupData.title; // Group name is the document ID
+
+      // Create a group card element
+      const groupCard = document.createElement('div');
+      groupCard.className = 'group-card';
+
+      const groupNameElement = document.createElement('h3');
+      groupNameElement.textContent = groupName;
+
+      const usernamesList = document.createElement('ul');
+      const membersTitle = document.createElement('p');
+      membersTitle.textContent = 'Members:';
+
+      // Fetch and display usernames for all members in the group
+      firestore.collection('groups').doc(groupName).collection('members').get().then((membersSnapshot) => {
+        membersSnapshot.forEach((memberDoc) => {
+          const memberData = memberDoc.data();
+          const username = memberData.username;
+          const listItem = document.createElement('li');
+          listItem.textContent = username;
+          usernamesList.appendChild(listItem);
+        });
+      });
+
+      const joinButton = document.createElement('button');
+      joinButton.textContent = 'Join';
+      joinButton.addEventListener('click', () => joinGroup(groupName));
+
+      groupCard.appendChild(groupNameElement);
+      groupCard.appendChild(usernamesList);
+      groupCard.appendChild(joinButton);
+
+      groupsList.appendChild(groupCard);
+    });
+  });
+
+  const createButton = document.getElementById(createButtonId);
+  createButton.addEventListener('click', () => createGroup(category));
+}
+
+
+// Initialize the groups page
+displayGroupsByCategory('topic', 'topics-list', 'createTopicButton');
+displayGroupsByCategory('event', 'events-list', 'createEventButton');

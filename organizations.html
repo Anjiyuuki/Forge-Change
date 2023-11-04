@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="explore.css">
+    <link rel="stylesheet" href="organizations.css">
     <title>Explore Volunteer Opportunities</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA&callback=initMap" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
@@ -39,11 +39,11 @@
 
     <nav>
         <ul>
-            <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
+            <li><a href="organizations.html" class="nav-link active" id="organizations">Organizations</a></li>
+            <li><a href="events.html" class="nav-link" id="events">Events</a></li>
             <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
-            <li><a href="inbox.html" class="nav-link" id="inbox">Inbox</a></li>
-            <li><a href="info.html" class="nav-link" id="info">Info</a></li>
-        </ul>
+            <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
+          </ul>
     </nav>
 
     <main id="searchPage">
@@ -53,7 +53,6 @@
                 <option value="all">All Topics</option>
                 <option value="animals">Animals</option>
                 <option value="environment">Environment</option>
-                <option value="LGBTQ+">LGBTQ+</option>
                 <option value="education">Education</option>
                 <option value="humanitarian">Humanitarian</option>
             </select>
@@ -81,12 +80,8 @@
             <!-- Populate this list with volunteer organizations using JavaScript -->
         </ul>
         <div id="map"></div>
-
-        <div id="events-list">
-          <h2>Events in Charleston</h2>
-      </div>
     </main>
     
-    <script type="text/javascript" src="explore.js"></script>
+    <script src="organizations.js"></script>
 </body>
 </html>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="groups.css">
+
     <title>Groups</title>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
@@ -36,14 +38,25 @@
     </header>
     <nav>
       <ul>
-        <li><a href="explore.html" class="nav-link" id="explore">Explore</a></li>
-        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
-        <li><a href="inbox.html" class="nav-link" id="inbox">Inbox</a></li>
-        <li><a href="info.html" class="nav-link" id="info">Info</a></li>
+        <li><a href="organizations.html" class="nav-link" id="organizations">Organizations</a></li>
+        <li><a href="events.html" class="nav-link" id="events">Events</a></li>
+        <li><a href="groups.html" class="nav-link active" id="groups">Groups</a></li>
+        <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
       </ul>
-  </nav>
-  <button id="createGroupButton">Create New Group</button> 
-  <div id="groups-list"></div> 
+    </nav>
+  <div id="groups-container">
+    <h2>Topics</h2>
+    <button class="createGroupButton" id="createTopicButton">Create New Group for a Topic</button>
+    <div id="topics-list">
+      <!-- Topics section content -->
+    </div>
+
+    <h2>Events</h2>
+    <button class="createGroupButton" id="createEventButton">Create New Group for an Event</button>
+    <div id="events-list">
+        <!-- Events section content -->
+    </div>
+  </div>
   <script src="groups.js"></script>
 </body>
 </html>

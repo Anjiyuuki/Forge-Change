@@ -280,37 +280,9 @@ header img {
   text-align: center;
 }
 
-#groups-list {
-  display: grid; 
-  grid-auto-columns: 1fr; 
-  grid-template-columns: 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    ". . . ."
-    ". . . ."
-    ". . . ."
-    ". . . ."; 
-}
-
-.group-card {
-  background-color: #bdd09e;
-  margin: 20px;
-  padding: 20px;
-  width: 80%;
-  border-radius:1em;
-  position: relative; 
-}
-
-#joinGroupButton {
-  position: absolute; 
-  bottom: 10px; }
-
 #editProfileModal {
   display: none;
-
 }
-
 
 .right-align {
   float: right;
@@ -325,12 +297,4 @@ header img {
   background-color: #cbf0f2;
   border-radius: 5px;
 }
-
-.group-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-}
-
 
