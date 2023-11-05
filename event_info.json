@@ -1,13 +1,5 @@
 [
     {
-        "name": "Party for the Parks 2023",
-        "date": "2023-11-04",
-        "url": "https://www.eventbrite.com/e/party-for-the-parks-2023-tickets-711310217007",
-        "img": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F588221459%2F183854720788%2F1%2Foriginal.20230901-145839?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C25%2C2500%2C1250&s=8f53c3f68b2fea264355768da66b4ac5",
-        "streetAddress": "41 Ashley Avenue",
-        "description": "Come celebrate the Charleston Parks Conservancy's  hottest fundraising event!"
-    },
-    {
         "name": "Climate Advocate Training Workshop - Charleston, SC",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/climate-advocate-training-workshop-charleston-sc-registration-731250067637",
@@ -22,6 +14,14 @@
         "img": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F623298179%2F885626278923%2F1%2Foriginal.20231018-155250?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=16%2C241%2C866%2C433&s=6fd573c105153f8ad7438cc4ba6ec6f4",
         "streetAddress": "2070 Sam Rittenberg Boulevard",
         "description": "Join us at our Give Thanks Giveaway, a heartwarming in-person event where we come together to express gratitude!"
+    },
+    {
+        "name": "Charleston Natural History Society Oyster Roast",
+        "date": "2023-12-03",
+        "url": "https://www.eventbrite.com/e/charleston-natural-history-society-oyster-roast-tickets-752884998297",
+        "img": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F635524349%2F234579742693%2F1%2Foriginal.20231105-201433?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C77%2C1640%2C820&s=bded384e3b5931fb78c354b56103bb27",
+        "streetAddress": "1870 Bowens Island Road",
+        "description": "Join us for our Oyster Roast and annual holiday party! Oysters, Chili, Hot Dogs, bird nerds, silent auction, and general merriment!"
     },
     {
         "name": "BE Impactful Holiday Festival  -  Toy & Dinner Giveaway",
@@ -126,13 +126,5 @@
         "img": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F625560179%2F865039825473%2F1%2Foriginal.20231021-121442?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=450%2C0%2C5100%2C2550&s=a011a84f04758dbd1e51c4edc87a88a5",
         "streetAddress": "601 Cohen Street",
         "description": "Unlocking Hearts, Changing Futures: Love Gives Gala for Operation Kid Forward"
-    },
-    {
-        "name": "13th Annual Empty Bowl Fundraiser",
-        "date": "2023-11-05",
-        "url": "https://www.eventbrite.com/e/13th-annual-empty-bowl-fundraiser-tickets-676679395287",
-        "img": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F553710769%2F186830806574%2F1%2Foriginal.20230712-162028?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=47d868bcbc6e7c11ff23d8f263b78e9b",
-        "streetAddress": "18 Abercorn Street",
-        "description": "Savannah's favorite lunch social!"
     }
 ]

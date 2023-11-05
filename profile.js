@@ -17,7 +17,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.classList.add('active');
   }
 });
-
+async function loadInfo() {
 auth.onAuthStateChanged(function(user) {
     if (user) {
       var userID = user.uid;
@@ -72,13 +72,8 @@ auth.onAuthStateChanged(function(user) {
         // User is not signed in, handle this case if needed
     }
 });
-
-// JavaScript code in explore.js
-function uploadProfilePicture() {
-    const profilePicture = document.getElementById('profile-picture-upload');
-    // Handle profile picture upload here (e.g., save the uploaded image).
-    // Update the "profile-picture" element with the new image source.
 }
+loadInfo();
 
 // Function to handle sign-out confirmation
 function handleSignOutConfirmation() {
@@ -198,6 +193,7 @@ function addVolunteerActivityToFirestore(activityData) {
           .then(() => {
               // Successfully added the activity, you can update the table here
               console.log('Volunteer activity added to Firestore');
+              loadInfo();
           })
           .catch((error) => {
               console.error('Error adding volunteer activity:', error);
@@ -384,3 +380,39 @@ function loadUserProfilePicture() {
 
 // Call the function to load the user's profile picture
 loadUserProfilePicture();
+
+document.getElementById('deleteAccountButton').addEventListener('click', handleDeleteAccountConfirmation);
+
+function handleDeleteAccountConfirmation() {
+  const confirmationMessage = "Are you sure you want to delete your account? This action cannot be undone.";
+  if (confirm(confirmationMessage)) {
+    // User clicked "OK," delete their account
+    deleteAccount();
+  }
+}
+
+function deleteAccount() {
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    // Delete the user's document from Firestore
+    firestore.collection('users').doc(user.uid).delete()
+      .then(() => {
+        console.log('User document deleted from Firestore.');
+      })
+      .catch((error) => {
+        console.error('Error deleting user document from Firestore:', error);
+      });
+
+    // Delete the user's account
+    user.delete()
+      .then(() => {
+        console.log('User account deleted.');
+        // Redirect the user to the sign-in or home page
+        window.location.href = 'index.html'; // Change the URL as needed
+      })
+      .catch((error) => {
+        console.error('Error deleting user account:', error);
+      });
+  }
+}

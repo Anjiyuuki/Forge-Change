@@ -68,7 +68,7 @@ document.getElementById('loginButton').addEventListener('click', function() {
             document.getElementById('message').textContent = 'Login successful. User UID: ' + user.uid;
 
             // Redirect to explore.html
-            window.location.href = 'explore.html';
+            window.location.href = 'organizations.html';
         })
         .catch(function(error) {
             // Handle errors during login

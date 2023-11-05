@@ -36,18 +36,23 @@
         <div class="sign-out">
           <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
         </div>
+        <div class="delete-account">
+          <button id="deleteAccountButton">Delete Account</button>
+        </div>
     </header>
     <nav>
       <ul>
         <li><a href="organizations.html" class="nav-link" id="explore">Organizations</a></li>
-        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
         <li><a href="events.html" class="nav-link" id="events">Events</a></li>
+        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
         <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
     </ul>
 </nav>
     <div class="profile-container">
         <div class="profile-info">
-          <img src="" alt="User Profile Picture" class="Picture" id="profile-picture" style="max-width: 200px; max-height: 200px;">
+          <div id="profile-cont">
+            <img src="" alt="User Profile Picture" class="Picture" id="profile-picture">
+          </div>
           <div class="Upload">
             <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;">
             <button onclick="chooseAndUploadProfilePicture()">Choose and Upload Picture</button>
@@ -66,7 +71,7 @@
 
     <!-- The form container with the edit profile form -->
     <div class="form-popup" id="editProfileForm">
-      <form action="/action_page.php" class="form-container">
+      <form action="/action_page.php" class="form-container" >
         <span class="close right-align" onclick="closeForm('editProfileForm')">&times;</span>
         <h2>Edit Profile</h2>
         <!-- Add form elements to edit user information -->
