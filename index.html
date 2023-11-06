@@ -8,11 +8,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
-<<<<<<< Updated upstream
-    
+  
 
-=======
->>>>>>> Stashed changes
     <script>
         var firebaseConfig = {
           apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
@@ -51,8 +48,12 @@
             <input type="text" id="regUsername"/><br>
             <label for="regName" class="labelReg">Name:</label>
             <input type="text" id="regName"/><br>
-            <label for="regLocation" class="labelReg">Location:</label>
-            <input type="text" id="regLocation" /><br>
+            <label for="regLocation" class="labelReg">Location:</label><br>
+            <select id="regLocation">
+              <option value="Greenville">Greenville</option>
+              <option value="Columbia">Columbia</option>
+              <option value="Charleston">Charleston</option>
+            </select>
           </div>
           <!-- Add a dropdown for choosing interests -->
           <div id="interests" class="Checkboxes">

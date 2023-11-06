@@ -4,13 +4,17 @@ var auth = firebase.auth();
 var firestore = firebase.firestore();
 
 document.getElementById('registerButton').addEventListener('click', function() {
-    var email = document.getElementById('regEmail').value;
-    var password = document.getElementById('regPassword').value;
-    var username = document.getElementById('regUsername').value; // Get the username input value
-    var name = document.getElementById('regName').value;
-    var location = document.getElementById('regLocation').value;
-    var interests = Array.from(document.querySelectorAll('input[name="interest"]:checked')).map(checkbox => checkbox.value);
-    // Check if the username already exists in Firestore
+  var email = document.getElementById('regEmail').value;
+  var password = document.getElementById('regPassword').value;
+  var username = document.getElementById('regUsername').value;
+  var name = document.getElementById('regName').value;
+  
+  // Get the selected location from the dropdown
+  var locationDropdown = document.getElementById('regLocation');
+  var location = locationDropdown.options[locationDropdown.selectedIndex].value;
+  
+  var interests = Array.from(document.querySelectorAll('input[name="interest"]:checked')).map(checkbox => checkbox.value);
+  // Check if the username already exists in Firestore
     firestore.collection('users')
         .where('username', '==', username)
         .get()
