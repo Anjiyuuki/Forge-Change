@@ -4,6 +4,7 @@ const apiKey = 'AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA';
 var events = [];
 var map;
 let infoWindows = [];
+var markers = [];
 
 async function initMap() {
   // The location of Uluru
@@ -19,60 +20,169 @@ async function initMap() {
     center: position,
     mapId: "DEMO_MAP_ID",
   });
-    // Load the event data from the JSON file
-    fetch("event_info.json")
-      .then((response) => response.json())
-      .then((data) => {
-        // Get the list to display the event information
-        const eventsList = document.querySelector(".events-list");
   
-        // Loop through the event data and create elements to display them
-        data.forEach((event) => {
-          const eventElement = document.createElement("div");
-          eventElement.classList.add("event");
-  
-          eventElement.innerHTML = `
-            <h3>${event.name}</h3>
-            <p>Date: ${event.date}</p>
-            <p>Location: ${event.address}</p>
-            <p>Description: ${event.description}</p>
-            <div id="event-links">
-              <a href="${event.url}" target="_blank">Learn More</a>
-              <button class="create-group-button" data-event-name="${event.name}">Create Group for this Event</button>
-            </div>
-  
-          `;
-          eventsList.appendChild(eventElement);
-  
-          // Add a click event listener to the "Create Group" button
-          const createGroupButton = eventElement.querySelector(".create-group-button");
-          createGroupButton.addEventListener("click", function () {
-            createGroup(event.name);
-          });
-          var eventMarker = new google.maps.Marker({
-            position: { lat: event.position.lat, lng: event.position.lng },
-            map: map,
-            title: event.name,
-          });
-          var contentInfo = `<strong>${event.name}</strong>
-          <br>
-          <a href='${event.url}' target='_blank'>More details</a>`
-          const infoWindow = new google.maps.InfoWindow({
-            content: contentInfo
-          });
-  
-          eventMarker.addListener('click', () => {
-            infoWindows.forEach(iw => iw.close());
-            infoWindow.open(map, eventMarker);
-          });
-  
-          infoWindows.push(infoWindow);
-        });
-      })
-      .catch((error) => {
-        console.error("Error loading event data:", error);
-      });
 
+  // Add event listener for Charleston filter
+  document.getElementById("filterCharleston").addEventListener("click", function () {
+    getEvents("Charleston");
+
+    // Remove the 'active' class from all filter buttons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Add the 'active' class to the currently selected filter button
+    const activeButton = document.querySelector(`button[id="filterCharleston"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+  });
+
+  // Add event listener for Greenville filter
+  document.getElementById("filterGreenville").addEventListener("click", function () {
+    getEvents("Greenville");
+
+    // Remove the 'active' class from all filter buttons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Add the 'active' class to the currently selected filter button
+    const activeButton = document.querySelector(`button[id="filterGreenville"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+
+  });
+
+  // Add event listener for Columbia filter
+  document.getElementById("filterColumbia").addEventListener("click", function () {
+    getEvents("Columbia");
+    // Remove the 'active' class from all filter buttons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Add the 'active' class to the currently selected filter button
+    const activeButton = document.querySelector(`button[id="filterColumbia"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+  });
+
+  // Add event listener for Columbia filter
+  document.getElementById("filterAll").addEventListener("click", function () {
+    getEvents("all");
+    // Remove the 'active' class from all filter buttons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Add the 'active' class to the currently selected filter button
+    const activeButton = document.querySelector(`button[id="filterAll"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+  });
+
+  // Call getEvents with a default file when the page loads
+  getEvents("all");
+  // Remove the 'active' class from all filter buttons
+  document.querySelectorAll('.filter-button').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  // Add the 'active' class to the currently selected filter button
+  const activeButton = document.querySelector(`button[id="filterAll"]`);
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+}
+
+function getEvents(city) {
+  // Clear the events list
+  const eventsList = document.querySelector(".events-list");
+  eventsList.innerHTML = "";
+
+  // Clear map markers
+  for (let i = 0; i < infoWindows.length; i++) {
+    infoWindows[i].close();
+  }
+  infoWindows = [];
+
+  if (map) {
+    map.data.forEach(function (feature) {
+      map.data.remove(feature);
+    });
+  }
+
+  markers.forEach(function(marker) {
+    marker.setMap(null);
+  });
+
+  // Load all events from the JSON file
+  fetch("events_info.json")
+    .then((response) => response.json())
+    .then((data) => {
+      // Filter events based on the specified city
+      const filteredEvents = city === "all" ? data : data.filter(event => event.city === city);
+      console.log(filteredEvents);
+      // Loop through the filtered event data and create elements to display them
+      filteredEvents.forEach((event) => {
+        const eventElement = document.createElement("div");
+        eventElement.classList.add("event");
+
+        eventElement.innerHTML = `
+          <h3>${event.name}</h3>
+          <p>Date: ${event.date}</p>
+          <p>Location: ${event.address}</p>
+          <p>Description: ${event.description}</p>
+          <div id="event-links">
+            <a href="${event.url}" target="_blank">Learn More</a>
+            <button class="create-group-button" data-event-name="${event.name}">Create Group for this Event</button>
+          </div>`;
+        eventsList.appendChild(eventElement);
+
+        // Add a click event listener to the "Create Group" button
+        const createGroupButton = eventElement.querySelector(".create-group-button");
+        createGroupButton.addEventListener("click", function () {
+          createGroup(event.name);
+        });
+        var eventMarker = new google.maps.Marker({
+          position: { lat: event.position.lat, lng: event.position.lng },
+          map: map,
+          title: event.name,
+        });
+        markers.push(eventMarker);
+        var contentInfo = `<strong>${event.name}</strong>
+        <br>
+        <a href='${event.url}' target='_blank'>More details</a>`
+        const infoWindow = new google.maps.InfoWindow({
+          content: contentInfo
+        });
+
+        eventMarker.addListener('click', () => {
+          infoWindows.forEach(iw => iw.close());
+          infoWindow.open(map, eventMarker);
+        });
+
+        infoWindows.push(infoWindow);
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading event data:", error);
+    });
+}
+
+// Function to sign out the user and redirect to the index page
+function signOut() {
+  firebase.auth().signOut().then(function () {
+      // Sign-out successful, redirect to the index page
+      window.location.href = 'index.html';
+  }).catch(function (error) {
+      // An error occurred while signing out
+      console.error('Sign-out error:', error);
+  });
 }
 
 // Function to sign out the user and redirect to the index page
