@@ -6,21 +6,53 @@ var map;
 let infoWindows = [];
 var markers = [];
 
+function getLocationCoordinates(location) {
+  // Define coordinates for specified locations
+  const locationCoordinates = {
+    "Greenville": { lat: 34.8526, lng: -82.3940 },
+    "Charleston": { lat: 32.7765, lng: -79.9311 },
+    "Columbia": { lat: 34.0007, lng: -81.0348 },
+  };
+
+  return locationCoordinates[location] || null;
+}
+
 async function initMap() {
-  // The location of Uluru
-  const position = { lat: 32.7767, lng: -79.9301 };
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  // The map, centered at Uluru
+  // The map, centered at South Carolina by default
+  const defaultPosition = { lat: 33.8361, lng: -81.1637 }; // Center of South Carolina
   map = new Map(document.getElementById("events-map"), {
-    zoom: 9,
-    center: position,
+    zoom: 6,
+    center: defaultPosition,
     mapId: "DEMO_MAP_ID",
   });
-  
+  auth.onAuthStateChanged(function(user) {
+  // Check if the user is logged in
+  if (user) {
+    firestore.collection("users")
+      .doc(user.uid)
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          var userData = doc.data();
+          const userLocation = userData.location;
+          // Center the map at the user's location if it's one of the specified cities
+          if (["Greenville", "Charleston", "Columbia"].includes(userLocation)) {
+            const userPosition = getLocationCoordinates(userLocation);
+            map.setCenter(userPosition);
+            map.setZoom(10);
+          }
+        }
+      })
+      .catch(function (error) {
+        console.error("Error fetching user data:", error);
+      });
+  }
+});
 
   // Add event listener for Charleston filter
   document.getElementById("filterCharleston").addEventListener("click", function () {
@@ -41,7 +73,7 @@ async function initMap() {
   // Add event listener for Greenville filter
   document.getElementById("filterGreenville").addEventListener("click", function () {
     getEvents("Greenville");
-
+    // make this into a function
     // Remove the 'active' class from all filter buttons
     document.querySelectorAll('.filter-button').forEach(button => {
       button.classList.remove('active');
@@ -126,17 +158,17 @@ function getEvents(city) {
     .then((data) => {
       // Filter events based on the specified city
       const filteredEvents = city === "all" ? data : data.filter(event => event.city === city);
-      console.log(filteredEvents);
       // Loop through the filtered event data and create elements to display them
       filteredEvents.forEach((event) => {
         const eventElement = document.createElement("div");
         eventElement.classList.add("event");
-
+        console.log(event.location);
         eventElement.innerHTML = `
           <h3>${event.name}</h3>
-          <p>Date: ${event.date}</p>
-          <p>Location: ${event.address}</p>
-          <p>Description: ${event.description}</p>
+          <p><strong>Date:</strong> ${event.date}</p>
+          <p><strong>Location:</strong> ${event.location.name} (${event.location.address.streetAddress}, ${event.location.address.addressLocality}, 
+             ${event.location.address.addressRegion} ${event.location.address.postalCode})</p>
+          <p><strong>Description:</strong> ${event.description}</p>
           <div id="event-links">
             <a href="${event.url}" target="_blank">Learn More</a>
             <button class="create-group-button" data-event-name="${event.name}">Create Group for this Event</button>

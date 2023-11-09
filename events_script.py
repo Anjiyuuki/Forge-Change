@@ -49,6 +49,7 @@ for url in urls:
                 if script_content["startDate"] == script_content["endDate"]
                 else f"{script_content['startDate']} - {script_content['endDate']}",
                 "url": script_content["url"],
+                "location": script_content["location"],
                 "address": script_content["location"]["address"],
                 "description": script_content["description"],
                 "position": {
