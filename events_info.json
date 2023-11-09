@@ -4,6 +4,23 @@
         "city": "Greenville",
         "date": "2023-11-16",
         "url": "https://www.eventbrite.com/e/afp-piedmonts-national-philanthropy-day-celebration-tickets-713961737777",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenville",
+                "addressRegion": "SC",
+                "streetAddress": "101 Abney Street",
+                "postalCode": "29611",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.84432059999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.4320003"
+            },
+            "@type": "Place",
+            "name": "Greenville Center for Creative Arts"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Greenville",
@@ -23,6 +40,23 @@
         "city": "Greenville",
         "date": "2023-11-14",
         "url": "https://www.eventbrite.com/e/y-mentor-training-powdersville-y-11142023-registration-748639008427",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Piedmont",
+                "addressRegion": "SC",
+                "streetAddress": "9115 SC Hwy 81",
+                "postalCode": "29673",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7503346",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.51951389999999"
+            },
+            "@type": "Place",
+            "name": "Powdersville YMCA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Piedmont",
@@ -42,6 +76,23 @@
         "city": "Greenville",
         "date": "2023-12-05",
         "url": "https://www.eventbrite.com/e/volunteer-advocate-training-tickets-740094972987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenwood",
+                "addressRegion": "SC",
+                "streetAddress": "115 East Alexander Avenue",
+                "postalCode": "29646",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.17894199999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.151382"
+            },
+            "@type": "Place",
+            "name": "Beyond Abuse"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Greenwood",
@@ -61,6 +112,23 @@
         "city": "Greenville",
         "date": "2023-11-17",
         "url": "https://www.eventbrite.com/e/y-mentor-training-easley-corporate-office-11172023-registration-748641325357",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Easley",
+                "addressRegion": "SC",
+                "streetAddress": "101 Burns Rd",
+                "postalCode": "29640",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.8299499",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.5787214"
+            },
+            "@type": "Place",
+            "name": "Easley *Corporate Office*"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Easley",
@@ -80,6 +148,23 @@
         "city": "Greenville",
         "date": "2023-11-10",
         "url": "https://www.eventbrite.com/e/2023-friends-of-mission-guatemala-dinner-and-silent-auction-tickets-717849355747",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenville",
+                "addressRegion": "SC",
+                "streetAddress": "101 Airport Road",
+                "postalCode": "29607",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.8451428",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.3593947"
+            },
+            "@type": "Place",
+            "name": "Think Tank Brew Lab"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Greenville",
@@ -99,6 +184,23 @@
         "city": "Greenville",
         "date": "2023-11-12",
         "url": "https://www.eventbrite.com/e/veterans-celebration-day-tickets-740460857357",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Liberty",
+                "addressRegion": "SC",
+                "streetAddress": "314 West Main Street",
+                "postalCode": "29657",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.787809",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.6975734"
+            },
+            "@type": "Place",
+            "name": "314 W Main St"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Liberty",
@@ -118,6 +220,23 @@
         "city": "Greenville",
         "date": "2023-12-14",
         "url": "https://www.eventbrite.com/e/people-with-purpose-volunteer-orientation-registration-465143134637",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Swannanoa",
+                "addressRegion": "NC",
+                "streetAddress": "West Campus Dining Hall",
+                "postalCode": "28778",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.6187798",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.37809299999999"
+            },
+            "@type": "Place",
+            "name": "Black Mountain Home"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Swannanoa",
@@ -137,6 +256,23 @@
         "city": "Greenville",
         "date": "2023-11-24",
         "url": "https://www.eventbrite.com/e/tamin-temple-155-annual-charity-ball-tickets-742109217647",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Lyman",
+                "addressRegion": "SC",
+                "streetAddress": "198 Spartanburg Highway",
+                "postalCode": "29365",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.9544211",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.1191982"
+            },
+            "@type": "Place",
+            "name": "Nara Hall, Spartanburg Highway, Lyman, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Lyman",
@@ -156,6 +292,23 @@
         "city": "Greenville",
         "date": "2023-11-09",
         "url": "https://www.eventbrite.com/e/the-open-book-project-charity-golf-tournament-registration-691090559467",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Easley",
+                "addressRegion": "SC",
+                "streetAddress": "100 Pine Ridge Drive",
+                "postalCode": "29642",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.80663",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.55596899999999"
+            },
+            "@type": "Place",
+            "name": "Smithfields Country Club, Pine Ridge Drive, Easley, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Easley",
@@ -175,6 +328,23 @@
         "city": "Greenville",
         "date": "2023-12-19",
         "url": "https://www.eventbrite.com/e/byrdie-wilsons-where-my-roots-run-tour-fundraiser-benefiting-afspsc-tickets-754307834037",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenville",
+                "addressRegion": "SC",
+                "streetAddress": "1 East Coffee Street",
+                "postalCode": "29601",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.85156759999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.3982716"
+            },
+            "@type": "Place",
+            "name": "Coffee Underground, East Coffee Street, Greenville, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Greenville",
@@ -194,6 +364,23 @@
         "city": "Greenville",
         "date": "2023-11-30",
         "url": "https://www.eventbrite.com/e/arts-and-blues-tickets-726731983927",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Spartanburg",
+                "addressRegion": "SC",
+                "streetAddress": "1129 Woodburn Road",
+                "postalCode": "29302",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.947601",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.8962849"
+            },
+            "@type": "Place",
+            "name": "At the home of Hallie and Chip Hurst"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Spartanburg",
@@ -213,6 +400,23 @@
         "city": "Greenville",
         "date": "2023-11-09",
         "url": "https://www.eventbrite.com/e/open-book-project-golf-tournament-hole-sponsor-tickets-691946228797",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Easley",
+                "addressRegion": "SC",
+                "streetAddress": "100 Pine Ridge Drive",
+                "postalCode": "29642",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.80663",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.55596899999999"
+            },
+            "@type": "Place",
+            "name": "Smithfields Country Club, Pine Ridge Drive, Easley, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Easley",
@@ -232,6 +436,23 @@
         "city": "Greenville",
         "date": "2024-02-24",
         "url": "https://www.eventbrite.com/e/nola-network-annual-mardi-gras-fundraiser-2024-tickets-748833881297",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Clemson",
+                "addressRegion": "SC",
+                "streetAddress": "1310 Tiger Boulevard",
+                "postalCode": "29631",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.6882307",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.8251928"
+            },
+            "@type": "Place",
+            "name": "Best Western Plus Clemson Hotel & Conference Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Clemson",
@@ -251,6 +472,23 @@
         "city": "Greenville",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/camp-lakey-gaps-2nd-annual-hiking-for-autism-tickets-716048338857",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Black Mountain",
+                "addressRegion": "NC",
+                "streetAddress": "222 Fern Way",
+                "postalCode": "28711",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.5973493",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.306412"
+            },
+            "@type": "Place",
+            "name": "Christmount Christian Assembly"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Black Mountain",
@@ -270,6 +508,23 @@
         "city": "Greenville",
         "date": "2023-11-10",
         "url": "https://www.eventbrite.com/e/union-community-resource-baby-shower-tickets-709569670987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Union",
+                "addressRegion": "SC",
+                "streetAddress": "111 Thomas Street",
+                "postalCode": "29379",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7128841",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.6304904"
+            },
+            "@type": "Place",
+            "name": "111 Thomas St"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Union",
@@ -289,6 +544,23 @@
         "city": "Greenville",
         "date": "2023-11-15",
         "url": "https://www.eventbrite.com/e/fall-focus-sharing-the-power-changing-practices-in-philanthropy-tickets-717792264987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Asheville",
+                "addressRegion": "NC",
+                "streetAddress": "300 Campus View Road",
+                "postalCode": "28804",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.61972",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.56762499999999"
+            },
+            "@type": "Place",
+            "name": "OLLI at UNC Asheville"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Asheville",
@@ -308,6 +580,23 @@
         "city": "Greenville",
         "date": "2023-12-09",
         "url": "https://www.eventbrite.com/e/hcc-foundation-presents-blue-ridge-orchestras-unwrapping-holiday-favorites-tickets-636537279137",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Clyde",
+                "addressRegion": "NC",
+                "streetAddress": "185 Freedlander Drive",
+                "postalCode": "28721",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.5259088",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.92788639999999"
+            },
+            "@type": "Place",
+            "name": "Haywood Community College"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Clyde",
@@ -327,6 +616,23 @@
         "city": "Greenville",
         "date": "2024-05-03 - 2024-05-05",
         "url": "https://www.eventbrite.com/e/powher-potential-leadership-retreat-asheville-nc-registration-726468154807",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Asheville",
+                "addressRegion": "NC",
+                "streetAddress": "Location TBA by January 2024",
+                "postalCode": "28801",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.5950581",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.5514869"
+            },
+            "@type": "Place",
+            "name": "Asheville, NC: Location TBA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Asheville",
@@ -346,6 +652,23 @@
         "city": "Greenville",
         "date": "2023-11-16",
         "url": "https://www.eventbrite.com/e/pitchgiving-asheville-pitch-party-tickets-753426136857",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Asheville",
+                "addressRegion": "NC",
+                "streetAddress": "45 South French Broad Avenue",
+                "postalCode": "28801",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.5920738",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.5593293"
+            },
+            "@type": "Place",
+            "name": "Hatch Innovation Hub"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Asheville",
@@ -365,6 +688,23 @@
         "city": "Greenville",
         "date": "2024-06-06 - 2024-06-09",
         "url": "https://www.eventbrite.com/e/nature-based-wellness-retreat-for-military-widows-tickets-748533974267",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Franklin",
+                "addressRegion": "NC",
+                "streetAddress": "635 Berry Cove Rd.",
+                "postalCode": "28734",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.212513",
+                "@type": "GeoCoordinates",
+                "longitude": "-83.30076299999999"
+            },
+            "@type": "Place",
+            "name": "Nurture + Nature Glamping Retreat Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Franklin",
@@ -384,6 +724,23 @@
         "city": "Charleston",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/climate-advocate-training-workshop-charleston-sc-registration-731250067637",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "68 Calhoun St",
+                "postalCode": "29401",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.7885298",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.93105779999999"
+            },
+            "@type": "Place",
+            "name": "Charleston County Main Library - Room B"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Charleston",
@@ -403,6 +760,23 @@
         "city": "Charleston",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/give-thanks-giveaway-tickets-740907282627",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "2070 Sam Rittenberg Boulevard",
+                "postalCode": "29407",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.7987573",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.031442"
+            },
+            "@type": "Place",
+            "name": "Citadel Mall"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Charleston",
@@ -422,6 +796,23 @@
         "city": "Charleston",
         "date": "2023-12-03",
         "url": "https://www.eventbrite.com/e/charleston-natural-history-society-oyster-roast-tickets-752884998297",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "1870 Bowens Island Road",
+                "postalCode": "29412",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.6753683",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.9646388"
+            },
+            "@type": "Place",
+            "name": "Bowens Island Restaurant, Bowens Island Road, Charleston, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Charleston",
@@ -441,6 +832,23 @@
         "city": "Charleston",
         "date": "2023-12-04 - 2023-12-16",
         "url": "https://www.eventbrite.com/e/eccos-2023-adopt-a-family-program-registration-748722929437",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Mount Pleasant",
+                "addressRegion": "SC",
+                "streetAddress": "1145 Six Mile Road",
+                "postalCode": "29466",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.8400334",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.81587329999999"
+            },
+            "@type": "Place",
+            "name": "TBD"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Mount Pleasant",
@@ -460,6 +868,23 @@
         "city": "Charleston",
         "date": "2023-12-15",
         "url": "https://www.eventbrite.com/e/david-aylor-annual-christmas-party-fundraiser-tickets-749452541727",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "462 King St",
+                "postalCode": "29403",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.7894124",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.93871769999998"
+            },
+            "@type": "Place",
+            "name": "Republic Garden & Lounge"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Charleston",
@@ -479,6 +904,23 @@
         "city": "Charleston",
         "date": "2023-12-16",
         "url": "https://www.eventbrite.com/e/be-impactful-holiday-festival-toy-dinner-giveaway-registration-741007331877",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "North Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "1995 Bolton Street",
+                "postalCode": "29406",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.8808776",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.0031688"
+            },
+            "@type": "Place",
+            "name": "Ferndale Community Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "North Charleston",
@@ -498,6 +940,23 @@
         "city": "Charleston",
         "date": "2023-11-09",
         "url": "https://www.eventbrite.com/e/paws-on-the-patio-to-benefit-charleston-animal-society-tickets-519031746927",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Mount Pleasant",
+                "addressRegion": "SC",
+                "streetAddress": "1875 U.S. 17",
+                "postalCode": "29464",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.8305556",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.8308333"
+            },
+            "@type": "Place",
+            "name": "Burtons Grill & Bar of Mt. Pleasant"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Mount Pleasant",
@@ -517,6 +976,23 @@
         "city": "Charleston",
         "date": "2023-12-09",
         "url": "https://www.eventbrite.com/e/2023-summerville-exchange-club-oyster-roast-tickets-742820394797",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Summerville",
+                "addressRegion": "SC",
+                "streetAddress": "400 Country Club Boulevard",
+                "postalCode": "29483",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.9984255",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.2018367"
+            },
+            "@type": "Place",
+            "name": "Summerville Country Club"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Summerville",
@@ -536,6 +1012,23 @@
         "city": "Charleston",
         "date": "2023-11-21",
         "url": "https://www.eventbrite.com/e/new-neighbors-community-service-at-second-harvest-tickets-699022383767",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "2651 Causton Bluff Road",
+                "postalCode": "31404",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.064708",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.045979"
+            },
+            "@type": "Place",
+            "name": "Second Harvest Volunteer Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -555,6 +1048,23 @@
         "city": "Charleston",
         "date": "2023-12-01",
         "url": "https://www.eventbrite.com/e/charity-uncorked-cheers-for-gilliard-co-tickets-730839770427",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "7054 Hodgson Memorial Drive",
+                "postalCode": "31406",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.0099569",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.1083773"
+            },
+            "@type": "Place",
+            "name": "The Narra Tree, Hodgson Memorial Drive, Savannah, GA, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -574,6 +1084,23 @@
         "city": "Charleston",
         "date": "2023-12-10",
         "url": "https://www.eventbrite.com/e/santa-paws-tickets-751707386027",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "1 Resort Drive",
+                "postalCode": "31421",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.083337",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.08529399999999"
+            },
+            "@type": "Place",
+            "name": "The Westin Savannah Harbor Golf Resort & Spa"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -593,6 +1120,23 @@
         "city": "Charleston",
         "date": "2023-11-12",
         "url": "https://www.eventbrite.com/e/westin-savannah-salutes-our-veterans-tickets-732968296907",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "1 Resort Drive",
+                "postalCode": "31421",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.083337",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.08529399999999"
+            },
+            "@type": "Place",
+            "name": "The Westin Savannah Harbor Golf Resort & Spa"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -612,6 +1156,23 @@
         "city": "Charleston",
         "date": "2023-11-17",
         "url": "https://www.eventbrite.com/e/market-common-veterans-appreciation-ball-tickets-686169961827",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Myrtle Beach",
+                "addressRegion": "SC",
+                "streetAddress": "800 Gabreski Lane",
+                "postalCode": "29577",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.6625175",
+                "@type": "GeoCoordinates",
+                "longitude": "-78.9396963"
+            },
+            "@type": "Place",
+            "name": "General Robert H. Reed Recreation Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Myrtle Beach",
@@ -631,6 +1192,23 @@
         "city": "Charleston",
         "date": "2023-11-12",
         "url": "https://www.eventbrite.ca/e/sound-bath-fundraiser-for-the-34-seconds-foundation-tickets-738240777037",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "903 East 70th Street",
+                "postalCode": "31405",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.0265564",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0947906"
+            },
+            "@type": "Place",
+            "name": "The Firm Savannah, East 70th Street, Savannah, GA, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -650,6 +1228,23 @@
         "city": "Charleston",
         "date": "2023-11-24 - 2023-11-25",
         "url": "https://www.eventbrite.com/e/tranquility-transitional-housing-first-aunnual-public-benefit-fundraiser-tickets-738292351297",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Gadsden",
+                "addressRegion": "SC",
+                "streetAddress": "1032 George Wilson Boulevard",
+                "postalCode": "29052",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.8244251",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.70178179999999"
+            },
+            "@type": "Place",
+            "name": "1032 George Wilson Blvd"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Gadsden",
@@ -669,6 +1264,23 @@
         "city": "Charleston",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/woman-to-woman-conference-awards-tickets-704697789057",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "201 West Bay Street",
+                "postalCode": "31401",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.0814625",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0939226"
+            },
+            "@type": "Place",
+            "name": "Hotel Indigo Savannah Historic District, an IHG Hotel"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -688,6 +1300,23 @@
         "city": "Charleston",
         "date": "2024-02-08",
         "url": "https://www.eventbrite.com/e/love-gives-gala-tickets-742696754987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "601 Cohen Street",
+                "postalCode": "31401",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.0724694",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.10291889999999"
+            },
+            "@type": "Place",
+            "name": "Savannah Station"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Savannah",
@@ -707,6 +1336,23 @@
         "city": "Columbia",
         "date": "2023-11-16",
         "url": "https://www.eventbrite.com/e/alston-wilkes-society-61st-annual-meeting-and-awards-ceremony-tickets-710247849437",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "1125 Rosewood Drive",
+                "postalCode": "29201",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.9783886",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.024637"
+            },
+            "@type": "Place",
+            "name": "Seawell's"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -726,6 +1372,23 @@
         "city": "Columbia",
         "date": "2023-12-16 - 2023-12-17",
         "url": "https://www.eventbrite.com/e/24k-magic-holiday-extravagazza-tickets-734006542327",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "1200 Rosewood Drive",
+                "postalCode": "29201",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.9770371",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0209153"
+            },
+            "@type": "Place",
+            "name": "South Carolina State Fair"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -745,6 +1408,23 @@
         "city": "Columbia",
         "date": "2023-12-02",
         "url": "https://www.eventbrite.com/e/group-therapys-34th-chili-cook-off-tickets-728031871927",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "2107 Greene Street",
+                "postalCode": "29205",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.0006684",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0162608"
+            },
+            "@type": "Place",
+            "name": "2107 Greene St"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -764,6 +1444,23 @@
         "city": "Columbia",
         "date": "2023-12-02",
         "url": "https://www.eventbrite.com/e/7th-annual-winter-fest-toy-giveway-tickets-653141352367",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "4646 HardScrabble Road",
+                "postalCode": "29229",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.1562284",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.9110304"
+            },
+            "@type": "Place",
+            "name": "Rehoboth Baptist Church Family Life Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -783,6 +1480,23 @@
         "city": "Columbia",
         "date": "2023-11-24 - 2023-11-25",
         "url": "https://www.eventbrite.com/e/tranquility-transitional-housing-first-aunnual-public-benefit-fundraiser-tickets-738292351297",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Gadsden",
+                "addressRegion": "SC",
+                "streetAddress": "1032 George Wilson Boulevard",
+                "postalCode": "29052",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.8244251",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.70178179999999"
+            },
+            "@type": "Place",
+            "name": "1032 George Wilson Blvd"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Gadsden",
@@ -802,6 +1516,23 @@
         "city": "Columbia",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/veterans-day-service-tickets-742461772147",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "6801 Saint Andrews Road",
+                "postalCode": "29212",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.071543",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.175794"
+            },
+            "@type": "Place",
+            "name": "Irmo Seventh-day Adventist Fellowship (SDA Church), Saint Andrews Road, Columbia, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -821,6 +1552,23 @@
         "city": "Columbia",
         "date": "2023-11-09",
         "url": "https://www.eventbrite.com/e/freedom-to-serve-panel-discussion-tickets-739458388947",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "1014 Greene Street",
+                "postalCode": "29208",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.9945213",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.03343629999999"
+            },
+            "@type": "Place",
+            "name": "Darla Moore School of Business"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -840,6 +1588,23 @@
         "city": "Columbia",
         "date": "2023-11-19",
         "url": "https://www.eventbrite.com/e/the-vulnerability-project-tickets-742980854737",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "200 Graces Way",
+                "postalCode": "29229",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.1134025",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.88164990000001"
+            },
+            "@type": "Place",
+            "name": "Mimsy’s Kitchen & Jazz Lounge"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -859,6 +1624,23 @@
         "city": "Columbia",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/veterans-day-tickets-753398744927",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "700 Gervais Street",
+                "postalCode": "29201",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.9981155",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.04009969999998"
+            },
+            "@type": "Place",
+            "name": "Craft Axe Throwing- Columbia"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
@@ -878,6 +1660,23 @@
         "city": "Columbia",
         "date": "2023-11-13",
         "url": "https://www.eventbrite.com/e/poverty-simulation-morning-tickets-748664835677",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Lancaster",
+                "addressRegion": "SC",
+                "streetAddress": "313 South White Street",
+                "postalCode": "29720",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7171915",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.7670017"
+            },
+            "@type": "Place",
+            "name": "Lancaster County Library"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Lancaster",
@@ -897,6 +1696,23 @@
         "city": "Columbia",
         "date": "2023-11-13",
         "url": "https://www.eventbrite.com/e/poverty-simulation-afternoon-tickets-748792206647",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Lancaster",
+                "addressRegion": "SC",
+                "streetAddress": "313 South White Street",
+                "postalCode": "29720",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7171915",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.7670017"
+            },
+            "@type": "Place",
+            "name": "Lancaster County Library"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Lancaster",
@@ -916,6 +1732,23 @@
         "city": "Columbia",
         "date": "2023-11-18",
         "url": "https://www.eventbrite.com/e/poverty-simulation-young-adults-tickets-748793340037",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Lancaster",
+                "addressRegion": "SC",
+                "streetAddress": "509 Hubbard Dr",
+                "postalCode": "29720",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7170611",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.7670661"
+            },
+            "@type": "Place",
+            "name": "USCL's Carole Ray Dowling Center"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Lancaster",
@@ -935,6 +1768,23 @@
         "city": "Columbia",
         "date": "2023-12-09",
         "url": "https://www.eventbrite.com/e/girl-i-got-you-christmas-give-a-thon-tickets-753853996597",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Hartsville",
+                "addressRegion": "SC",
+                "streetAddress": "1103 South 6th Street",
+                "postalCode": "29550",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.3588349",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.0694262"
+            },
+            "@type": "Place",
+            "name": "1103 South 6th Street, Hartsville, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Hartsville",
@@ -954,6 +1804,23 @@
         "city": "Columbia",
         "date": "2023-11-23",
         "url": "https://www.eventbrite.com/e/bloodies-and-bagels-tickets-662502772627",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Aiken",
+                "addressRegion": "SC",
+                "streetAddress": "433 Newberry Street Southwest",
+                "postalCode": "29801",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.5547367",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.72527439999999"
+            },
+            "@type": "Place",
+            "name": "Aiken County Historical Museum"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Aiken",
@@ -973,6 +1840,23 @@
         "city": "Columbia",
         "date": "2023-12-05",
         "url": "https://www.eventbrite.com/e/volunteer-advocate-training-tickets-740094972987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenwood",
+                "addressRegion": "SC",
+                "streetAddress": "115 East Alexander Avenue",
+                "postalCode": "29646",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.17894199999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.151382"
+            },
+            "@type": "Place",
+            "name": "Beyond Abuse"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Greenwood",
@@ -992,6 +1876,23 @@
         "city": "Columbia",
         "date": "2023-12-16",
         "url": "https://www.eventbrite.com/e/annual-charity-gala-tickets-744441784417",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Rock Hill",
+                "addressRegion": "SC",
+                "streetAddress": "742 North Anderson Road",
+                "postalCode": "29730",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.9572439",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.99517929999999"
+            },
+            "@type": "Place",
+            "name": "742 North Anderson Road, Rock Hill, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Rock Hill",
@@ -1011,6 +1912,23 @@
         "city": "Columbia",
         "date": "2023-12-01",
         "url": "https://www.eventbrite.com/e/new-hope-end-of-year-celebration-tickets-740366374757",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Rock Hill",
+                "addressRegion": "SC",
+                "streetAddress": "140 East Main Street",
+                "postalCode": "29730",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.92520199999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0269266"
+            },
+            "@type": "Place",
+            "name": "Crystal Ballroom Rock Hill, East Main Street, Rock Hill, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Rock Hill",
@@ -1030,6 +1948,23 @@
         "city": "Columbia",
         "date": "2024-03-23",
         "url": "https://www.eventbrite.com/e/womens-conference-tickets-722511349897",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Florence",
+                "addressRegion": "SC",
+                "streetAddress": "Florence, SC, USA",
+                "postalCode": "",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.1954331",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.7625625"
+            },
+            "@type": "Place",
+            "name": "Florence, SC, USA"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Florence",
@@ -1049,6 +1984,23 @@
         "city": "Columbia",
         "date": "2023-11-11",
         "url": "https://www.eventbrite.com/e/2023-carolinas-veterans-day-festival-registration-663072376327",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charlotte",
+                "addressRegion": "NC",
+                "streetAddress": "1218-1238 Armory Drive",
+                "postalCode": "28204",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.2184767",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.8285501"
+            },
+            "@type": "Place",
+            "name": "American Legion Memorial Stadium"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Charlotte",
@@ -1068,6 +2020,23 @@
         "city": "Columbia",
         "date": "2023-11-10",
         "url": "https://www.eventbrite.com/e/union-community-resource-baby-shower-tickets-709569670987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Union",
+                "addressRegion": "SC",
+                "streetAddress": "111 Thomas Street",
+                "postalCode": "29379",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7128841",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.6304904"
+            },
+            "@type": "Place",
+            "name": "111 Thomas St"
+        },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Union",

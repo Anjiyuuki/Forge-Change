@@ -2,13 +2,13 @@
   display: grid; 
   grid-auto-columns: 1fr; 
   grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 0.2fr 1.3fr; 
+  grid-template-rows: 0.1fr 1.4fr; 
   gap: 10px 10px; 
   grid-template-areas: 
     "Events Filters"
     "Events Map";  
   margin: auto;
-  height: 500px;
+  height: 700px;
   width: 90%;
 }
 .events-list {
@@ -31,6 +31,15 @@
   margin-left: 100px;
 }
 
+#filterAll {
+  margin-left:40px;
+}
+
+.filter-title {
+  margin-left: 30px;
+  display:inline;
+  width: 50px;
+}
 .filter-button {
   font-size: 18px;
   background-color: #44672d;
@@ -55,7 +64,6 @@
   color: #44672d; /* Change to your desired active button text color */
 }
 
-
 .event {
   background-color: #bdd09e;
   margin: 20px;
@@ -64,12 +72,12 @@
   border: 1px solid #ccc;
   padding-bottom: 30px;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 #event-links {
   position: absolute;
-  bottom: 20px; 
+  bottom: 10px; 
 }
 
 ::-webkit-scrollbar {
