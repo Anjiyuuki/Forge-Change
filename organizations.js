@@ -127,8 +127,8 @@ async function initMap() {
         });
 
         const infoWindow = new google.maps.InfoWindow({
-          content: org.name,
-        });
+          content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
+       });
 
         orgMarker.addListener('click', () => {
           infoWindows.forEach(iw => iw.close());
