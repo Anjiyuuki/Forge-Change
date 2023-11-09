@@ -38,7 +38,7 @@ ul {
   list-style-type: none;
 }
 
-#map {
+#organizations-map {
   grid-area: Map;
   height: 500px;
   width: 80%;

@@ -28,7 +28,7 @@ async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
   // The map, centered at Uluru
-  let map = new Map(document.getElementById("map"), {
+  let map = new Map(document.getElementById("organizations-map"), {
     zoom: 12,
     center: position,
     mapId: "DEMO_MAP_ID",

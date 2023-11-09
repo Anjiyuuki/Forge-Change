@@ -13,7 +13,7 @@ driver.get(url)
 
 # Wait for JavaScript to load (adjust the time as needed)
 import time
-time.sleep(5)  # Wait for 5 seconds, you can adjust this time
+time.sleep(2)  # Wait for 5 seconds, you can adjust this time
 
 # Retrieve the updated HTML content
 html_content = driver.page_source
@@ -40,13 +40,15 @@ for script in ld_json_scripts:
             else f"{script_content['startDate']} - {script_content['endDate']}",
             "url": script_content["url"],
             "img": script_content["image"],
-            "streetAddress": script_content["location"]["address"]["streetAddress"],
+            "address": script_content["location"]["address"],
             "description": script_content["description"],
+            "position": {
+                "lat": float(script_content["location"]["geo"]["latitude"]),
+                "lng": float(script_content["location"]["geo"]["longitude"]),
+            },
         }
         event_data.append(event_info)
 
 # Save the extracted event data to a JSON file
 with open("event_info.json", "w", encoding="utf-8") as json_file:
     json.dump(event_data, json_file, ensure_ascii=False, indent=4)
-
-print("Event data saved to 'event_info.json'")

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="events.css">
     <link rel="stylesheet" href="styles.css">
     <title>Events</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA&callback=initMap" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
@@ -42,7 +43,10 @@
           <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
       </ul>
   </nav>
-  <div class="events-container"></div>
+  <main class="events-body">
+    <div class="events-list"></div>
+    <div id="events-map"></div>
+  </main>
   <script src="events.js"></script>
 </body>
 </html>

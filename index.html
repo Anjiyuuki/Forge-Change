@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
     <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
@@ -35,7 +36,7 @@
     <div class="right-column">
       <div class="home-container" >
         <img src="images/logo.png" alt="" width="200">
-    </div>
+      </div>
       <div id="register-login">
         <div id="registrationForm">
           <div class="Title"><h2 style="margin: 10px">Register</h2></div>
@@ -43,7 +44,9 @@
             <label for="regEmail" class="labelReg">Email:</label>
             <input type="email" id="regEmail" /><br>
             <label for="regPassword" class="labelReg">Password:</label>
-            <input type="password" id="regPassword"  /><br>
+            <input type="password" id="regPassword" /><br>
+            <label for="regConfirmPassword" class="labelReg">Confirm Password:</label>
+            <input type="password" id="regConfirmPassword" /><br>
             <label for="regUsername" class="labelReg">Username:</label>
             <input type="text" id="regUsername"/><br>
             <label for="regName" class="labelReg">Name:</label>
@@ -74,13 +77,9 @@
             <button id="loginButton" style="margin-top: 20px">Login</button>
         </div>
       </div>
+      <p id="message"></p>
     </div>
-</div>
-    
-
-    <p id="message"></p>
-
+  </div>
     <script src="index.js"></script>
-
 </body>
 </html>

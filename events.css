@@ -1,29 +1,57 @@
-.events-container {
+.events-body {
   display: grid; 
-  grid-auto-columns: 1fr; 
-  grid-template-columns: 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
-  gap: 0px 0px; 
+  grid-template-columns: 1.2fr 0.8fr; 
+  grid-template-rows: 1fr; 
+  gap: 20px 20px; 
   grid-template-areas: 
-    ". . . ."
-    ". . . ."
-    ". . . ."
-    ". . . ."; 
+    "Events Map"; 
+  margin: auto;
+  width: 90%;
+}
+.events-list {
+  grid-area: Events;
+  overflow-y: scroll;
+  height: 700px;
+  border-style: solid;
+  border-color: #44672d;
+  border-radius: 20px;
+  border-width: 5px;
+}
+
+#events-map {
+  grid-area: Map;
+  height: 700px;
+  border-radius: 10px;
 }
 
 .event {
   background-color: #bdd09e;
   margin: 20px;
   padding: 20px;
-  width: 80%;
   position: relative; 
   border: 1px solid #ccc;
   padding-bottom: 30px;
   border-radius: 5px;
-
+  font-size: 15px;
 }
 
 #event-links {
   position: absolute;
   bottom: 20px; 
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+ul {
+  list-style-type: none;
 }

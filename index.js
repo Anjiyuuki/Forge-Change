@@ -8,6 +8,12 @@ document.getElementById('registerButton').addEventListener('click', function() {
   var password = document.getElementById('regPassword').value;
   var username = document.getElementById('regUsername').value;
   var name = document.getElementById('regName').value;
+  var confirmPassword = document.getElementById('regConfirmPassword').value; // Get the confirm password
+  // Check if the password and confirm password match
+  if (password !== confirmPassword) {
+    document.getElementById('message').textContent = 'Password and confirm password do not match.';
+    return; // Prevent registration if passwords don't match
+}
   
   // Get the selected location from the dropdown
   var locationDropdown = document.getElementById('regLocation');
