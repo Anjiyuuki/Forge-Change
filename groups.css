@@ -1,18 +1,43 @@
 #groups-container {
+  margin-top: 15px;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 70px;
   width: 95%;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 
-#topics-list, #events-list {
-  display: grid; 
-  grid-auto-columns: 1fr; 
-  grid-template-columns: 1fr 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr; 
-  gap: 20px 20px; 
+.group-section {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: rgb(153, 194, 153);
+  padding: 20px;
+  border-width: 5px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin-left: 100px;
+}
+
+#topics-title, #events-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#topics-list,
+#events-list {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px 20px;
   margin-top: 20px;
-  grid-template-areas: 
-    ". . . ."
-    ". . . ."
 }
 
 .group-card {
@@ -22,12 +47,17 @@
   border: 3px solid gray;
   padding-bottom: 30px;
   border-radius: 5px;
+  height: 200px;
 }
 
 .createGroupButton {
-  background-color: #bdd09e;
-  border: 3px solid darkgreen;
-  border-radius: 3px;
+  background-color: #555;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 100px;
 }
 
 .group-card button {
@@ -35,7 +65,45 @@
   bottom: 10px;
 }
 
-#topics-list {
-  padding-bottom: 30px;
-  border-bottom: solid 5px green;
+.user-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #888;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.clickable-username {
+  cursor: pointer;
+  color: black;
+  text-decoration: underline;
+}
+
+.clickable-username:hover {
+  color: green;
+}
+
+.join-button {
+  background-color: #555;
+    color: white;
+    padding: 5px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 100px;
 }
