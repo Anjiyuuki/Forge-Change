@@ -2,6 +2,7 @@ const apiKey = 'AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA';
 var organizations = [];
 var auth = firebase.auth();
 const firestore = firebase.firestore();
+markers = [];
 
 // Get the current page's filename
 const currentPage = window.location.pathname.split('/').pop();
@@ -20,63 +21,111 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 async function initMap() {
-  // The location of Uluru
-  const position = { lat: 32.7767, lng: -79.9301 };
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  // The map, centered at Uluru
+  // The map, centered at South Carolina by default
+  const defaultPosition = { lat: 33.8361, lng: -81.1637 }; // Center of South Carolina
   let map = new Map(document.getElementById("organizations-map"), {
-    zoom: 12,
-    center: position,
+    zoom: 7,
+    center: defaultPosition,
     mapId: "DEMO_MAP_ID",
   });
+  
+  activeButton('All');
   let infoWindows = [];
-
-  // Function to get suggested organizations based on user interests
-  async function getSuggestedOrganizations() {
-  auth.onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in, retrieve user's name
-      firestore.collection('users').doc(user.uid).get()
-        .then(function(doc) {
-          if (doc.exists) {
-            var userData = doc.data();
-            var userInterests = userData.interests;
-            var locationFilter = document.getElementById('locationFilter').value; // Get the selected location
-
-            var suggestedOrganizations = organizations.filter(org => {
-              return userInterests.includes(org.keyword) && (locationFilter === 'all' || org.location === locationFilter);
-            });
-
-            // Call the function to display suggested organizations
-            displaySuggestedOrganizations(suggestedOrganizations);
-          } else {
-            console.log('User data not found');
-          }
-        })
-        .catch(function(error) {
-          console.log('Error getting user data:', error);
-        });
-    }
+  
+  const topics = ['All', 'Animals', 'Education', 'Environment', 'LGBTQ+', 'Humanitarian', 'Suggested'];
+  topics.forEach(topic => {
+    document.getElementById(`filter${topic}`).addEventListener("click", function () {
+      activeButton(topic);
+      if (topic === 'LGBTQ+') {
+        filterVolunteerOrganizations('LGBTQ+');
+      } else if (topic === 'Suggested') {
+        getSuggestedOrganizations();
+      } else {
+        filterVolunteerOrganizations(topic.toLowerCase());
+      }
+    });
   });
-}
+  
+  function activeButton(topic) {
+    // Remove the 'active' class from all filter buttons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.classList.remove('active');
+    });
+  
+    // Add the 'active' class to the currently selected filter button
+    const activeButton = document.querySelector(`button[topic="${topic}"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+  
+  }
+
+  function filterVolunteerOrganizations(topic) {
+  
+    const filteredOrganizations = organizations.filter(org => {
+      const keywordMatch = topic === 'all' || org.keyword === topic;
+  
+      return keywordMatch;
+    });
+    displayVolunteerOrganizations(filteredOrganizations);
+  }
+  
+
+  async function getSuggestedOrganizations() {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in, retrieve user's name
+        firestore.collection('users').doc(user.uid).get()
+          .then(function (doc) {
+            if (doc.exists) {
+              var userData = doc.data();
+              var userInterests = userData.interests;
+  
+              var suggestedOrganizations = organizations.filter(org => {
+                const locationMatch = ['Charleston', 'Greenville', 'Columbia'].includes(userData.location)
+                  ? org.location === userData.location
+                  : true;
+                return userInterests.includes(org.keyword) && locationMatch;
+              });
+  
+              // Call the function to display suggested organizations
+              displaySuggestedOrganizations(suggestedOrganizations);
+            } else {
+              console.log('User data not found');
+            }
+          })
+          .catch(function (error) {
+            console.log('Error getting user data:', error);
+          });
+      } else {
+        // User is not logged in, display a message
+        const suggestedList = document.querySelector('.volunteer-list');
+        suggestedList.innerHTML = '<li>Login or create an account to get suggested organizations.</li>';
+      }
+    });
+  }
   // Function to display suggested organizations
   function displaySuggestedOrganizations(suggestedOrganizations) {
     const suggestedList = document.querySelector('.volunteer-list');
     suggestedList.innerHTML = '';
-
-  // Remove the 'active' class from all filter buttons
-  document.querySelectorAll('.filter-button').forEach(button => {
-    button.classList.remove('active');
-  });
-  // Add the 'active' class to the currently selected filter button
-  const activeButton = document.querySelector(`button[data-keyword="suggested"]`);
-  if (activeButton) {
-    activeButton.classList.add('active');
-  }
+    // Clear map markers
+    for (let i = 0; i < infoWindows.length; i++) {
+      infoWindows[i].close();
+    }
+    infoWindows = []; 
+    if (map) {
+      map.data.forEach(function (feature) {
+        map.data.remove(feature);
+      });
+    }
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
 
     if (suggestedOrganizations.length === 0) {
       suggestedList.innerHTML = '<li>No suggested organizations based on your interests.</li>';
@@ -97,13 +146,28 @@ async function initMap() {
                               <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
 
         suggestedList.appendChild(listItem);
+        const orgMarker = new google.maps.Marker({
+          position: org.position,
+          map: map,
+          title: org.name,
+        });
+        markers.push(orgMarker);
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
+       });
+      
+        orgMarker.addListener('click', () => {
+          infoWindows.forEach(iw => iw.close());
+          infoWindow.open(map, orgMarker);
+        });
+      
+        infoWindows.push(infoWindow);
       });
     }
   }
   async function getOrganizationsFromFirestore() {
     try {
       const querySnapshot = await firestore.collection('organizations').get();
-
       organizations = querySnapshot.docs.map(doc => {
         const data = doc.data();
         return {
@@ -118,48 +182,27 @@ async function initMap() {
       // Call the function to display organizations
       displayVolunteerOrganizations(organizations);
 
-      // Define a mapping of keywords to marker colors
-  const keywordMarkerColors = {
-    "animals": "red",
-    "environment": "green",
-    "LGBTQ+": "yellow",
-    "education": "blue",
-    "humanitarian": "orange",
-      // Add more keywords and their corresponding colors as needed
-    };
+      // Create markers and info windows for each organization
+      organizations.forEach(org => {
+        const orgMarker = new google.maps.Marker({
+          position: org.position,
+          map: map,
+          title: org.name,
+        });
 
-    organizations.forEach(org => {
-      // Get the marker color based on the organization's keyword
-      const markerColor = keywordMarkerColors[org.keyword] || "default";
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
+       });
 
-      // Define a function to get the marker icon URL based on color
-      function getMarkerIconUrl(color) {
-        return `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
-      }
+        orgMarker.addListener('click', () => {
+          infoWindows.forEach(iw => iw.close());
+          infoWindow.open(map, orgMarker);
+        });
 
-      const orgMarker = new google.maps.Marker({
-        position: org.position,
-        map: map,
-        title: org.name,
-        icon: {
-          url: getMarkerIconUrl(markerColor),
-          scaledSize: new google.maps.Size(30, 30), // Adjust the size as needed
-        },
+        infoWindows.push(infoWindow);
       });
-
-      const infoWindow = new google.maps.InfoWindow({
-        content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
-      });
-
-      orgMarker.addListener('click', () => {
-        infoWindows.forEach(iw => iw.close());
-        infoWindow.open(map, orgMarker);
-      });
-
-      infoWindows.push(infoWindow);
-    });
-  } catch (error) {
-    console.error('Error getting organizations from Firestore:', error);
+    } catch (error) {
+      console.error('Error getting organizations from Firestore:', error);
     }
   }
 
@@ -190,51 +233,45 @@ async function initMap() {
                               <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
 
         volunteerList.appendChild(listItem);
+
+        
+      // Clear map markers
+      for (let i = 0; i < infoWindows.length; i++) {
+        infoWindows[i].close();
+      }
+      infoWindows = []; 
+      if (map) {
+        map.data.forEach(function (feature) {
+          map.data.remove(feature);
+        });
+      }
+      markers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+
+      // Create markers and info windows for each organization
+      organizations.forEach(org => {
+        const orgMarker = new google.maps.Marker({
+          position: org.position,
+          map: map,
+          title: org.name,
+        });
+        markers.push(orgMarker);
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
+       });
+
+        orgMarker.addListener('click', () => {
+          infoWindows.forEach(iw => iw.close());
+          infoWindow.open(map, orgMarker);
+        });
+
+        infoWindows.push(infoWindow);
+      });
+
       });
     }
   }
-  
-  function filterVolunteerOrganizations() {
-    const locationFilter = document.getElementById('locationFilter').value;
-    const keywordFilter = document.getElementById('keywordFilter').value;
-
-    // Remove the 'active' class from all filter buttons
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.classList.remove('active');
-    });
-    // Add the 'active' class to the currently selected filter button
-    const activeButton = document.querySelector(`button[data-keyword="${keywordFilter}"]`);
-    if (activeButton) {
-      activeButton.classList.add('active');
-    }
-  
-    const filteredOrganizations = organizations.filter(org => {
-      const locationMatch = locationFilter === 'all' || org.location === locationFilter;
-      const keywordMatch = keywordFilter === 'all' || org.keyword === keywordFilter;
-      
-      return locationMatch && keywordMatch;
-    });
-  
-    displayVolunteerOrganizations(filteredOrganizations);
-  }
-  
-  // Add event listeners to filters and keyword input
-  document.getElementById('locationFilter').addEventListener('change', filterVolunteerOrganizations);
-  document.getElementById('keywordFilter').addEventListener('change', filterVolunteerOrganizations);
-  
-  document.querySelectorAll('.filter-button').forEach(button => {
-    button.addEventListener('click', function () {
-      const keyword = this.getAttribute('data-keyword');
-      document.getElementById('keywordFilter').value = keyword;
-  
-      // If "suggested" tab is clicked, call getSuggestedOrganizations
-      if (keyword === 'suggested') {
-        getSuggestedOrganizations();
-      } else {
-        filterVolunteerOrganizations();
-      }
-    });
-  });
 }
 
 

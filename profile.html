@@ -74,22 +74,41 @@
       <form action="/action_page.php" class="form-container" >
         <span class="close right-align" onclick="closeForm('editProfileForm')">&times;</span>
         <h2>Edit Profile</h2>
-        <!-- Add form elements to edit user information -->
         <label for="newName">Name:</label>
         <input type="text" id="newName">
         <label for="newUsername">Username:</label>
         <input type="text" id="newUsername">
         <label for="newEmail">Email:</label>
-        <input type="email" id="newEmail" class="input-field"> <!-- Add class "input-field" -->
+        <input type="email" id="newEmail" class="input-field">
         <label for="newPassword">New Password:</label>
         <input type="password" id="newPassword">
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword">
-        <label for="newInterests">Interests:</label>
-        <input type="text" id="newInterests">
-        <label for="newLocation">Location:</label>
-        <input type="text" id="newLocation">
-        <button type="button" onclick="submitProfileChanges()">Submit Changes</button>
+        <div id="editButtons">
+          <div id="interestOptions">
+            <label for="newInterests">Interests:</label><br>
+            <input type="checkbox" id="interestAnimals" name="interest" value="Animals">
+            <label for="interestAnimals">Animals</label><br>
+            <input type="checkbox" id="interestEnvironment" name="interest" value="Environment">
+            <label for="interestEnvironment">Environment</label><br>
+            <input type="checkbox" id="interestEducation" name="interest" value="Education">
+            <label for="interestEducation">Education</label><br>
+            <input type="checkbox" id="interestLGBTQ" name="interest" value="LGBTQ+">
+            <label for="interestLGBTQ">LGBTQ+</label><br>
+            <input type="checkbox" id="interestHumanitarian" name="interest" value="Humanitarian">
+            <label for="interestHumanitarian">Humanitarian</label><br>
+          </div>
+          <div id="locationOptions">
+            <label for="newLocation">Location:</label><br>
+            <input type="radio" id="locationCharleston" name="location" value="Charleston">
+            <label for="locationCharleston">Charleston</label><br>
+            <input type="radio" id="locationGreenville" name="location" value="Greenville">
+            <label for="locationGreenville">Greenville</label><br>
+            <input type="radio" id="locationColumbia" name="location" value="Columbia">
+            <label for="locationColumbia">Columbia</label><br>
+          </div>
+        </div>
+        <button type="button" id="submitChangesButton" onclick="submitProfileChanges()">Submit Changes</button>
       </form>
     </div>
     <div class="volunteer-history">

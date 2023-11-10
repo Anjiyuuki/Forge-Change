@@ -18,15 +18,14 @@ function getLocationCoordinates(location) {
 }
 
 async function initMap() {
-  // Request needed libraries.
-  //@ts-ignore
+
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
   // The map, centered at South Carolina by default
   const defaultPosition = { lat: 33.8361, lng: -81.1637 }; // Center of South Carolina
   map = new Map(document.getElementById("events-map"), {
-    zoom: 6,
+    zoom: 7,
     center: defaultPosition,
     mapId: "DEMO_MAP_ID",
   });
@@ -53,82 +52,43 @@ async function initMap() {
       });
   }
 });
+// Define an array of cities
+const cities = ["Charleston", "Greenville", "Columbia", "All"];
 
-  // Add event listener for Charleston filter
-  document.getElementById("filterCharleston").addEventListener("click", function () {
-    getEvents("Charleston");
+// Add event listener for each filter button
+cities.forEach(city => {
+  document.getElementById(`filter${city}`).addEventListener("click", function () {
+    getEvents(city);
+    activeButton(city);
 
-    // Remove the 'active' class from all filter buttons
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.classList.remove('active');
-    });
-
-    // Add the 'active' class to the currently selected filter button
-    const activeButton = document.querySelector(`button[id="filterCharleston"]`);
-    if (activeButton) {
-      activeButton.classList.add('active');
+    const currentCity = getLocationCoordinates(city);
+    map.setCenter(currentCity);
+    map.setZoom(10);
+    if (city === "All") {
+      getEvents("all");
+      map.setCenter(defaultPosition);
+      map.setZoom(6);
     }
   });
-
-  // Add event listener for Greenville filter
-  document.getElementById("filterGreenville").addEventListener("click", function () {
-    getEvents("Greenville");
-    // make this into a function
-    // Remove the 'active' class from all filter buttons
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.classList.remove('active');
-    });
-
-    // Add the 'active' class to the currently selected filter button
-    const activeButton = document.querySelector(`button[id="filterGreenville"]`);
-    if (activeButton) {
-      activeButton.classList.add('active');
-    }
-
-  });
-
-  // Add event listener for Columbia filter
-  document.getElementById("filterColumbia").addEventListener("click", function () {
-    getEvents("Columbia");
-    // Remove the 'active' class from all filter buttons
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.classList.remove('active');
-    });
-
-    // Add the 'active' class to the currently selected filter button
-    const activeButton = document.querySelector(`button[id="filterColumbia"]`);
-    if (activeButton) {
-      activeButton.classList.add('active');
-    }
-  });
-
-  // Add event listener for Columbia filter
-  document.getElementById("filterAll").addEventListener("click", function () {
-    getEvents("all");
-    // Remove the 'active' class from all filter buttons
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.classList.remove('active');
-    });
-
-    // Add the 'active' class to the currently selected filter button
-    const activeButton = document.querySelector(`button[id="filterAll"]`);
-    if (activeButton) {
-      activeButton.classList.add('active');
-    }
-  });
+});
 
   // Call getEvents with a default file when the page loads
   getEvents("all");
+  activeButton("All");
+}
+
+function activeButton(city) {
   // Remove the 'active' class from all filter buttons
   document.querySelectorAll('.filter-button').forEach(button => {
     button.classList.remove('active');
   });
 
   // Add the 'active' class to the currently selected filter button
-  const activeButton = document.querySelector(`button[id="filterAll"]`);
+  const activeButton = document.querySelector(`button[id="filter${city}"]`);
   if (activeButton) {
     activeButton.classList.add('active');
   }
+
 }
 
 function getEvents(city) {
@@ -162,7 +122,6 @@ function getEvents(city) {
       filteredEvents.forEach((event) => {
         const eventElement = document.createElement("div");
         eventElement.classList.add("event");
-        console.log(event.location);
         eventElement.innerHTML = `
           <h3>${event.name}</h3>
           <p><strong>Date:</strong> ${event.date}</p>

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="organizations.css">
     <title>Explore Volunteer Opportunities</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA&callback=initMap" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
@@ -60,30 +59,20 @@
             </select>
           </div>
           <div class="filterButtons">
-            <label id="locationFilterLabel"for="locationFilter" style="margin-left: 10px; margin-right: 10px;color: black;"><b>Location:</b></Location:></label>
-            <select id="locationFilter">
-                <option value="all" class="location">All Locations</option>
-                <option value="Charleston" class="location">Charleston</option>
-                <option value="Greenville" class="location">Greenville</option>
-                <option value="Columbia" class="location">Columbia</option>
-                <!-- Add more location options as needed -->
-            </select>
-            <button id="filterSuggested" class="filter-button" data-keyword="suggested">Suggested For You</button>
-            <button id="filterAll" class="filter-button" data-keyword="all">All</button>
-            <button id="filterAnimals" class="filter-button" data-keyword="animals">Animals</button>
-            <button id="filterEnvironment" class="filter-button" data-keyword="environment">Environment</button>
-            <button id="filterLGBTQ" class="filter-button" data-keyword="LGBTQ+">LGBTQ+</button>
-            <button id="filterEducation" class="filter-button" data-keyword="education">Education</button>
-            <button id="filterHumanitarian" class="filter-button" data-keyword="humanitarian">Humanitarian</button>
+            <button id="filterSuggested" class="filter-button" data-keyword="suggested" topic="Suggested">Suggested For You</button>
+            <button id="filterAll" class="filter-button" data-keyword="all" topic="All">All</button>
+            <button id="filterAnimals" class="filter-button" data-keyword="animals" topic="Animals">Animals</button>
+            <button id="filterEnvironment" class="filter-button" data-keyword="environment" topic="Environment">Environment</button>
+            <button id="filterLGBTQ+" class="filter-button" data-keyword="LGBTQ+" topic="LGBTQ+">LGBTQ+</button>
+            <button id="filterEducation" class="filter-button" data-keyword="education" topic="Education">Education</button>
+            <button id="filterHumanitarian" class="filter-button" data-keyword="humanitarian" topic="Humanitarian">Humanitarian</button>
           </div>
         </div>
 
-        <ul class="volunteer-list">
-            <!-- Populate this list with volunteer organizations using JavaScript -->
-        </ul>
+        <ul class="volunteer-list"></ul>
         <div id="organizations-map"></div>
     </main>
-    
     <script src="organizations.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KuTAPjAWrncz7ayMNvxhbMMIPQAbMTA&callback=initMap" async defer></script>
 </body>
 </html>

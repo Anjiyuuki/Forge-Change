@@ -121,8 +121,16 @@ function submitProfileChanges() {
     const newEmail = document.getElementById('newEmail').value;
     const newPassword = document.getElementById('newPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const newInterests = document.getElementById('newInterests').value;
-    const newLocation = document.getElementById('newLocation').value;
+
+    // Updated for location and interests
+    const locationOptions = document.getElementsByName('location');
+    const selectedLocation = Array.from(locationOptions).find(option => option.checked);
+    const newLocation = selectedLocation ? selectedLocation.value : '';
+
+    const interestOptions = document.getElementsByName('interest');
+    const selectedInterests = Array.from(interestOptions)
+      .filter(option => option.checked)
+      .map(option => option.value === 'LGBTQ+' ? option.value : option.value.toLowerCase());
 
     // Check if the new password and confirm password match
     if (newPassword !== confirmPassword) {
@@ -145,12 +153,13 @@ function submitProfileChanges() {
       fieldsToUpdate.email = newEmail;
     }
 
-    if (newInterests) {
-      fieldsToUpdate.interests = newInterests;
-    }
-
+    // Update the fieldsToUpdate object
     if (newLocation) {
       fieldsToUpdate.location = newLocation;
+    }
+
+    if (selectedInterests.length > 0) {
+      fieldsToUpdate.interests = selectedInterests;
     }
 
     // Only update the user's information in Firestore if there are fields to update
@@ -170,7 +179,7 @@ function submitProfileChanges() {
           }
 
           if (fieldsToUpdate.interests) {
-            document.getElementById('user-interests').textContent = fieldsToUpdate.interests;
+            document.getElementById('user-interests').textContent = fieldsToUpdate.interests.join(', ');
           }
         })
         .catch((error) => {
@@ -181,6 +190,7 @@ function submitProfileChanges() {
     }
   }
 }
+
 // Function to add a new volunteer activity to Firestore
 function addVolunteerActivityToFirestore(activityData) {
   const user = firebase.auth().currentUser;
@@ -361,7 +371,6 @@ function loadUserProfilePicture() {
                 profilePictureElement.src = url;
               })
               .catch(function (error) {
-                console.log('Error getting download URL:', error);
                 // If there's an error, display the default picture
                 var defaultPictureURL = 'https://firebasestorage.googleapis.com/v0/b/forge-change.appspot.com/o/profile_pictures%2Fdefault_profile_pic.jpeg?alt=media&token=b7c61187-8831-458f-a220-a319de08e22d&_gl=1*1ebxgrs*_ga*MTYwMjkwNTkxOS4xNjk2NTQwNDM2*_ga_CW55HF8NVT*MTY5ODk5NjA5MC4xLjIyLjAuMTY5ODk5NjA5MC4w';
                 var profilePictureElement = document.getElementById('profile-picture');
