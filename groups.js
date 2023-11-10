@@ -167,12 +167,15 @@ function displayGroupsByCategory(category, containerId, createButtonId) {
           const username = memberData.username;
           const listItem = document.createElement('li');
           listItem.textContent = username;
+          listItem.classList.add('clickable-username');
           usernamesList.appendChild(listItem);
+          listItem.addEventListener('click', () => showUserPopup(username));
         });
       });
 
       const joinButton = document.createElement('button');
       joinButton.textContent = 'Join';
+      joinButton.classList.add('join-button');
       joinButton.addEventListener('click', () => joinGroup(groupName));
 
       groupCard.appendChild(groupNameElement);
@@ -187,6 +190,39 @@ function displayGroupsByCategory(category, containerId, createButtonId) {
   createButton.addEventListener('click', () => createGroup(category));
 }
 
+function showUserPopup(username) {
+  const userPopup = document.getElementById('user-popup');
+  const popupUsername = document.getElementById('popup-username');
+  const popupName = document.getElementById('popup-name');
+  const popupLocation = document.getElementById('popup-location');
+  const popupInterests = document.getElementById('popup-interests');
+
+  // Fetch user data and update the popup content
+  firestore.collection('users').where('username', '==', username).get().then((querySnapshot) => {
+    if (querySnapshot.empty) {
+      // User not found, display appropriate message
+      popupUsername.textContent = 'User not found';
+      popupName.textContent = '';
+      popupLocation.textContent = '';
+      popupInterests.textContent = '';
+    } else {
+      // User found, update the popup content
+      const userData = querySnapshot.docs[0].data();
+      popupUsername.textContent = userData.username;
+      popupName.textContent = 'Name: ' + userData.name;
+      popupLocation.textContent = 'Location: ' + userData.location;
+      popupInterests.textContent = 'Interests: ' + userData.interests.join(', ');
+    }
+
+    // Show the user popup
+    userPopup.style.display = 'block';
+  });
+}
+// Function to close the user popup
+function closeUserPopup() {
+  const userPopup = document.getElementById('user-popup');
+  userPopup.style.display = 'none';
+}
 
 // Initialize the groups page
 displayGroupsByCategory('topic', 'topics-list', 'createTopicButton');

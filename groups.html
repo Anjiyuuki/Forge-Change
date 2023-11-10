@@ -44,18 +44,28 @@
         <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
       </ul>
     </nav>
-  <div id="groups-container">
-    <h2>Topics</h2>
-    <button class="createGroupButton" id="createTopicButton">Create New Group for a Topic</button>
-    <div id="topics-list">
-      <!-- Topics section content -->
+    <div id="groups-container">
+      <div id="topics-div" class="group-section">
+        <div class="section-header">
+          <h1 id="topics-title">Topics</h1>
+          <button class="createGroupButton" id="createTopicButton">Create New Group for a Topic</button>
+        </div>
+        <div id="topics-list"></div>
+      </div>
+      <div id="events-div" class="group-section">
+        <div class="section-header">
+          <h1 id="events-title">Events</h1>
+          <button class="createGroupButton" id="createEventButton">Create New Group for an Event</button>
+        </div>
+        <div id="events-list"></div>
+      </div>
     </div>
-
-    <h2>Events</h2>
-    <button class="createGroupButton" id="createEventButton">Create New Group for an Event</button>
-    <div id="events-list">
-        <!-- Events section content -->
-    </div>
+  <div id="user-popup" class="user-popup">
+    <span class="close-popup" onclick="closeUserPopup()">&times;</span>
+    <h2 id="popup-username"></h2>
+    <p id="popup-name"></p>
+    <p id="popup-location"></p>
+    <p id="popup-interests"></p>
   </div>
   <script src="groups.js"></script>
 </body>
