@@ -88,7 +88,10 @@ ul {
   background: #f1f1f1;
 }
 
+#filterAll {
+  margin-right: 250px;
+}
+
 #filterSuggested {
-  margin-right: 110px;
-  margin-left: 50px;
+  margin-left: 100px;
 }

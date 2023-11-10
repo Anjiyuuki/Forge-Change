@@ -288,42 +288,6 @@
         }
     },
     {
-        "name": "The Open Book Project - Charity Golf Tournament",
-        "city": "Greenville",
-        "date": "2023-11-09",
-        "url": "https://www.eventbrite.com/e/the-open-book-project-charity-golf-tournament-registration-691090559467",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Easley",
-                "addressRegion": "SC",
-                "streetAddress": "100 Pine Ridge Drive",
-                "postalCode": "29642",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.80663",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.55596899999999"
-            },
-            "@type": "Place",
-            "name": "Smithfields Country Club, Pine Ridge Drive, Easley, SC, USA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Easley",
-            "addressRegion": "SC",
-            "streetAddress": "100 Pine Ridge Drive",
-            "postalCode": "29642",
-            "@type": "PostalAddress"
-        },
-        "description": "Get ready for a swingin' good time at The Open Book Project - Charity Golf Tournament, where we're teeing up for a day of fun and fundraisin",
-        "position": {
-            "lat": 34.80663,
-            "lng": -82.55596899999999
-        }
-    },
-    {
         "name": "Byrdie Wilson’s “Where My Roots Run Tour” Fundraiser Benefiting AFSPSC",
         "city": "Greenville",
         "date": "2023-12-19",
@@ -396,10 +360,10 @@
         }
     },
     {
-        "name": "Open Book Project-Golf Tournament Hole Sponsor",
+        "name": "The Open Book Project - Charity Golf Tournament",
         "city": "Greenville",
         "date": "2023-11-09",
-        "url": "https://www.eventbrite.com/e/open-book-project-golf-tournament-hole-sponsor-tickets-691946228797",
+        "url": "https://www.eventbrite.com/e/the-open-book-project-charity-golf-tournament-registration-691090559467",
         "location": {
             "address": {
                 "addressCountry": "US",
@@ -425,7 +389,7 @@
             "postalCode": "29642",
             "@type": "PostalAddress"
         },
-        "description": "Hole sponsor is $100",
+        "description": "Get ready for a swingin' good time at The Open Book Project - Charity Golf Tournament, where we're teeing up for a day of fun and fundraisin",
         "position": {
             "lat": 34.80663,
             "lng": -82.55596899999999
@@ -465,6 +429,42 @@
         "position": {
             "lat": 34.6882307,
             "lng": -82.8251928
+        }
+    },
+    {
+        "name": "Open Book Project-Golf Tournament Hole Sponsor",
+        "city": "Greenville",
+        "date": "2023-11-09",
+        "url": "https://www.eventbrite.com/e/open-book-project-golf-tournament-hole-sponsor-tickets-691946228797",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Easley",
+                "addressRegion": "SC",
+                "streetAddress": "100 Pine Ridge Drive",
+                "postalCode": "29642",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.80663",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.55596899999999"
+            },
+            "@type": "Place",
+            "name": "Smithfields Country Club, Pine Ridge Drive, Easley, SC, USA"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Easley",
+            "addressRegion": "SC",
+            "streetAddress": "100 Pine Ridge Drive",
+            "postalCode": "29642",
+            "@type": "PostalAddress"
+        },
+        "description": "Hole sponsor is $100",
+        "position": {
+            "lat": 34.80663,
+            "lng": -82.55596899999999
         }
     },
     {
