@@ -20,6 +20,17 @@ document.querySelectorAll('.nav-link').forEach(link => {
   }
 });
 
+function getLocationCoordinates(location) {
+  // Define coordinates for specified locations
+  const locationCoordinates = {
+    "Greenville": { lat: 34.8526, lng: -82.3940 },
+    "Charleston": { lat: 32.7765, lng: -79.9311 },
+    "Columbia": { lat: 34.0007, lng: -81.0348 },
+  };
+
+  return locationCoordinates[location] || null;
+}
+
 async function initMap() {
   // Request needed libraries.
   //@ts-ignore
@@ -32,6 +43,30 @@ async function initMap() {
     zoom: 7,
     center: defaultPosition,
     mapId: "DEMO_MAP_ID",
+  });
+
+  auth.onAuthStateChanged(function(user) {
+    // Check if the user is logged in
+    if (user) {
+      firestore.collection("users")
+        .doc(user.uid)
+        .get()
+        .then(function (doc) {
+          if (doc.exists) {
+            var userData = doc.data();
+            const userLocation = userData.location;
+            // Center the map at the user's location if it's one of the specified cities
+            if (["Greenville", "Charleston", "Columbia"].includes(userLocation)) {
+              const userPosition = getLocationCoordinates(userLocation);
+              map.setCenter(userPosition);
+              map.setZoom(10);
+            }
+          }
+        })
+        .catch(function (error) {
+          console.error("Error fetching user data:", error);
+        });
+    }
   });
   
   activeButton('All');
@@ -182,53 +217,8 @@ async function initMap() {
       // Call the function to display organizations
       displayVolunteerOrganizations(organizations);
 
-<<<<<<< HEAD
-      // Define a mapping of keywords to marker colors
-  const keywordMarkerColors = {
-    "animals": "red",
-    "environment": "green",
-    "LGBTQ+": "yellow",
-    "education": "blue",
-    "humanitarian": "orange",
-      // Add more keywords and their corresponding colors as needed
-    };
-
-    organizations.forEach(org => {
-      // Get the marker color based on the organization's keyword
-      const markerColor = keywordMarkerColors[org.keyword] || "default";
-
-      // Define a function to get the marker icon URL based on color
-      function getMarkerIconUrl(color) {
-        return `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
-      }
-
-      const orgMarker = new google.maps.Marker({
-        position: org.position,
-        map: map,
-        title: org.name,
-        icon: {
-          url: getMarkerIconUrl(markerColor),
-          scaledSize: new google.maps.Size(30, 30), // Adjust the size as needed
-        },
-      });
-
-      const infoWindow = new google.maps.InfoWindow({
-        content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
-      });
-
-      orgMarker.addListener('click', () => {
-        infoWindows.forEach(iw => iw.close());
-        infoWindow.open(map, orgMarker);
-      });
-
-      infoWindows.push(infoWindow);
-    });
-  } catch (error) {
-    console.error('Error getting organizations from Firestore:', error);
-=======
     } catch (error) {
       console.error('Error getting organizations from Firestore:', error);
->>>>>>> 0ddb7784010694dfab745031937a862dc48d2fc4
     }
   }
 
@@ -237,6 +227,14 @@ async function initMap() {
 
   // Function to display filtered volunteer organizations
   function displayVolunteerOrganizations(organizations) {
+    const keywordMarkerColors = {
+      "animals": "red",
+      "environment": "green",
+      "LGBTQ+": "yellow",
+      "education": "blue",
+      "humanitarian": "orange",
+        // Add more keywords and their corresponding colors as needed
+      };
     const volunteerList = document.querySelector('.volunteer-list');
     volunteerList.innerHTML = '';
 
@@ -244,6 +242,7 @@ async function initMap() {
       volunteerList.innerHTML = '<li>No results found.</li>';
     } else {
       organizations.forEach(org => {
+       
         const listItem = document.createElement('li');
         listItem.style.marginBottom = '10px';
         listItem.style.padding = '10px';
@@ -277,23 +276,36 @@ async function initMap() {
 
       // Create markers and info windows for each organization
       organizations.forEach(org => {
+         // Get the marker color based on the organization's keyword
+      const markerColor = keywordMarkerColors[org.keyword] || "default";
+
+      // Define a function to get the marker icon URL based on color
+      function getMarkerIconUrl(color) {
+        return `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
+      }
         const orgMarker = new google.maps.Marker({
           position: org.position,
           map: map,
           title: org.name,
+          icon: {
+            url: getMarkerIconUrl(markerColor),
+            scaledSize: new google.maps.Size(30, 30), // Adjust the size as needed
+          },
         });
         markers.push(orgMarker);
         const infoWindow = new google.maps.InfoWindow({
           content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
-       });
-
+        });
+  
         orgMarker.addListener('click', () => {
           infoWindows.forEach(iw => iw.close());
           infoWindow.open(map, orgMarker);
         });
+  
 
         infoWindows.push(infoWindow);
       });
+      
 
       });
     }

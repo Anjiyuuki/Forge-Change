@@ -145,9 +145,7 @@ function getEvents(city) {
           title: event.name,
         });
         markers.push(eventMarker);
-        var contentInfo = `<strong>${event.name}</strong>
-        <br>
-        <a href='${event.url}' target='_blank'>More details</a>`
+        var contentInfo = `<a href='${event.url}' target='_blank'>${event.name}</a>`
         const infoWindow = new google.maps.InfoWindow({
           content: contentInfo
         });
