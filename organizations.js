@@ -118,27 +118,48 @@ async function initMap() {
       // Call the function to display organizations
       displayVolunteerOrganizations(organizations);
 
-      // Create markers and info windows for each organization
-      organizations.forEach(org => {
-        const orgMarker = new google.maps.Marker({
-          position: org.position,
-          map: map,
-          title: org.name,
-        });
+      // Define a mapping of keywords to marker colors
+  const keywordMarkerColors = {
+    "animals": "red",
+    "environment": "green",
+    "LGBTQ+": "yellow",
+    "education": "blue",
+    "humanitarian": "orange",
+      // Add more keywords and their corresponding colors as needed
+    };
 
-        const infoWindow = new google.maps.InfoWindow({
-          content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
-       });
+    organizations.forEach(org => {
+      // Get the marker color based on the organization's keyword
+      const markerColor = keywordMarkerColors[org.keyword] || "default";
 
-        orgMarker.addListener('click', () => {
-          infoWindows.forEach(iw => iw.close());
-          infoWindow.open(map, orgMarker);
-        });
+      // Define a function to get the marker icon URL based on color
+      function getMarkerIconUrl(color) {
+        return `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
+      }
 
-        infoWindows.push(infoWindow);
+      const orgMarker = new google.maps.Marker({
+        position: org.position,
+        map: map,
+        title: org.name,
+        icon: {
+          url: getMarkerIconUrl(markerColor),
+          scaledSize: new google.maps.Size(30, 30), // Adjust the size as needed
+        },
       });
-    } catch (error) {
-      console.error('Error getting organizations from Firestore:', error);
+
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
+      });
+
+      orgMarker.addListener('click', () => {
+        infoWindows.forEach(iw => iw.close());
+        infoWindow.open(map, orgMarker);
+      });
+
+      infoWindows.push(infoWindow);
+    });
+  } catch (error) {
+    console.error('Error getting organizations from Firestore:', error);
     }
   }
 
