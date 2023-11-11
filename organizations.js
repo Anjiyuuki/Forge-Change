@@ -146,6 +146,17 @@ async function initMap() {
   }
   // Function to display suggested organizations
   function displaySuggestedOrganizations(suggestedOrganizations) {
+    const keywordMarkerColors = {
+      "animals": "red",
+      "environment": "green",
+      "LGBTQ+": "yellow",
+      "education": "blue",
+      "humanitarian": "orange",
+        // Add more keywords and their corresponding colors as needed
+      };
+    const volunteerList = document.querySelector('.volunteer-list');
+    volunteerList.innerHTML = '';
+
     const suggestedList = document.querySelector('.volunteer-list');
     suggestedList.innerHTML = '';
     // Clear map markers
@@ -181,22 +192,49 @@ async function initMap() {
                               <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
 
         suggestedList.appendChild(listItem);
-        const orgMarker = new google.maps.Marker({
-          position: org.position,
-          map: map,
-          title: org.name,
+
+          // Clear map markers
+        for (let i = 0; i < infoWindows.length; i++) {
+          infoWindows[i].close();
+        }
+        infoWindows = []; 
+        if (map) {
+          map.data.forEach(function (feature) {
+            map.data.remove(feature);
+          });
+        }
+        markers.forEach(function(marker) {
+          marker.setMap(null);
         });
-        markers.push(orgMarker);
-        const infoWindow = new google.maps.InfoWindow({
-          content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
-       });
-      
-        orgMarker.addListener('click', () => {
-          infoWindows.forEach(iw => iw.close());
-          infoWindow.open(map, orgMarker);
-        });
-      
-        infoWindows.push(infoWindow);
+
+        // Get the marker color based on the organization's keyword
+      const markerColor = keywordMarkerColors[org.keyword] || "default";
+
+      // Define a function to get the marker icon URL based on color
+      function getMarkerIconUrl(color) {
+        return `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
+      }
+      const orgMarker = new google.maps.Marker({
+        position: org.position,
+        map: map,
+        title: org.name,
+        icon: {
+          url: getMarkerIconUrl(markerColor),
+          scaledSize: new google.maps.Size(30, 30), // Adjust the size as needed
+        },
+      });
+      markers.push(orgMarker);
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
+      });
+
+      orgMarker.addListener('click', () => {
+        infoWindows.forEach(iw => iw.close());
+        infoWindow.open(map, orgMarker);
+      });
+
+
+      infoWindows.push(infoWindow);
       });
     }
   }

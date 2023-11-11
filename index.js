@@ -88,27 +88,21 @@ document.getElementById('loginButton').addEventListener('click', function() {
         });
 });
 
-$(document).ready(function () {
-  
-  var popup = $("#popup"),
-      doc = $(document),
-      popClass = "popped",
-      showPopup = function (event) {
-        popup.fadeIn(200);
-        event.preventDefault();
-      },
-      hidePopup = function (event) {
-        popup.hide();
-        event.preventDefault();
-      };
-  
-  doc.on("click", "#open-popup", showPopup);
-  doc.on("click", ".popup__close", hidePopup);
-  
-  doc.keypress(function (event) {
-    if (event.keyCode === 27) { // esc key
-      hidePopup();
-    }
-  });
-  
+
+  // Add event listener for the reset password button
+document.getElementById('resetPasswordButton').addEventListener('click', function() {
+  var resetEmail = document.getElementById('resetEmail').value;
+
+  // Send a password reset email
+  auth.sendPasswordResetEmail(resetEmail)
+      .then(function() {
+          document.getElementById('message').textContent = 'Password reset email sent. Check your email.';
+      })
+      .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          document.getElementById('message').textContent = 'Password reset failed: ' + errorMessage;
+      });
 });
+
+

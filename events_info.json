@@ -144,39 +144,39 @@
         }
     },
     {
-        "name": "2023 Friends of Mission Guatemala Dinner and Silent Auction",
+        "name": "People with Purpose Volunteer Orientation",
         "city": "Greenville",
-        "date": "2023-11-10",
-        "url": "https://www.eventbrite.com/e/2023-friends-of-mission-guatemala-dinner-and-silent-auction-tickets-717849355747",
+        "date": "2023-12-14",
+        "url": "https://www.eventbrite.com/e/people-with-purpose-volunteer-orientation-registration-465143134637",
         "location": {
             "address": {
                 "addressCountry": "US",
-                "addressLocality": "Greenville",
-                "addressRegion": "SC",
-                "streetAddress": "101 Airport Road",
-                "postalCode": "29607",
+                "addressLocality": "Swannanoa",
+                "addressRegion": "NC",
+                "streetAddress": "West Campus Dining Hall",
+                "postalCode": "28778",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "34.8451428",
+                "latitude": "35.6187798",
                 "@type": "GeoCoordinates",
-                "longitude": "-82.3593947"
+                "longitude": "-82.37809299999999"
             },
             "@type": "Place",
-            "name": "Think Tank Brew Lab"
+            "name": "Black Mountain Home"
         },
         "address": {
             "addressCountry": "US",
-            "addressLocality": "Greenville",
-            "addressRegion": "SC",
-            "streetAddress": "101 Airport Road",
-            "postalCode": "29607",
+            "addressLocality": "Swannanoa",
+            "addressRegion": "NC",
+            "streetAddress": "West Campus Dining Hall",
+            "postalCode": "28778",
             "@type": "PostalAddress"
         },
-        "description": "We are excited to offer a Dinner and Silent Auction event to support the efforts of Mission Guatemala!",
+        "description": "PEOPLE WITH PURPOSE are healthier, happier, and live longer! Join our volunteer team and find your purpose by helping children.",
         "position": {
-            "lat": 34.8451428,
-            "lng": -82.3593947
+            "lat": 35.6187798,
+            "lng": -82.37809299999999
         }
     },
     {
@@ -213,42 +213,6 @@
         "position": {
             "lat": 34.787809,
             "lng": -82.6975734
-        }
-    },
-    {
-        "name": "People with Purpose Volunteer Orientation",
-        "city": "Greenville",
-        "date": "2023-12-14",
-        "url": "https://www.eventbrite.com/e/people-with-purpose-volunteer-orientation-registration-465143134637",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Swannanoa",
-                "addressRegion": "NC",
-                "streetAddress": "West Campus Dining Hall",
-                "postalCode": "28778",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "35.6187798",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.37809299999999"
-            },
-            "@type": "Place",
-            "name": "Black Mountain Home"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Swannanoa",
-            "addressRegion": "NC",
-            "streetAddress": "West Campus Dining Hall",
-            "postalCode": "28778",
-            "@type": "PostalAddress"
-        },
-        "description": "PEOPLE WITH PURPOSE are healthier, happier, and live longer! Join our volunteer team and find your purpose by helping children.",
-        "position": {
-            "lat": 35.6187798,
-            "lng": -82.37809299999999
         }
     },
     {
@@ -360,42 +324,6 @@
         }
     },
     {
-        "name": "The Open Book Project - Charity Golf Tournament",
-        "city": "Greenville",
-        "date": "2023-11-09",
-        "url": "https://www.eventbrite.com/e/the-open-book-project-charity-golf-tournament-registration-691090559467",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Easley",
-                "addressRegion": "SC",
-                "streetAddress": "100 Pine Ridge Drive",
-                "postalCode": "29642",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.80663",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.55596899999999"
-            },
-            "@type": "Place",
-            "name": "Smithfields Country Club, Pine Ridge Drive, Easley, SC, USA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Easley",
-            "addressRegion": "SC",
-            "streetAddress": "100 Pine Ridge Drive",
-            "postalCode": "29642",
-            "@type": "PostalAddress"
-        },
-        "description": "Get ready for a swingin' good time at The Open Book Project - Charity Golf Tournament, where we're teeing up for a day of fun and fundraisin",
-        "position": {
-            "lat": 34.80663,
-            "lng": -82.55596899999999
-        }
-    },
-    {
         "name": "NOLA Network Annual Mardi Gras Fundraiser 2024",
         "city": "Greenville",
         "date": "2024-02-24",
@@ -429,114 +357,6 @@
         "position": {
             "lat": 34.6882307,
             "lng": -82.8251928
-        }
-    },
-    {
-        "name": "Open Book Project-Golf Tournament Hole Sponsor",
-        "city": "Greenville",
-        "date": "2023-11-09",
-        "url": "https://www.eventbrite.com/e/open-book-project-golf-tournament-hole-sponsor-tickets-691946228797",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Easley",
-                "addressRegion": "SC",
-                "streetAddress": "100 Pine Ridge Drive",
-                "postalCode": "29642",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.80663",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.55596899999999"
-            },
-            "@type": "Place",
-            "name": "Smithfields Country Club, Pine Ridge Drive, Easley, SC, USA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Easley",
-            "addressRegion": "SC",
-            "streetAddress": "100 Pine Ridge Drive",
-            "postalCode": "29642",
-            "@type": "PostalAddress"
-        },
-        "description": "Hole sponsor is $100",
-        "position": {
-            "lat": 34.80663,
-            "lng": -82.55596899999999
-        }
-    },
-    {
-        "name": "Camp Lakey Gap's 2nd Annual Hiking For Autism",
-        "city": "Greenville",
-        "date": "2023-11-11",
-        "url": "https://www.eventbrite.com/e/camp-lakey-gaps-2nd-annual-hiking-for-autism-tickets-716048338857",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Black Mountain",
-                "addressRegion": "NC",
-                "streetAddress": "222 Fern Way",
-                "postalCode": "28711",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "35.5973493",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.306412"
-            },
-            "@type": "Place",
-            "name": "Christmount Christian Assembly"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Black Mountain",
-            "addressRegion": "NC",
-            "streetAddress": "222 Fern Way",
-            "postalCode": "28711",
-            "@type": "PostalAddress"
-        },
-        "description": "Get out your hiking boots and join us for a beautiful hike and lunch to raise funds for camp scholarships.",
-        "position": {
-            "lat": 35.5973493,
-            "lng": -82.306412
-        }
-    },
-    {
-        "name": "Union Community Resource Baby Shower",
-        "city": "Greenville",
-        "date": "2023-11-10",
-        "url": "https://www.eventbrite.com/e/union-community-resource-baby-shower-tickets-709569670987",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Union",
-                "addressRegion": "SC",
-                "streetAddress": "111 Thomas Street",
-                "postalCode": "29379",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.7128841",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.6304904"
-            },
-            "@type": "Place",
-            "name": "111 Thomas St"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Union",
-            "addressRegion": "SC",
-            "streetAddress": "111 Thomas Street",
-            "postalCode": "29379",
-            "@type": "PostalAddress"
-        },
-        "description": "Expectant mothers are invited to an educational and fun baby shower.",
-        "position": {
-            "lat": 34.7128841,
-            "lng": -81.6304904
         }
     },
     {
@@ -720,75 +540,183 @@
         }
     },
     {
-        "name": "Climate Advocate Training Workshop - Charleston, SC",
-        "city": "Charleston",
-        "date": "2023-11-11",
-        "url": "https://www.eventbrite.com/e/climate-advocate-training-workshop-charleston-sc-registration-731250067637",
+        "name": "SERVS - Giving Thanks with our Healing Herd of Horses",
+        "city": "Greenville",
+        "date": "2023-11-19",
+        "url": "https://www.eventbrite.com/e/servs-giving-thanks-with-our-healing-herd-of-horses-tickets-726900578197",
         "location": {
             "address": {
                 "addressCountry": "US",
-                "addressLocality": "Charleston",
-                "addressRegion": "SC",
-                "streetAddress": "68 Calhoun St",
-                "postalCode": "29401",
+                "addressLocality": "Franklin",
+                "addressRegion": "NC",
+                "streetAddress": "635 Berry Cove Rd.",
+                "postalCode": "28734",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "32.7885298",
+                "latitude": "35.212513",
                 "@type": "GeoCoordinates",
-                "longitude": "-79.93105779999999"
+                "longitude": "-83.30076299999999"
             },
             "@type": "Place",
-            "name": "Charleston County Main Library - Room B"
+            "name": "Nurture + Nature Glamping Retreat Center"
         },
         "address": {
             "addressCountry": "US",
-            "addressLocality": "Charleston",
-            "addressRegion": "SC",
-            "streetAddress": "68 Calhoun St",
-            "postalCode": "29401",
+            "addressLocality": "Franklin",
+            "addressRegion": "NC",
+            "streetAddress": "635 Berry Cove Rd.",
+            "postalCode": "28734",
             "@type": "PostalAddress"
         },
-        "description": "Join us to learn more about Citizens' Climate Lobby and advocating for climate action!",
+        "description": "Wives of Veterans,  join us for SERVS this November - Giving Thanks with our Healing Herd of Horses",
         "position": {
-            "lat": 32.7885298,
-            "lng": -79.93105779999999
+            "lat": 35.212513,
+            "lng": -83.30076299999999
         }
     },
     {
-        "name": "Give Thanks Giveaway",
-        "city": "Charleston",
-        "date": "2023-11-11",
-        "url": "https://www.eventbrite.com/e/give-thanks-giveaway-tickets-740907282627",
+        "name": "Every Black Voice: ACNC Hosts AVL's Racial Justice Coalition Lunch n' Learn",
+        "city": "Greenville",
+        "date": "2023-12-27",
+        "url": "https://www.eventbrite.com/e/every-black-voice-acnc-hosts-avls-racial-justice-coalition-lunch-n-learn-tickets-643335984247",
         "location": {
             "address": {
                 "addressCountry": "US",
-                "addressLocality": "Charleston",
-                "addressRegion": "SC",
-                "streetAddress": "2070 Sam Rittenberg Boulevard",
-                "postalCode": "29407",
+                "addressLocality": "Asheville",
+                "addressRegion": "NC",
+                "streetAddress": "216 Asheland Avenue",
+                "postalCode": "28801",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "32.7987573",
+                "latitude": "35.5862181",
                 "@type": "GeoCoordinates",
-                "longitude": "-80.031442"
+                "longitude": "-82.5559073"
             },
             "@type": "Place",
-            "name": "Citadel Mall"
+            "name": "216 Asheland Ave"
         },
         "address": {
             "addressCountry": "US",
-            "addressLocality": "Charleston",
-            "addressRegion": "SC",
-            "streetAddress": "2070 Sam Rittenberg Boulevard",
-            "postalCode": "29407",
+            "addressLocality": "Asheville",
+            "addressRegion": "NC",
+            "streetAddress": "216 Asheland Avenue",
+            "postalCode": "28801",
             "@type": "PostalAddress"
         },
-        "description": "Join us at our Give Thanks Giveaway, a heartwarming in-person event where we come together to express gratitude!",
+        "description": "ACNC is excited to be a part of NC Managed Care. Our goal is to help people get care, stay well and build healthy communities.",
         "position": {
-            "lat": 32.7987573,
-            "lng": -80.031442
+            "lat": 35.5862181,
+            "lng": -82.5559073
+        }
+    },
+    {
+        "name": "Feed The Community",
+        "city": "Greenville",
+        "date": "2023-11-18",
+        "url": "https://www.eventbrite.com/e/feed-the-community-tickets-747687913677",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Gastonia",
+                "addressRegion": "NC",
+                "streetAddress": "121 Hartman Street",
+                "postalCode": "28052",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.2625491",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.22784329999999"
+            },
+            "@type": "Place",
+            "name": "T Jeffers Center"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Gastonia",
+            "addressRegion": "NC",
+            "streetAddress": "121 Hartman Street",
+            "postalCode": "28052",
+            "@type": "PostalAddress"
+        },
+        "description": "We are serving the community Free Hot meals the Saturday before Thanksgiving",
+        "position": {
+            "lat": 35.2625491,
+            "lng": -81.22784329999999
+        }
+    },
+    {
+        "name": "Annual Charity Gala",
+        "city": "Greenville",
+        "date": "2023-12-16",
+        "url": "https://www.eventbrite.com/e/annual-charity-gala-tickets-744441784417",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Rock Hill",
+                "addressRegion": "SC",
+                "streetAddress": "742 North Anderson Road",
+                "postalCode": "29730",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.9572439",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.99517929999999"
+            },
+            "@type": "Place",
+            "name": "742 North Anderson Road, Rock Hill, SC, USA"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Rock Hill",
+            "addressRegion": "SC",
+            "streetAddress": "742 North Anderson Road",
+            "postalCode": "29730",
+            "@type": "PostalAddress"
+        },
+        "description": "Join us for the Annual Charity Gala, an unforgettable evening of giving, glitz, and glamour, where we come together to make a difference in",
+        "position": {
+            "lat": 34.9572439,
+            "lng": -80.99517929999999
+        }
+    },
+    {
+        "name": "Volunteer Registration- November Feeding  Charlotte",
+        "city": "Greenville",
+        "date": "2023-11-16",
+        "url": "https://www.eventbrite.com/e/volunteer-registration-november-feeding-charlotte-tickets-741678027947",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charlotte",
+                "addressRegion": "NC",
+                "streetAddress": "3506 West Tyvola Road",
+                "postalCode": "28208",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.1981149",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.9125645"
+            },
+            "@type": "Place",
+            "name": "South Charlotte VA Clinic (Parking Lot C)"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "streetAddress": "3506 West Tyvola Road",
+            "postalCode": "28208",
+            "@type": "PostalAddress"
+        },
+        "description": "Please join The Independence Fund and our partners as we provide food and cleaning supplies and personal hygiene items  to veterans.",
+        "position": {
+            "lat": 35.1981149,
+            "lng": -80.9125645
         }
     },
     {
@@ -936,42 +864,6 @@
         }
     },
     {
-        "name": "Paws on The Patio to benefit Charleston Animal Society",
-        "city": "Charleston",
-        "date": "2023-11-09",
-        "url": "https://www.eventbrite.com/e/paws-on-the-patio-to-benefit-charleston-animal-society-tickets-519031746927",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Mount Pleasant",
-                "addressRegion": "SC",
-                "streetAddress": "1875 U.S. 17",
-                "postalCode": "29464",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "32.8305556",
-                "@type": "GeoCoordinates",
-                "longitude": "-79.8308333"
-            },
-            "@type": "Place",
-            "name": "Burtons Grill & Bar of Mt. Pleasant"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Mount Pleasant",
-            "addressRegion": "SC",
-            "streetAddress": "1875 U.S. 17",
-            "postalCode": "29464",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us for the furriest yappy-hour around!",
-        "position": {
-            "lat": 32.8305556,
-            "lng": -79.8308333
-        }
-    },
-    {
         "name": "2023 Summerville Exchange Club Oyster Roast",
         "city": "Charleston",
         "date": "2023-12-09",
@@ -1077,6 +969,42 @@
         "position": {
             "lat": 32.0099569,
             "lng": -81.1083773
+        }
+    },
+    {
+        "name": "Savannah Jaycees Cornhole Tournament",
+        "city": "Charleston",
+        "date": "2023-12-09",
+        "url": "https://www.eventbrite.com/e/savannah-jaycees-cornhole-tournament-tickets-756372339027",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Tybee Island",
+                "addressRegion": "GA",
+                "streetAddress": "30 Van Horne Avenue",
+                "postalCode": "31328",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.0177952",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.8450685"
+            },
+            "@type": "Place",
+            "name": "Jaycee Park"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Tybee Island",
+            "addressRegion": "GA",
+            "streetAddress": "30 Van Horne Avenue",
+            "postalCode": "31328",
+            "@type": "PostalAddress"
+        },
+        "description": "It's the 2nd Annual Savannah Jaycees Cornhole Tournament - join us for a fun, family-friendly competition!",
+        "position": {
+            "lat": 32.0177952,
+            "lng": -80.8450685
         }
     },
     {
@@ -1257,42 +1185,6 @@
         "position": {
             "lat": 33.8244251,
             "lng": -80.70178179999999
-        }
-    },
-    {
-        "name": "Woman To Woman Conference & Awards",
-        "city": "Charleston",
-        "date": "2023-11-11",
-        "url": "https://www.eventbrite.com/e/woman-to-woman-conference-awards-tickets-704697789057",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Savannah",
-                "addressRegion": "GA",
-                "streetAddress": "201 West Bay Street",
-                "postalCode": "31401",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "32.0814625",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.0939226"
-            },
-            "@type": "Place",
-            "name": "Hotel Indigo Savannah Historic District, an IHG Hotel"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Savannah",
-            "addressRegion": "GA",
-            "streetAddress": "201 West Bay Street",
-            "postalCode": "31401",
-            "@type": "PostalAddress"
-        },
-        "description": "Woman To Woman Conference, is an event that celebrates extraordinary women who have transformed their challenges into opportunities.",
-        "position": {
-            "lat": 32.0814625,
-            "lng": -81.0939226
         }
     },
     {
@@ -1512,78 +1404,6 @@
         }
     },
     {
-        "name": "Veteran's Day Service",
-        "city": "Columbia",
-        "date": "2023-11-11",
-        "url": "https://www.eventbrite.com/e/veterans-day-service-tickets-742461772147",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Columbia",
-                "addressRegion": "SC",
-                "streetAddress": "6801 Saint Andrews Road",
-                "postalCode": "29212",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.071543",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.175794"
-            },
-            "@type": "Place",
-            "name": "Irmo Seventh-day Adventist Fellowship (SDA Church), Saint Andrews Road, Columbia, SC, USA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Columbia",
-            "addressRegion": "SC",
-            "streetAddress": "6801 Saint Andrews Road",
-            "postalCode": "29212",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us for a heartfelt Veteran's Day Service. RSVP by Wednesday  November 8th PM.  Phone# 803-200-1903",
-        "position": {
-            "lat": 34.071543,
-            "lng": -81.175794
-        }
-    },
-    {
-        "name": "Freedom to Serve- Panel Discussion",
-        "city": "Columbia",
-        "date": "2023-11-09",
-        "url": "https://www.eventbrite.com/e/freedom-to-serve-panel-discussion-tickets-739458388947",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Columbia",
-                "addressRegion": "SC",
-                "streetAddress": "1014 Greene Street",
-                "postalCode": "29208",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "33.9945213",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.03343629999999"
-            },
-            "@type": "Place",
-            "name": "Darla Moore School of Business"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Columbia",
-            "addressRegion": "SC",
-            "streetAddress": "1014 Greene Street",
-            "postalCode": "29208",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us as we celebrate the 75th anniversary of desegregation in the military with special guests and community leaders.",
-        "position": {
-            "lat": 33.9945213,
-            "lng": -81.03343629999999
-        }
-    },
-    {
         "name": "THE VULNERABILITY PROJECT",
         "city": "Columbia",
         "date": "2023-11-19",
@@ -1728,42 +1548,6 @@
         }
     },
     {
-        "name": "Poverty Simulation (Young Adults)",
-        "city": "Columbia",
-        "date": "2023-11-18",
-        "url": "https://www.eventbrite.com/e/poverty-simulation-young-adults-tickets-748793340037",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Lancaster",
-                "addressRegion": "SC",
-                "streetAddress": "509 Hubbard Dr",
-                "postalCode": "29720",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.7170611",
-                "@type": "GeoCoordinates",
-                "longitude": "-80.7670661"
-            },
-            "@type": "Place",
-            "name": "USCL's Carole Ray Dowling Center"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Lancaster",
-            "addressRegion": "SC",
-            "streetAddress": "509 Hubbard Dr",
-            "postalCode": "29720",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us for a Poverty Simulation activity. Come together with others to simulate time within a family that struggles with poverty.",
-        "position": {
-            "lat": 34.7170611,
-            "lng": -80.7670661
-        }
-    },
-    {
         "name": "Girl I Got You Christmas Give- A-Thon",
         "city": "Columbia",
         "date": "2023-12-09",
@@ -1797,6 +1581,42 @@
         "position": {
             "lat": 34.3588349,
             "lng": -80.0694262
+        }
+    },
+    {
+        "name": "Poverty Simulation (Young Adults)",
+        "city": "Columbia",
+        "date": "2023-11-18",
+        "url": "https://www.eventbrite.com/e/poverty-simulation-young-adults-tickets-748793340037",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Lancaster",
+                "addressRegion": "SC",
+                "streetAddress": "509 Hubbard Dr",
+                "postalCode": "29720",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7170611",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.7670661"
+            },
+            "@type": "Place",
+            "name": "USCL's Carole Ray Dowling Center"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Lancaster",
+            "addressRegion": "SC",
+            "streetAddress": "509 Hubbard Dr",
+            "postalCode": "29720",
+            "@type": "PostalAddress"
+        },
+        "description": "Join us for a Poverty Simulation activity. Come together with others to simulate time within a family that struggles with poverty.",
+        "position": {
+            "lat": 34.7170611,
+            "lng": -80.7670661
         }
     },
     {
@@ -2016,39 +1836,111 @@
         }
     },
     {
-        "name": "Union Community Resource Baby Shower",
+        "name": "Members Appreciation",
         "city": "Columbia",
-        "date": "2023-11-10",
-        "url": "https://www.eventbrite.com/e/union-community-resource-baby-shower-tickets-709569670987",
+        "date": "2023-11-11",
+        "url": "https://www.eventbrite.com/e/members-appreciation-tickets-726351897077",
         "location": {
             "address": {
                 "addressCountry": "US",
-                "addressLocality": "Union",
+                "addressLocality": "Aiken",
                 "addressRegion": "SC",
-                "streetAddress": "111 Thomas Street",
-                "postalCode": "29379",
+                "streetAddress": "117 Newberry Street Southwest",
+                "postalCode": "29801",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "34.7128841",
+                "latitude": "33.5604402",
                 "@type": "GeoCoordinates",
-                "longitude": "-81.6304904"
+                "longitude": "-81.7213862"
             },
             "@type": "Place",
-            "name": "111 Thomas St"
+            "name": "Newberry Hall, Newberry Street Southwest, Aiken, SC, USA"
         },
         "address": {
             "addressCountry": "US",
-            "addressLocality": "Union",
+            "addressLocality": "Aiken",
             "addressRegion": "SC",
-            "streetAddress": "111 Thomas Street",
-            "postalCode": "29379",
+            "streetAddress": "117 Newberry Street Southwest",
+            "postalCode": "29801",
             "@type": "PostalAddress"
         },
-        "description": "Expectant mothers are invited to an educational and fun baby shower.",
+        "description": "Get ready for an awesome weekend starting with our Members Appreciation banquet, where we're looking forward to showing love & appreciation",
         "position": {
-            "lat": 34.7128841,
-            "lng": -81.6304904
+            "lat": 33.5604402,
+            "lng": -81.7213862
+        }
+    },
+    {
+        "name": "Volunteer Registration- November Feeding  Charlotte",
+        "city": "Columbia",
+        "date": "2023-11-16",
+        "url": "https://www.eventbrite.com/e/volunteer-registration-november-feeding-charlotte-tickets-741678027947",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charlotte",
+                "addressRegion": "NC",
+                "streetAddress": "3506 West Tyvola Road",
+                "postalCode": "28208",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.1981149",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.9125645"
+            },
+            "@type": "Place",
+            "name": "South Charlotte VA Clinic (Parking Lot C)"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "streetAddress": "3506 West Tyvola Road",
+            "postalCode": "28208",
+            "@type": "PostalAddress"
+        },
+        "description": "Please join The Independence Fund and our partners as we provide food and cleaning supplies and personal hygiene items  to veterans.",
+        "position": {
+            "lat": 35.1981149,
+            "lng": -80.9125645
+        }
+    },
+    {
+        "name": "Party in Purple",
+        "city": "Columbia",
+        "date": "2023-11-24 - 2023-11-25",
+        "url": "https://www.eventbrite.com/e/party-in-purple-tickets-732472955327",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Cheraw",
+                "addressRegion": "SC",
+                "streetAddress": "1 Village Park",
+                "postalCode": "29520",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.6989272",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.88315759999999"
+            },
+            "@type": "Place",
+            "name": "Cypress Music Hall, Village Park, Cheraw, SC, USA"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Cheraw",
+            "addressRegion": "SC",
+            "streetAddress": "1 Village Park",
+            "postalCode": "29520",
+            "@type": "PostalAddress"
+        },
+        "description": "The Purple Crusaders are hosting our 1st annual fundraising event to raise awareness for Alzheimer's.",
+        "position": {
+            "lat": 34.6989272,
+            "lng": -79.88315759999999
         }
     }
 ]
