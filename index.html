@@ -44,7 +44,7 @@
             <label for="regEmail" class="labelReg">Email:</label>
             <input type="email" id="regEmail" /><br>
             <label for="regPassword" class="labelReg">Password:</label>
-            <input type="password" id="regPassword" /><br>
+            <input type="password" id="regPassword" oninput="checkPasswordStrength()" /><br>
             <label for="regConfirmPassword" class="labelReg">Confirm Password:</label>
             <input type="password" id="regConfirmPassword" /><br>
             <label for="regUsername" class="labelReg">Username:</label>
@@ -59,13 +59,25 @@
             </select>
           </div>
           <!-- Add a dropdown for choosing interests -->
-          <div id="interests" class="Checkboxes">
-            <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
-            <label><input type="checkbox" name="interest" value="animals" > Animals</label>
-            <label><input type="checkbox" name="interest" value="environment"> Environment</label>
-            <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
-            <label><input type="checkbox" name="interest" value="education"> Education</label>
-            <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
+          <div id="rightRegister">
+            <div id="passwordRequirements">
+              <p>Password Requirements:</p>
+              <ul>
+                  <li id="lengthRequirement">Minimum 8 characters</li>
+                  <li id="uppercaseRequirement">At least one uppercase letter</li>
+                  <li id="lowercaseRequirement">At least one lowercase letter</li>
+                  <li id="numberRequirement">At least one number</li>
+              </ul>
+          </div>
+          <div id="passwordStrength">Password Strength: <span id="strengthValue">0%</span></div>
+            <div id="interests" class="Checkboxes">
+              <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
+              <label><input type="checkbox" name="interest" value="animals" > Animals</label>
+              <label><input type="checkbox" name="interest" value="environment"> Environment</label>
+              <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
+              <label><input type="checkbox" name="interest" value="education"> Education</label>
+              <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
+            </div>
           </div>
           <button id="registerButton" class="Submit">Register</button>
         </div>
@@ -74,7 +86,7 @@
             <h2>Login</h2>
             <input type="email" id="loginEmail" placeholder="Email" /><br>
             <input type="password" id="loginPassword" placeholder="Password" /><br>
-            <button id="loginButton" style="margin-top: 20px">Login</button>
+            <button id="loginButton" style="margin-bottom: 20px">Login</button>
             
             <div id="resetPasswordForm">
               <h2>Reset Password</h2>

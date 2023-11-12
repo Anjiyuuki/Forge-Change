@@ -106,3 +106,29 @@ document.getElementById('resetPasswordButton').addEventListener('click', functio
 });
 
 
+function checkPasswordStrength() {
+  var password = document.getElementById('regPassword').value;
+
+  // Check password against requirements
+  var lengthRequirement = password.length >= 8;
+  var uppercaseRequirement = /[A-Z]/.test(password);
+  var lowercaseRequirement = /[a-z]/.test(password);
+  var numberRequirement = /\d/.test(password);
+
+  // Update requirements display
+  document.getElementById('lengthRequirement').style.color = lengthRequirement ? 'green' : 'red';
+  document.getElementById('uppercaseRequirement').style.color = uppercaseRequirement ? 'green' : 'red';
+  document.getElementById('lowercaseRequirement').style.color = lowercaseRequirement ? 'green' : 'red';
+  document.getElementById('numberRequirement').style.color = numberRequirement ? 'green' : 'red';
+
+  // Calculate overall strength
+  var strength = 0;
+  if (lengthRequirement) strength += 25;
+  if (uppercaseRequirement) strength += 25;
+  if (lowercaseRequirement) strength += 25;
+  if (numberRequirement) strength += 25;
+
+  // Update strength display
+  document.getElementById('strengthValue').textContent = strength + '%';
+  document.getElementById('strengthValue').style.color = strength === 100 ? 'green' : 'red';
+}

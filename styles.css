@@ -43,10 +43,10 @@ header {
 .right-column {
   height: 100vh;
   bottom: 0;
-  width: 650px;
+  width: 700px;
   flex: 1;
   background-color: #f4f7e1;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;

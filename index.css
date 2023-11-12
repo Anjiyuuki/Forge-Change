@@ -10,16 +10,16 @@
   border: 3px solid #333;
   border-radius: 5px;
   text-align: center;
-  height: 350px;
+  height: 450px;
   background-color: #bdd09e;
-  margin-top: 90px;
+  margin-top: 50px;
 }
 
 #registrationForm {
   display: grid; 
   place-items: center;
   grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 0.5fr 2fr 0.5fr;
+  grid-template-rows: 0.5fr 2.2fr 0.3fr;
   gap: 0px 0px; 
   grid-template-areas: 
     "Title Title"
@@ -54,7 +54,7 @@
 #main-register input{
   float:left;
   width:170px;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 #main-register {
@@ -63,7 +63,8 @@
 #interests {
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
+  margin-left: 30px;
+  margin-top: 30px;
 }
 
 #interests label {
@@ -78,7 +79,7 @@
   margin-right: 15px;
 }
 
-#registerButton, #loginButton {
+#registerButton, #loginButton, #resetPasswordButton {
   background-color: #ddd;
   color:#2b4719;
   border-style: solid;
@@ -102,4 +103,12 @@
   background-color: #f4f7e1;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#passwordRequirements, #passwordStrength {
+  font-size: 13px;
+}
+
+#resetPasswordForm {
+  margin-top: 100px;
 }
