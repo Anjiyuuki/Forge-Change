@@ -88,10 +88,10 @@ ul {
   background: #f1f1f1;
 }
 
-#filterAll {
-  margin-right: 250px;
+#organizationSearch {
+  margin-right: 140px;
 }
 
-#filterSuggested {
-  margin-left: 100px;
+#filterAll {
+  margin-left: 50px;
 }
