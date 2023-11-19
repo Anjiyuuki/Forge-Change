@@ -43,8 +43,15 @@
       </ul>
   </nav>
   <main class="events-container">
+    <div class="events-date">
+      <label for="endDateFilter">Filter by date:</label>
+        <input type="date" id="startDateFilter">
+        <input type="date" id="endDateFilter">
+        <button id="applyDateFilterButton">Apply</button>
+        <button id="resetDateFilterButton">Reset </button>
+    </div>
     <div class="event-filters">
-      <p class="filter-title"><strong>Filter by region: </strong></p>
+      <input type="text" class="search-container" id="eventSearch" placeholder="Search events...">
       <button id="filterAll" class="filter-button">All</button>
       <button id="filterCharleston" class="filter-button">Charleston</button>
       <button id="filterGreenville" class="filter-button">Greenville</button>

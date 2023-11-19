@@ -42,12 +42,15 @@ for url in urls:
     for script in ld_json_scripts:
         script_content = json.loads(script.string)
         if script_content["@type"] == "Event":
+            start_date = script_content["startDate"]
+            end_date = script_content["endDate"]
+
             event_info = {
                 "name": script_content["name"],
                 "city": url.split("--")[1].split("/")[0].capitalize(),  # Extract city from URL
-                "date": script_content["startDate"]
-                if script_content["startDate"] == script_content["endDate"]
-                else f"{script_content['startDate']} - {script_content['endDate']}",
+                "startDate": start_date,
+                "endDate": end_date,
+                "date": start_date if start_date == end_date else f"{start_date} - {end_date}",
                 "url": script_content["url"],
                 "location": script_content["location"],
                 "address": script_content["location"]["address"],

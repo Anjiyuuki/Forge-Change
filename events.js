@@ -5,6 +5,7 @@ var events = [];
 var map;
 let infoWindows = [];
 var markers = [];
+var eventsList;
 
 function getLocationCoordinates(location) {
   // Define coordinates for specified locations
@@ -18,7 +19,6 @@ function getLocationCoordinates(location) {
 }
 
 async function initMap() {
-
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
@@ -30,47 +30,47 @@ async function initMap() {
     mapId: "DEMO_MAP_ID",
   });
   auth.onAuthStateChanged(function(user) {
-  // Check if the user is logged in
-  if (user) {
-    firestore.collection("users")
-      .doc(user.uid)
-      .get()
-      .then(function (doc) {
-        if (doc.exists) {
-          var userData = doc.data();
-          const userLocation = userData.location;
-          // Center the map at the user's location if it's one of the specified cities
-          if (["Greenville", "Charleston", "Columbia"].includes(userLocation)) {
-            const userPosition = getLocationCoordinates(userLocation);
-            map.setCenter(userPosition);
-            map.setZoom(10);
+    // Check if the user is logged in
+    if (user) {
+      firestore.collection("users")
+        .doc(user.uid)
+        .get()
+        .then(function (doc) {
+          if (doc.exists) {
+            var userData = doc.data();
+            const userLocation = userData.location;
+            // Center the map at the user's location if it's one of the specified cities
+            if (["Greenville", "Charleston", "Columbia"].includes(userLocation)) {
+              const userPosition = getLocationCoordinates(userLocation);
+              map.setCenter(userPosition);
+              map.setZoom(10);
+            }
           }
-        }
-      })
-      .catch(function (error) {
-        console.error("Error fetching user data:", error);
-      });
-  }
-});
-// Define an array of cities
-const cities = ["Charleston", "Greenville", "Columbia", "All"];
-
-// Add event listener for each filter button
-cities.forEach(city => {
-  document.getElementById(`filter${city}`).addEventListener("click", function () {
-    getEvents(city);
-    activeButton(city);
-
-    const currentCity = getLocationCoordinates(city);
-    map.setCenter(currentCity);
-    map.setZoom(10);
-    if (city === "All") {
-      getEvents("all");
-      map.setCenter(defaultPosition);
-      map.setZoom(6);
+        })
+        .catch(function (error) {
+          console.error("Error fetching user data:", error);
+        });
     }
   });
-});
+  // Define an array of cities
+  const cities = ["Charleston", "Greenville", "Columbia", "All"];
+
+  // Add event listener for each filter button
+  cities.forEach(city => {
+    document.getElementById(`filter${city}`).addEventListener("click", function () {
+      getEvents(city);
+      activeButton(city);
+
+      const currentCity = getLocationCoordinates(city);
+      map.setCenter(currentCity);
+      map.setZoom(10);
+      if (city === "All") {
+        getEvents("all");
+        map.setCenter(defaultPosition);
+        map.setZoom(6);
+      }
+    });
+  });
 
   // Call getEvents with a default file when the page loads
   getEvents("all");
@@ -88,12 +88,11 @@ function activeButton(city) {
   if (activeButton) {
     activeButton.classList.add('active');
   }
-
 }
 
 function getEvents(city) {
   // Clear the events list
-  const eventsList = document.querySelector(".events-list");
+  eventsList = document.querySelector(".events-list");
   eventsList.innerHTML = "";
 
   // Clear map markers
@@ -117,52 +116,64 @@ function getEvents(city) {
     .then((response) => response.json())
     .then((data) => {
       // Filter events based on the specified city
-      const filteredEvents = city === "all" ? data : data.filter(event => event.city === city);
-      // Loop through the filtered event data and create elements to display them
-      filteredEvents.forEach((event) => {
-        const eventElement = document.createElement("div");
-        eventElement.classList.add("event");
-        eventElement.innerHTML = `
-          <h3>${event.name}</h3>
-          <p><strong>Date:</strong> ${event.date}</p>
-          <p><strong>Location:</strong> ${event.location.name} (${event.location.address.streetAddress}, ${event.location.address.addressLocality}, 
-             ${event.location.address.addressRegion} ${event.location.address.postalCode})</p>
-          <p><strong>Description:</strong> ${event.description}</p>
-          <div id="event-links">
-            <a href="${event.url}" target="_blank">Learn More</a>
-            <button class="create-group-button" data-event-name="${event.name}">Create Group for this Event</button>
-          </div>`;
-        eventsList.appendChild(eventElement);
-
-        // Add a click event listener to the "Create Group" button
-        const createGroupButton = eventElement.querySelector(".create-group-button");
-        createGroupButton.addEventListener("click", function () {
-          createGroup(event.name);
-        });
-        var eventMarker = new google.maps.Marker({
-          position: { lat: event.position.lat, lng: event.position.lng },
-          map: map,
-          title: event.name,
-        });
-        markers.push(eventMarker);
-        var contentInfo = `<a href='${event.url}' target='_blank'>${event.name}</a>`
-        const infoWindow = new google.maps.InfoWindow({
-          content: contentInfo
-        });
-
-        eventMarker.addListener('click', () => {
-          infoWindows.forEach(iw => iw.close());
-          infoWindow.open(map, eventMarker);
-        });
-
-        infoWindows.push(infoWindow);
-      });
+      events = city === "all" ? data : data.filter(event => event.city === city);
+      displayEventsOnMap(events);
     })
     .catch((error) => {
       console.error("Error loading event data:", error);
     });
 }
 
+function displayEventsOnMap(events) {
+  // Clear map markers
+  markers.forEach(function (marker) {
+    marker.setMap(null);
+  });
+  markers = [];
+
+  // Clear the events list
+  eventsList.innerHTML = "";
+
+  // Loop through the event data and create elements to display them
+  events.forEach((event) => {
+    const eventElement = document.createElement("div");
+    eventElement.classList.add("event");
+    eventElement.innerHTML = `
+      <h3>${event.name}</h3>
+      <p><strong>Date:</strong> ${event.date}</p>
+      <p><strong>Location:</strong> ${event.location.name} (${event.location.address.streetAddress}, ${event.location.address.addressLocality}, 
+         ${event.location.address.addressRegion} ${event.location.address.postalCode})</p>
+      <p><strong>Description:</strong> ${event.description}</p>
+      <div id="event-links">
+        <a href="${event.url}" target="_blank">Learn More</a>
+        <button class="create-group-button" data-event-name="${event.name}">Create Group for this Event</button>
+      </div>`;
+    eventsList.appendChild(eventElement);
+
+    // Add a click event listener to the "Create Group" button
+    const createGroupButton = eventElement.querySelector(".create-group-button");
+    createGroupButton.addEventListener("click", function () {
+      createGroup(event.name);
+    });
+    var eventMarker = new google.maps.Marker({
+      position: { lat: event.position.lat, lng: event.position.lng },
+      map: map,
+      title: event.name,
+    });
+    markers.push(eventMarker);
+    var contentInfo = `<a href='${event.url}' target='_blank'>${event.name}</a>`
+    const infoWindow = new google.maps.InfoWindow({
+      content: contentInfo
+    });
+
+    eventMarker.addListener('click', () => {
+      infoWindows.forEach(iw => iw.close());
+      infoWindow.open(map, eventMarker);
+    });
+
+    infoWindows.push(infoWindow);
+  });
+}
 // Function to sign out the user and redirect to the index page
 function signOut() {
   firebase.auth().signOut().then(function () {
@@ -172,17 +183,6 @@ function signOut() {
       // An error occurred while signing out
       console.error('Sign-out error:', error);
   });
-}
-
-// Function to sign out the user and redirect to the index page
-function signOut() {
-    firebase.auth().signOut().then(function () {
-        // Sign-out successful, redirect to the index page
-        window.location.href = 'index.html';
-    }).catch(function (error) {
-        // An error occurred while signing out
-        console.error('Sign-out error:', error);
-    });
 }
 
 // Event listener for the sign-out button
@@ -247,4 +247,71 @@ function createGroup(eventName) {
     // User is not logged in
     alert("Please log in to create a group for the event.");
   }
+}
+
+document.getElementById('eventSearch').addEventListener('input', function () {
+  const searchValue = this.value.toLowerCase();
+  const filteredEvents = events.filter(event => {
+    const nameMatch = event.name.toLowerCase().includes(searchValue);
+    return nameMatch;
+  });
+  displayEventsOnMap(filteredEvents);
+});
+
+const startDateFilter = document.getElementById('startDateFilter');
+const endDateFilter = document.getElementById('endDateFilter');
+const applyDateFilterButton = document.getElementById('applyDateFilterButton');
+const resetDateFilterButton = document.getElementById('resetDateFilterButton');
+
+// Event listeners for start and end date inputs
+startDateFilter.addEventListener('change', updateStartDateFilter);
+endDateFilter.addEventListener('change', updateEndDateFilter);
+
+// Event listener for apply date filter button
+applyDateFilterButton.addEventListener('click', applyDateFilter);
+
+// Event listener for reset date filter button
+resetDateFilterButton.addEventListener('click', resetDateFilter);
+
+let startDateFilterValue = null;
+let endDateFilterValue = null;
+
+function updateStartDateFilter() {
+  // Parse input value as a date
+  startDateFilterValue = startDateFilter.value ? new Date(startDateFilter.value) : null;
+}
+
+function updateEndDateFilter() {
+  // Parse input value as a date
+  endDateFilterValue = endDateFilter.value ? new Date(endDateFilter.value) : null;
+}
+
+function applyDateFilter() {
+  // Display filtered events on the map and events list
+  const filteredEvents = filterEventsByDate(events);
+  displayEventsOnMap(filteredEvents);
+}
+
+function resetDateFilter() {
+  // Reset date filter variables and input values
+  startDateFilterValue = null;
+  endDateFilterValue = null;
+  startDateFilter.value = '';
+  endDateFilter.value = '';
+
+  // Display all events on the map and events list
+  displayEventsOnMap(events);
+}
+
+function filterEventsByDate(events) {
+  return events.filter(event => {
+    const eventStartDate = new Date(event.startDate);
+    const eventEndDate = new Date(event.endDate);
+
+    // Check if the event's start or end date is within the chosen date range
+    const isStartDateInRange = (!startDateFilterValue || eventStartDate >= startDateFilterValue);
+    const isEndDateInRange = (!endDateFilterValue || eventEndDate <= endDateFilterValue);
+
+    return isStartDateInRange && isEndDateInRange;
+  });
 }
