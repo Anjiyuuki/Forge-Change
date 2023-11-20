@@ -30,12 +30,11 @@
 
 <body id="index-body">
   <div class="two-column-layout">
-    <div class="left-column">
-        <h1 class="bold-text">Ready to Make a Difference?</h1>
-    </div>
+    
     <div class="right-column">
       <div class="home-container" >
         <img src="images/logo.png" alt="" width="200">
+        <h1 class="bold-text">Ready to Make a Difference?</h1>
       </div>
       <div id="register-login">
         <div id="registrationForm">
@@ -93,6 +92,7 @@
               <input type="email" id="resetEmail" placeholder="Enter your email" />
               <button id="resetPasswordButton">Reset Password</button>
           </div>
+          
         </div>
       </div>
       <p id="message"></p>
@@ -100,4 +100,34 @@
   </div>
     <script src="index.js"></script>
 </body>
+<button class="privacyButton" id="privacyPolicyButton">Download Privacy Policy</button>
+
+<script>
+    // Function to trigger the download of the Privacy Policy PDF
+    function downloadPrivacyPolicy() {
+        const pdfURL = 'Privacy Policy.pdf'; // Replace 'path_to_your_privacy_policy_file.pdf' with the actual path to your PDF file
+
+        fetch(pdfURL)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'Privacy Policy.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the PDF file:', error);
+                // Handle error scenario here
+            });
+    }
+
+    // Attach the function to the Privacy Policy button click event
+    const privacyPolicyButton = document.getElementById('privacyPolicyButton');
+    privacyPolicyButton.addEventListener('click', downloadPrivacyPolicy);
+</script>
+
 </html>
