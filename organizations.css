@@ -1,6 +1,5 @@
 #searchPage {
   display: grid; 
-  grid-auto-columns: 1fr; 
   grid-template-columns: 1.1fr 1.9fr; 
   grid-template-rows: 0.4fr 2fr; 
   gap: 0px 0px; 
@@ -14,12 +13,39 @@
 .volunteer-list {
   grid-area: Results;
   overflow-y: scroll;
-  height: 450px;
+  height: 480px;
   border-style: solid;
   border-color: #44672d;
   border-radius: 20px;
   border-width: 5px;
   padding: 20px;
+}
+
+.volunteer-list-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 3px solid #7a7878;
+  border-radius: 5px;
+  background: rgb(223, 241, 223);
+  color: #333;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.volunteer-list-item:hover {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 3px solid #7a7878;
+  border-radius: 5px;
+  background: rgb(149, 198, 149);
+  color: #333;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#orgName {
+  font-weight: bold;
+  font-size: 18px;
 }
 
 ::-webkit-scrollbar {
@@ -52,7 +78,7 @@ ul {
 
 .filter-button {
   font-size: 18px;
-  background-color: #44672d;
+  background-color: #607a50;
   color: #f4f7e1;
   padding: 10px 10px;
   border: none;
@@ -60,6 +86,7 @@ ul {
   margin: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-weight: bold;
 }
 
 .filter-button:hover {
@@ -73,10 +100,10 @@ ul {
 }
 
 .filter-button.active {
-  background-color: #bdf2f5;
+  background-color: #e3f9fa;
   border-style: solid;
   border-color: #44672d;
-  color: #44672d; /* Change to your desired active button text color */
+  color: #44672d;
 }
 
 #locationFilter {
@@ -89,9 +116,17 @@ ul {
 }
 
 #organizationSearch {
-  margin-right: 140px;
+  margin-right: 120px;
 }
 
 #filterAll {
   margin-left: 50px;
+}
+#organizations-map {
+  width: 90%;
+  height: 530px;
+}
+
+.website-link {
+  word-wrap: break-word;
 }

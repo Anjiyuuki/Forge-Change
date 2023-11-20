@@ -3,7 +3,10 @@ var organizations = [];
 var auth = firebase.auth();
 const firestore = firebase.firestore();
 markers = [];
+var map; // Define map globally
 const currentPage = window.location.pathname.split('/').pop();
+var userLocation;
+var defaultPosition;
 
 // Remove the 'active' class from all navigation links and add it to the current page
 document.querySelectorAll('.nav-link').forEach(link => {
@@ -32,8 +35,8 @@ async function initMap() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
   // Center map at SC by default
-  const defaultPosition = { lat: 33.8361, lng: -81.1637 };
-  let map = new Map(document.getElementById("organizations-map"), {
+  defaultPosition = { lat: 33.8361, lng: -81.1637 };
+  map = new Map(document.getElementById("organizations-map"), {
     zoom: 7,
     center: defaultPosition,
     mapId: "DEMO_MAP_ID",
@@ -48,13 +51,9 @@ async function initMap() {
         .then(function (doc) {
           if (doc.exists) {
             var userData = doc.data();
-            const userLocation = userData.location;
+            userLocation = userData.location;
             // Center the map at the user's location if it's one of the specified cities
-            if (["Greenville", "Charleston", "Columbia"].includes(userLocation)) {
-              const userPosition = getLocationCoordinates(userLocation);
-              map.setCenter(userPosition);
-              map.setZoom(10);
-            }
+            
           }
         })
         .catch(function (error) {
@@ -71,10 +70,20 @@ async function initMap() {
   topics.forEach(topic => {
     document.getElementById(`filter${topic}`).addEventListener("click", function () {
       activeButton(topic);
-      if (topic === 'LGBTQ+') {
-        filterVolunteerOrganizations('LGBTQ+');
-      } else if (topic === 'Suggested') {
+      if (topic === 'Suggested') {
         getSuggestedOrganizations();
+        const userPosition = getLocationCoordinates(userLocation);
+              map.setCenter(userPosition);
+              map.setZoom(10);
+      } else if (topic === 'All') {
+        infoWindows.forEach(iw => iw.close());
+        // Zoom out to show the whole state
+        map.setCenter(defaultPosition);
+        map.setZoom(7);
+        getOrganizationsFromFirestore();
+        activeButton('All');
+        filterVolunteerOrganizations(topic.toLowerCase());
+
       } else {
         filterVolunteerOrganizations(topic.toLowerCase());
       }
@@ -113,14 +122,14 @@ async function getSuggestedOrganizations() {
         .then(function (doc) {
           if (doc.exists) {
             var userData = doc.data();
-            var userInterests = userData.interests;
+            var userInterests = userData.interests.map(interest => interest.toLowerCase());
 
             // Filter organizations based on user's interests and location
             var suggestedOrganizations = organizations.filter(org => {
               const locationMatch = ['Charleston', 'Greenville', 'Columbia'].includes(userData.location)
                 ? org.location === userData.location
                 : true;
-              return userInterests.includes(org.keyword) && locationMatch;
+              return userInterests.includes(org.keyword.toLowerCase()) && locationMatch;
             });
             displaySuggestedOrganizations(suggestedOrganizations);
           } else {
@@ -142,7 +151,7 @@ function displaySuggestedOrganizations(suggestedOrganizations) {
   const keywordMarkerColors = {
     "animals": "red",
     "environment": "green",
-    "LGBTQ+": "yellow",
+    "lgbtq+": "yellow",
     "education": "blue",
     "humanitarian": "orange",
   };
@@ -170,20 +179,12 @@ function displaySuggestedOrganizations(suggestedOrganizations) {
     suggestedList.innerHTML = '<li>No suggested organizations based on your interests.</li>';
   } else { 
     suggestedOrganizations.forEach(org => {
-      const listItem = document.createElement('li');
-      listItem.style.marginBottom = '10px';
-      listItem.style.padding = '10px';
-      listItem.style.border = '1px solid #ccc';
-      listItem.style.borderRadius = '5px';
-      listItem.style.background = '#f4f7e1';
-      listItem.style.color = '#333';
-      listItem.style.fontSize = '16px';
-
-      listItem.innerHTML = `<strong>Name:</strong> ${org.name}
-                            <br><strong>Location:</strong> ${org.location}
-                            <br><strong>Topic:</strong> ${org.keyword}
-                            <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
-
+    const listItem = document.createElement('li');
+    listItem.className = 'volunteer-list-item';
+    listItem.innerHTML = `<div id="orgName">${org.name}</div>
+      <br><strong>Region:</strong> ${org.location}
+      <br><strong>Topic:</strong> ${org.keyword === 'lgbtq+' ? 'LGBTQ+' : org.keyword.toLowerCase()}
+      <br><strong>Website:</strong> <a href="${org.website}" class="website-link">${org.website}</a>`;
       suggestedList.appendChild(listItem);
 
       // Get the marker color based on the organization's keyword
@@ -212,8 +213,16 @@ function displaySuggestedOrganizations(suggestedOrganizations) {
         infoWindows.forEach(iw => iw.close());
         infoWindow.open(map, orgMarker);
       });
-
       infoWindows.push(infoWindow);
+
+      // Add click event listener to the organization list item
+      listItem.addEventListener('click', () => {
+        // Center the map on the clicked organization
+        map.setCenter(orgMarker.getPosition());
+        map.setZoom(15); // You can adjust the zoom level as needed
+        google.maps.event.trigger(orgMarker, 'click');
+
+      });
       });
   }
 }
@@ -224,13 +233,21 @@ async function getOrganizationsFromFirestore() {
     const querySnapshot = await firestore.collection('organizations').get();
     organizations = querySnapshot.docs.map(doc => {
       const data = doc.data();
+      // Ensure the necessary properties exist before accessing them
+      const name = data.name || '';
+      const lat = data.lat || 0;
+      const lng = data.lng || 0;
+      const city = data.city || '';
+      const website = data.website || '';
+      // Convert keyword to lowercase if it exists, otherwise, use an empty string
+      const keyword = data.keyword ? data.keyword.toLowerCase() : '';
       // Return an object with the organization's name, position, keyword, location, and website
       return {
-        name: data.name,
-        position: { lat: data.lat, lng: data.lng },
-        keyword: data.keyword,
-        location: data.city,
-        website: data.website
+        name: name,
+        position: { lat: lat, lng: lng },
+        keyword: keyword,
+        location: city,
+        website: website
       };
     });
     displayVolunteerOrganizations(organizations);
@@ -244,14 +261,15 @@ getOrganizationsFromFirestore();
 
 // Function to display filtered volunteer organizations
 function displayVolunteerOrganizations(organizations) {
-  // Define marker colors for each keyword
+
   const keywordMarkerColors = {
     "animals": "red",
     "environment": "green",
-    "LGBTQ+": "yellow",
+    "lgbtq+": "yellow",
     "education": "blue",
     "humanitarian": "orange",
-    };
+  };
+
   const volunteerList = document.querySelector('.volunteer-list');
   volunteerList.innerHTML = '';
 
@@ -261,45 +279,19 @@ function displayVolunteerOrganizations(organizations) {
     // Create displays for each organization
     organizations.forEach(org => {
       const listItem = document.createElement('li');
-      listItem.style.marginBottom = '10px';
-      listItem.style.padding = '10px';
-      listItem.style.border = '1px solid #ccc';
-      listItem.style.borderRadius = '5px';
-      listItem.style.background = '#f4f7e1';
-      listItem.style.color = '#333';
-      listItem.style.fontSize = '16px';
-      listItem.innerHTML = `<strong>Name:</strong> ${org.name}
-                            <br><strong>Region:</strong> ${org.location}
-                            <br><strong>Topic:</strong> ${org.keyword}
-                            <br><strong>Website:</strong> <a href="${org.website}">${org.website}</a>`;
-
+      listItem.className = 'volunteer-list-item';
+      listItem.innerHTML = `<div id="orgName">${org.name}</div>
+        <br><strong>Region:</strong> ${org.location}
+        <br><strong>Topic:</strong> ${org.keyword === 'lgbtq+' ? 'LGBTQ+' : org.keyword.toLowerCase()} 
+        <br><strong>Website:</strong> <a href="${org.website}" class="website-link">${org.website}</a>`;
       volunteerList.appendChild(listItem);
 
-      
-    // Clear map markers
-    for (let i = 0; i < infoWindows.length; i++) {
-      infoWindows[i].close();
-    }
-    infoWindows = []; 
-
-    if (map) {
-      map.data.forEach(function (feature) {
-        map.data.remove(feature);
-      });
-    }
-
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
-
-    // new func?
-    // Create markers and info windows for each organization
-    organizations.forEach(org => {
       // Get the marker color based on the organization's keyword
       const markerColor = keywordMarkerColors[org.keyword] || "default";
       function getMarkerIconUrl(color) {
         return `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`;
       }
+
       // Create markers and info windows for each organization
       const orgMarker = new google.maps.Marker({
         position: org.position,
@@ -310,23 +302,34 @@ function displayVolunteerOrganizations(organizations) {
           scaledSize: new google.maps.Size(30, 30),
         },
       });
-      markers.push(orgMarker);
+
       const infoWindow = new google.maps.InfoWindow({
         content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
       });
 
       orgMarker.addListener('click', () => {
+        // Close all other info windows
         infoWindows.forEach(iw => iw.close());
+
+        // Open the info window for the clicked marker
         infoWindow.open(map, orgMarker);
       });
 
       infoWindows.push(infoWindow);
-    });
-    
+
+      // Add click event listener to the organization list item
+      listItem.addEventListener('click', () => {
+        // Center the map on the clicked organization
+        map.setCenter(orgMarker.getPosition());
+        map.setZoom(15); // You can adjust the zoom level as needed
+        google.maps.event.trigger(orgMarker, 'click');
 
       });
-    }
+    });
+
+    // ... (existing code)
   }
+}
 
 document.getElementById('organizationSearch').addEventListener('input', function () {
   const searchValue = this.value.toLowerCase();
@@ -356,7 +359,5 @@ function signOut() {
     console.error('Sign-out error:', error);
   });
 }
-
-
 // Add an event listener to the sign-out button
 document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);

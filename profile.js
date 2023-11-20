@@ -60,7 +60,7 @@ auth.onAuthStateChanged(function(user) {
                     // Update the user's name in the profile
                     document.getElementById('user-name').textContent = userName;
                     document.getElementById('user-location').textContent = userLocation;
-                    document.getElementById('user-interests').textContent = userInterests;
+                    document.getElementById('user-interests').textContent = userInterests.join(', ');
                 } else {
                     console.log('User data not found');
                 }

@@ -134,16 +134,35 @@ function displayEventsOnMap(events) {
   // Clear the events list
   eventsList.innerHTML = "";
 
+  // Check if there are no matching events
+  if (events.length === 0) {
+    const noEventsMessage = document.createElement("p");
+    noEventsMessage.textContent = "No matching organizations found.";
+    eventsList.appendChild(noEventsMessage);
+    return;
+  }
+
   // Loop through the event data and create elements to display them
   events.forEach((event) => {
     const eventElement = document.createElement("div");
     eventElement.classList.add("event");
+
+    // Format the event date
+    const startDate = new Date(event.startDate);
+    const endDate = new Date(event.endDate);
+    const formattedStartDate = startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const formattedEndDate = endDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const formattedDate = startDate.toDateString() === endDate.toDateString()
+      ? formattedStartDate
+      : `${formattedStartDate} - ${formattedEndDate}`;
+
     eventElement.innerHTML = `
-      <h3>${event.name}</h3>
-      <p><strong>Date:</strong> ${event.date}</p>
-      <p><strong>Location:</strong> ${event.location.name} (${event.location.address.streetAddress}, ${event.location.address.addressLocality}, 
-         ${event.location.address.addressRegion} ${event.location.address.postalCode})</p>
-      <p><strong>Description:</strong> ${event.description}</p>
+      <div id="eventName">${event.name}</div>
+      <br><strong>Date:</strong> ${formattedDate}
+      <br><strong>Region:</strong> ${event.city}
+      <br><strong>Location:</strong> ${event.location.name} (${event.location.address.streetAddress}, ${event.location.address.addressLocality}, 
+         ${event.location.address.addressRegion} ${event.location.address.postalCode})
+      <br><strong>Description:</strong> ${event.description}
       <div id="event-links">
         <a href="${event.url}" target="_blank">Learn More</a>
         <button class="create-group-button" data-event-name="${event.name}">Create Group for this Event</button>
@@ -172,8 +191,18 @@ function displayEventsOnMap(events) {
     });
 
     infoWindows.push(infoWindow);
+
+    eventElement.addEventListener('click', () => {
+      // Center the map on the clicked event
+      map.setCenter({ lat: event.position.lat, lng: event.position.lng });
+      map.setZoom(15); // You can adjust the zoom level as needed
+  
+      // Trigger a click event on the marker to open the info window
+      google.maps.event.trigger(markers.find(marker => marker.getTitle() === event.name), 'click');
+    });
   });
 }
+
 // Function to sign out the user and redirect to the index page
 function signOut() {
   firebase.auth().signOut().then(function () {

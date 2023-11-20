@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="profile.css" >
-    <title>Info</title>
+    <title>Profile</title>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
@@ -29,25 +29,22 @@
   </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="images/logo.png" alt="" width="200">
-        </div>
-        <div class="sign-out">
-          <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
-        </div>
-        <div class="delete-account">
-          <button id="deleteAccountButton">Delete Account</button>
-        </div>
-    </header>
+  <header>
+    <div class="container">
+        <img src="images/logo.png" alt="" width="200">
+    </div>
     <nav>
-      <ul>
-        <li><a href="organizations.html" class="nav-link" id="explore">Organizations</a></li>
-        <li><a href="events.html" class="nav-link" id="events">Events</a></li>
-        <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
-        <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
-    </ul>
-</nav>
+      <ul id="nav-links">
+            <li><a href="organizations.html" class="nav-link" id="organizations">Organizations</a></li>
+            <li><a href="events.html" class="nav-link active" id="events">Events</a></li>
+            <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
+            <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="sign-out">
+      <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+  </div>
+  </header>
     <div class="profile-container">
         <div class="profile-info">
           <div id="profile-cont">

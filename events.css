@@ -1,20 +1,20 @@
 .events-container {
   display: grid; 
   grid-auto-columns: 1fr; 
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 0.8fr 1.2fr; 
   grid-template-rows: 0.1fr 1.4fr; 
-  gap: 10px 10px; 
+  gap: 5px 5px; 
   grid-template-areas: 
     "Dates Filters"
     "Events Map";  
   margin: auto;
-  height: 700px;
+  height: 600px;
   width: 90%;
 }
 
 .events-date {
   grid-area: Dates;
-  margin-left: 50px;
+  margin-left: 30px;
   margin-top: 20px;
 }
 
@@ -28,17 +28,17 @@
 }
 
 #eventSearch {
-  margin-left: 20px;
+  margin-left: 80px;
 }
 
 #events-map {
   grid-area: Map;
   border-radius: 10px;
+  margin-left: 40px;
 }
 
 .event-filter {
   grid-area: Filters;
-  /* change to center */
   margin-left: 100px;
 }
 
@@ -76,19 +76,39 @@
 }
 
 .event {
-  background-color: #bdd09e;
-  margin: 20px;
-  padding: 20px;
+  margin: 15px;
+  padding: 15px;
   position: relative; 
-  border: 1px solid #ccc;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
+  font-size: 13px;
+  border: 3px solid #7a7878;
   border-radius: 5px;
-  font-size: 12px;
+  background: rgb(223, 241, 223);
+  color: #333;
+}
+
+.event:hover {
+  margin: 15px;
+  padding: 15px;
+  position: relative; 
+  padding-bottom: 50px;
+  font-size: 13px;
+  border: 3px solid #7a7878;
+  border-radius: 5px;
+  background: rgb(168, 202, 168);
+  color: #333;
+  cursor: pointer;
+  
 }
 
 #event-links {
   position: absolute;
   bottom: 10px; 
+}
+
+#eventName {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 ::-webkit-scrollbar {
@@ -103,6 +123,13 @@
   background-color: rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
-ul {
-  list-style-type: none;
-}
+
+.create-group-button {
+  background-color: #555;
+  color: white;
+  padding: 4px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 180px;
+  }

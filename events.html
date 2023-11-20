@@ -10,19 +10,19 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
     <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
-        authDomain: "forge-change.firebaseapp.com",
-        databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
-        projectId: "forge-change",
-        storageBucket: "forge-change.appspot.com",
-        messagingSenderId: "325085017096",
-        appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
-        measurementId: "G-9Z8QFCGL1Q"
-      };
+        var firebaseConfig = {
+            apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
+            authDomain: "forge-change.firebaseapp.com",
+            databaseURL: "https://forge-change-default-rtdb.firebaseio.com",
+            projectId: "forge-change",
+            storageBucket: "forge-change.appspot.com",
+            messagingSenderId: "325085017096",
+            appId: "1:325085017096:web:6cf889cd7e5bd75e088dbd",
+            measurementId: "G-9Z8QFCGL1Q"
+        };
 
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
     </script>
 </head>
 <body>
@@ -30,18 +30,18 @@
     <div class="container">
         <img src="images/logo.png" alt="" width="200">
     </div>
+    <nav>
+        <ul id="nav-links">
+            <li><a href="organizations.html" class="nav-link" id="organizations">Organizations</a></li>
+            <li><a href="events.html" class="nav-link active" id="events">Events</a></li>
+            <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
+            <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
+        </ul>
+    </nav>
     <div class="sign-out">
-        <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
-    </div>
+      <button id="signOutButton" data-confirm="Are you sure you want to sign out?">Sign Out</button>
+  </div>
   </header>
-  <nav>
-      <ul>
-          <li><a href="organizations.html" class="nav-link" id="organizations">Organizations</a></li>
-          <li><a href="events.html" class="nav-link active" id="events">Events</a></li>
-          <li><a href="groups.html" class="nav-link" id="groups">Groups</a></li>
-          <li><a href="profile.html" class="nav-link" id="profile">Profile</a></li>
-      </ul>
-  </nav>
   <main class="events-container">
     <div class="events-date">
       <label for="endDateFilter">Filter by date:</label>
