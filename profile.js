@@ -18,7 +18,13 @@ document.querySelectorAll('.nav-link').forEach(link => {
   }
 });
 async function loadInfo() {
+  
 auth.onAuthStateChanged(function(user) {
+  if (!user) {
+    // If the user is not logged in, display a message
+    var profileBody = document.getElementById("profile-body");
+    profileBody.innerHTML = '<p>Login or register to see profile information.</p>';
+  }
     if (user) {
       var userID = user.uid;
     var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
@@ -300,7 +306,6 @@ auth.onAuthStateChanged(function(user) {
               console.error('Error fetching volunteer history:', error);
           });
 
-      // Rest of your code...
   } else {
       // User is not signed in, handle this case if needed
   }

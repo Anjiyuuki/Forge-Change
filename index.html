@@ -9,8 +9,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
-  
-
     <script>
         var firebaseConfig = {
           apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
@@ -28,79 +26,71 @@
     </script>
 </head>
 
-<body id="index-body">
-  <div class="two-column-layout">
-    
-    <div class="right-column">
-      <div class="home-container" >
-        <img src="images/logo.png" alt="" width="200">
-        <h1 class="bold-text">Ready to Make a Difference?</h1>
+<body>
+  <div class="home-container" >
+    <img src="images/logo.png" alt="" width="180">
+    <h1 class="bold-text">Ready to Make a Difference?</h1>
+  </div>
+  <div id="register-login">
+    <div id="registrationForm">
+      <div class="Title"><h2>Register</h2></div>
+      <div id="main-register" class="Form">
+        <label for="regEmail" class="labelReg">Email:</label>
+        <input type="email" id="regEmail" /><br>
+        <label for="regPassword" class="labelReg">Password:</label>
+        <input type="password" id="regPassword" oninput="checkPasswordStrength()" /><br>
+        <label for="regConfirmPassword" class="labelReg">Confirm Password:</label>
+        <input type="password" id="regConfirmPassword" /><br>
+        <label for="regUsername" class="labelReg">Username:</label>
+        <input type="text" id="regUsername"/><br>
+        <label for="regName" class="labelReg">Name:</label>
+        <input type="text" id="regName"/><br>
+        <label for="regLocation" class="labelReg">Location:</label><br>
+        <select id="regLocation">
+          <option value="Greenville">Greenville</option>
+          <option value="Columbia">Columbia</option>
+          <option value="Charleston">Charleston</option>
+        </select>
       </div>
-      <div id="register-login">
-        <div id="registrationForm">
-          <div class="Title"><h2 style="margin: 10px">Register</h2></div>
-          <div id="main-register" class="Form">
-            <label for="regEmail" class="labelReg">Email:</label>
-            <input type="email" id="regEmail" /><br>
-            <label for="regPassword" class="labelReg">Password:</label>
-            <input type="password" id="regPassword" oninput="checkPasswordStrength()" /><br>
-            <label for="regConfirmPassword" class="labelReg">Confirm Password:</label>
-            <input type="password" id="regConfirmPassword" /><br>
-            <label for="regUsername" class="labelReg">Username:</label>
-            <input type="text" id="regUsername"/><br>
-            <label for="regName" class="labelReg">Name:</label>
-            <input type="text" id="regName"/><br>
-            <label for="regLocation" class="labelReg">Location:</label><br>
-            <select id="regLocation">
-              <option value="Greenville">Greenville</option>
-              <option value="Columbia">Columbia</option>
-              <option value="Charleston">Charleston</option>
-            </select>
-          </div>
-          <!-- Add a dropdown for choosing interests -->
-          <div id="rightRegister">
-            <div id="passwordRequirements">
-              <p>Password Requirements:</p>
-              <ul>
-                  <li id="lengthRequirement">Minimum 8 characters</li>
-                  <li id="uppercaseRequirement">At least one uppercase letter</li>
-                  <li id="lowercaseRequirement">At least one lowercase letter</li>
-                  <li id="numberRequirement">At least one number</li>
-              </ul>
-          </div>
-          <div id="passwordStrength">Password Strength: <span id="strengthValue">0%</span></div>
-            <div id="interests" class="Checkboxes">
-              <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
-              <label><input type="checkbox" name="interest" value="animals" > Animals</label>
-              <label><input type="checkbox" name="interest" value="environment"> Environment</label>
-              <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
-              <label><input type="checkbox" name="interest" value="education"> Education</label>
-              <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
-            </div>
-          </div>
-          <button id="registerButton" class="Submit">Register</button>
-        </div>
-    
-        <div id="loginForm">
-            <h2>Login</h2>
-            <input type="email" id="loginEmail" placeholder="Email" /><br>
-            <input type="password" id="loginPassword" placeholder="Password" /><br>
-            <button id="loginButton" style="margin-bottom: 20px">Login</button>
-            
-            <div id="resetPasswordForm">
-              <h2>Reset Password</h2>
-              <input type="email" id="resetEmail" placeholder="Enter your email" />
-              <button id="resetPasswordButton">Reset Password</button>
-          </div>
-          
+      <div id="passwordRequirements">
+        <p><strong>Password Requirements:</strong></p>
+        <ul>
+            <li id="lengthRequirement">Minimum 8 characters</li>
+            <li id="uppercaseRequirement">At least one uppercase letter</li>
+            <li id="lowercaseRequirement">At least one lowercase letter</li>
+            <li id="numberRequirement">At least one number</li>
+        </ul>
+        <div id="passwordStrength">Password Strength: <span id="strengthValue">0%</span></div>
+        <div id="interests" class="Checkboxes">
+          <label for="interests" id="interestsPrompt"><b>Choose Your Interests:</b></label>
+          <label><input type="checkbox" name="interest" value="animals" > Animals</label>
+          <label><input type="checkbox" name="interest" value="environment"> Environment</label>
+          <label><input type="checkbox" name="interest" value="LGBTQ+"> LGBTQ+</label>
+          <label><input type="checkbox" name="interest" value="education"> Education</label>
+          <label><input type="checkbox" name="interest" value="humanitarian"> Humanitarian</label>
         </div>
       </div>
-      <p id="message"></p>
+      <button id="registerButton" class="Submit">Register</button>
+    </div>
+    <div id="loginForm">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" /><br>
+        <input type="password" id="loginPassword" placeholder="Password" /><br>
+        <button id="loginButton" style="margin-bottom: 20px">Login</button>
+        <div id="resetPasswordForm">
+          <h2>Reset Password</h2>
+          <input type="email" id="resetEmail" placeholder="Enter your email" />
+          <button id="resetPasswordButton">Reset Password</button>
+      </div>
     </div>
   </div>
-    <script src="index.js"></script>
+  <div>
+    <button class="privacyButton" id="privacyPolicyButton">Download Privacy Policy</button>
+    <button class="continueButton" id="continueWithoutLoginButton">Continue without logging in</button>
+  </div>
+  <p id="message"></p>
+  <script src="index.js"></script>
 </body>
-<button class="privacyButton" id="privacyPolicyButton">Download Privacy Policy</button>
 
 <script>
     // Function to trigger the download of the Privacy Policy PDF

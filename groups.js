@@ -196,6 +196,7 @@ function showUserPopup(username) {
   const popupName = document.getElementById('popup-name');
   const popupLocation = document.getElementById('popup-location');
   const popupInterests = document.getElementById('popup-interests');
+  const popupEmail = document.getElementById('popup-email');
 
   // Fetch user data and update the popup content
   firestore.collection('users').where('username', '==', username).get().then((querySnapshot) => {
@@ -205,6 +206,7 @@ function showUserPopup(username) {
       popupName.textContent = '';
       popupLocation.textContent = '';
       popupInterests.textContent = '';
+      popupEmail.textContent = '';
     } else {
       // User found, update the popup content
       const userData = querySnapshot.docs[0].data();
@@ -212,12 +214,16 @@ function showUserPopup(username) {
       popupName.textContent = 'Name: ' + userData.name;
       popupLocation.textContent = 'Location: ' + userData.location;
       popupInterests.textContent = 'Interests: ' + userData.interests.join(', ');
+      if (!userData.email) {
+        popupEmail.textContent = 'Email: Not available';
+      } else {
+        popupEmail.textContent = 'Email:'+ userData.email;
+      }
+      userPopup.style.display = 'block';
     }
-
-    // Show the user popup
-    userPopup.style.display = 'block';
   });
 }
+
 // Function to close the user popup
 function closeUserPopup() {
   const userPopup = document.getElementById('user-popup');

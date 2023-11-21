@@ -69,12 +69,14 @@ async function initMap() {
   const topics = ['All', 'Animals', 'Education', 'Environment', 'LGBTQ+', 'Humanitarian', 'Suggested'];
   topics.forEach(topic => {
     document.getElementById(`filter${topic}`).addEventListener("click", function () {
+      clearMapMarkers(); // Clear existing markers
       activeButton(topic);
+  
       if (topic === 'Suggested') {
         getSuggestedOrganizations();
         const userPosition = getLocationCoordinates(userLocation);
-              map.setCenter(userPosition);
-              map.setZoom(10);
+        map.setCenter(userPosition);
+        map.setZoom(10);
       } else if (topic === 'All') {
         infoWindows.forEach(iw => iw.close());
         // Zoom out to show the whole state
@@ -83,7 +85,6 @@ async function initMap() {
         getOrganizationsFromFirestore();
         activeButton('All');
         filterVolunteerOrganizations(topic.toLowerCase());
-
       } else {
         filterVolunteerOrganizations(topic.toLowerCase());
       }
@@ -261,6 +262,7 @@ getOrganizationsFromFirestore();
 
 // Function to display filtered volunteer organizations
 function displayVolunteerOrganizations(organizations) {
+  clearMapMarkers(); // Clear existing markers
 
   const keywordMarkerColors = {
     "animals": "red",
@@ -303,6 +305,8 @@ function displayVolunteerOrganizations(organizations) {
         },
       });
 
+      markers.push(orgMarker);
+
       const infoWindow = new google.maps.InfoWindow({
         content: `<a href="${org.website}" target="_blank">${org.name}</a>`,
       });
@@ -323,11 +327,8 @@ function displayVolunteerOrganizations(organizations) {
         map.setCenter(orgMarker.getPosition());
         map.setZoom(15); // You can adjust the zoom level as needed
         google.maps.event.trigger(orgMarker, 'click');
-
       });
     });
-
-    // ... (existing code)
   }
 }
 
@@ -361,3 +362,10 @@ function signOut() {
 }
 // Add an event listener to the sign-out button
 document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);
+
+function clearMapMarkers() {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+}

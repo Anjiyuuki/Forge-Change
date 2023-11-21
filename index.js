@@ -11,9 +11,15 @@ document.getElementById('registerButton').addEventListener('click', function() {
   var confirmPassword = document.getElementById('regConfirmPassword').value; // Get the confirm password
   // Check if the password and confirm password match
   if (password !== confirmPassword) {
-    document.getElementById('message').textContent = 'Password and confirm password do not match.';
+    document.getElementById('message').textContent = 'Error: Password and confirm password do not match.';
     return; // Prevent registration if passwords don't match
 }
+  // Check if the password meets the strength requirements
+  var passwordStrength = checkPasswordStrength();
+  if (passwordStrength !== 100) {
+    document.getElementById('message').textContent = 'Error: Password does not meet strength requirements.';
+    return; // Prevent registration if requirements are not met
+  }
   
   // Get the selected location from the dropdown
   var locationDropdown = document.getElementById('regLocation');
@@ -27,7 +33,7 @@ document.getElementById('registerButton').addEventListener('click', function() {
         .then(function(querySnapshot) {
             if (!querySnapshot.empty) {
                 // Username already exists, show an error message
-                document.getElementById('message').textContent = 'Username is already taken. Please choose a different one.';
+                document.getElementById('message').textContent = 'Error: Username is already taken. Please choose a different one.';
             } else {
                 // Username is unique, proceed with user registration
                 auth.createUserWithEmailAndPassword(email, password)
@@ -41,10 +47,11 @@ document.getElementById('registerButton').addEventListener('click', function() {
                             name: name,
                             location: location,
                             interests: interests,
-                            hours: 0
+                            hours: 0,
+                            email: email
                         })
                         .then(function() {
-                            document.getElementById('message').textContent = 'Registration successful. User UID: ' + user.uid;
+                            document.getElementById('message').textContent = 'Error: Registration successful. User UID: ' + user.uid;
                             // Redirect to explore.html or any other page
                             window.location.href = 'organizations.html';
                         })
@@ -56,7 +63,7 @@ document.getElementById('registerButton').addEventListener('click', function() {
                         // Handle errors during registration
                         var errorCode = error.code;
                         var errorMessage = error.message;
-                        document.getElementById('message').textContent = 'Registration failed: ' + errorMessage;
+                        document.getElementById('message').textContent = 'Error: Registration failed: ' + errorMessage;
                     });
             }
         })
@@ -84,7 +91,7 @@ document.getElementById('loginButton').addEventListener('click', function() {
             // Handle errors during login
             var errorCode = error.code;
             var errorMessage = error.message;
-            document.getElementById('message').textContent = 'Login failed: ' + errorMessage;
+            document.getElementById('message').textContent = 'Error: Login failed: ' + errorMessage;
         });
 });
 
@@ -101,7 +108,7 @@ document.getElementById('resetPasswordButton').addEventListener('click', functio
       .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
-          document.getElementById('message').textContent = 'Password reset failed: ' + errorMessage;
+          document.getElementById('message').textContent = 'Error: Password reset failed: ' + errorMessage;
       });
 });
 
@@ -131,4 +138,14 @@ function checkPasswordStrength() {
   // Update strength display
   document.getElementById('strengthValue').textContent = strength + '%';
   document.getElementById('strengthValue').style.color = strength === 100 ? 'green' : 'red';
+
+  return strength;
 }
+
+function continueWithoutLogin() {
+  window.location.href = 'organizations.html';
+}
+
+// Attach the function to the button click event
+const continueWithoutLoginButton = document.getElementById('continueWithoutLoginButton');
+continueWithoutLoginButton.addEventListener('click', continueWithoutLogin);

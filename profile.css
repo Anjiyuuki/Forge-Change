@@ -1,12 +1,12 @@
 .profile-container {
-  margin-left: 20px;
+  margin-left: 70px;
 }
 
 .profile-info {
   display: grid; 
-  width: 35%;
+  width: 50%;
   grid-auto-columns: 1fr; 
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 0.8fr 1.2fr; 
   grid-template-rows: 1.5fr 0.5fr; 
   gap: 20px 0px; 
   grid-template-areas: 

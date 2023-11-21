@@ -1,3 +1,27 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack header and forms vertically */
+  color: #2b4719 ;
+  background-color: #44672d;
+}
+
+.home-container {
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f4f7e1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 110px;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.home-container img {
+  margin-right: 150px; /* Add some space between the image and the text */
+}
+
 #register-login {
   display: flex;
   justify-content: center;
@@ -6,29 +30,29 @@
 
 #registrationForm, #loginForm {
   margin: 5px;
-  padding: 15px;
+  padding: 20px;
   border: 3px solid #333;
   border-radius: 5px;
   text-align: center;
-  height: 450px;
+  height: 420px;
   background-color: #bdd09e;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 #registrationForm {
   display: grid; 
   place-items: center;
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 0.5fr 2.2fr 0.3fr;
-  gap: 0px 0px; 
+  grid-template-columns: 0.7fr 1.3fr; 
+  grid-template-rows: 0.4fr 2.2fr 0.4fr;
+  gap: 0px 20px; 
   grid-template-areas: 
     "Title Title"
     "Form Checkboxes"
     "Submit Submit"; 
+  width: 450px;
 }
 .Title { 
   grid-area: Title; 
-  margin: 0px;
 }
 
 .Submit { 
@@ -38,8 +62,6 @@
 
 .Form { 
   grid-area: Form; 
-  margin-bottom:15px;
-  float:left;
 }
 
 .Checkboxes { 
@@ -52,25 +74,24 @@
 }
 
 #main-register input{
-  float:left;
   width:170px;
   margin-bottom:10px;
+  float: left;
 }
 
-#main-register {
-  margin-top: 1px;
-}
 #interests {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #interests label {
   display: flex;
   align-items: center;
 }
+
 #interestsPrompt {
   margin-bottom: 10px;
 }
@@ -97,24 +118,46 @@
   margin-bottom: 10px;
 }
 
-.home-container {
-  margin: 0 auto;
-  padding: 3rem;
-  background-color: #f4f7e1;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center; /* Align items vertically in the center */
-}
-
-.home-container img {
-  margin-right: 150px; /* Add some space between the image and the text */
-}
-
 #passwordRequirements, #passwordStrength {
   font-size: 13px;
 }
 
+#passwordRequirements ul {
+  text-align: left;
+}
+
+#passwordRequirements p {
+  font-size: 16px; 
+  margin-left: 20px;
+}
+
 #resetPasswordForm {
   margin-top: 100px;
+}
+
+.privacyButton {
+  background-color: #0b4126;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 100px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.continueButton {
+  background-color: #0b4126;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;;
+}
+
+#message {
+  color: white;
 }
