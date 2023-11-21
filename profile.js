@@ -18,13 +18,14 @@ document.querySelectorAll('.nav-link').forEach(link => {
   }
 });
 async function loadInfo() {
-  
-auth.onAuthStateChanged(function(user) {
-  if (!user) {
-    // If the user is not logged in, display a message
-    var profileBody = document.getElementById("profile-body");
-    profileBody.innerHTML = '<p>Login or register to see profile information.</p>';
-  }
+  auth.onAuthStateChanged(function(user) {
+    if (!user) {
+      // If the user is not logged in, display a message
+      var profileBody = document.getElementById("profile-body");
+      profileBody.innerHTML = '<p>Login or register to see profile information.</p>';
+    }
+  });
+  auth.onAuthStateChanged(function(user) {
     if (user) {
       var userID = user.uid;
     var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
@@ -36,20 +37,38 @@ auth.onAuthStateChanged(function(user) {
     // Fetch the user's volunteer history
     volunteerHistoryRef.get()
       .then(function (querySnapshot) {
+        var volunteerHistory = [];
         querySnapshot.forEach(function (doc) {
           var data = doc.data();
-          var organization = data.organization;
-          var activity = data.activity;
-          var hours = data.hours;
-          var date = data.date;
-
+          volunteerHistory.push(data);
+        
           // Create a new row for each volunteer activity and append it to the table
           var newRow = volunteerHistoryTable.querySelector('tbody').insertRow();
-          newRow.insertCell(0).textContent = organization;
-          newRow.insertCell(1).textContent = activity;
-          newRow.insertCell(2).textContent = hours;
-          newRow.insertCell(3).textContent = date;
+          newRow.insertCell(0).textContent = data.organization;
+          newRow.insertCell(1).textContent = data.activity;
+          newRow.insertCell(2).textContent = data.hours;
+          newRow.insertCell(3).textContent = data.date;
+        
+          // Add a settings button and dropdown menu to each row
+          var settingsCell = newRow.insertCell(4);
+          var settingsButton = document.createElement('button');
+          settingsButton.textContent = 'Settings';
+          settingsButton.onclick = function () {
+            showSettingsDropdown(doc.id); // Pass the document ID to identify the activity
+          };
+          settingsCell.appendChild(settingsButton);
+        
+          // Create a dropdown menu for each row
+          var dropdownMenu = document.createElement('div');
+          dropdownMenu.className = 'dropdown-menu';
+          dropdownMenu.id = 'dropdown_' + doc.id; // Use the document ID to uniquely identify each dropdown
+          dropdownMenu.innerHTML = '<button onclick="editActivity(\'' + doc.id + '\')">Edit</button>' +
+            '<button onclick="confirmDeleteActivity(\'' + doc.id + '\')">Delete</button>';
+          settingsCell.appendChild(dropdownMenu);
+          
         });
+        var totalHours = calculateTotalVolunteerHours(volunteerHistory);
+        updateVolunteerHours(totalHours);
       })
       .catch(function (error) {
         console.error('Error fetching volunteer history:', error);
@@ -67,6 +86,8 @@ auth.onAuthStateChanged(function(user) {
                     document.getElementById('user-name').textContent = userName;
                     document.getElementById('user-location').textContent = userLocation;
                     document.getElementById('user-interests').textContent = userInterests.join(', ');
+                    document.getElementById('user-hours').textContent = userHours;
+
                 } else {
                     console.log('User data not found');
                 }
@@ -207,6 +228,8 @@ function addVolunteerActivityToFirestore(activityData) {
       // Add a new document with a unique ID and the provided activity data
       volunteerHistoryRef.add(activityData)
           .then(() => {
+              updateTotalVolunteerHours(userId, activityData.hours);
+
               // Successfully added the activity, you can update the table here
               console.log('Volunteer activity added to Firestore');
               loadInfo();
@@ -215,6 +238,29 @@ function addVolunteerActivityToFirestore(activityData) {
               console.error('Error adding volunteer activity:', error);
           });
   }
+}
+function updateTotalVolunteerHours(userId, newHours) {
+  const userRef = firestore.collection('users').doc(userId);
+  userRef.get()
+    .then((doc) => {
+      if (doc.exists) {
+        const userData = doc.data();
+        const currentTotalHours = userData.hours || 0;
+        const updatedTotalHours = currentTotalHours + newHours;
+
+        // Update the total hours in the user document
+        userRef.update({ hours: updatedTotalHours })
+          .then(() => {
+            console.log('Total volunteer hours updated in Firestore');
+          })
+          .catch((error) => {
+            console.error('Error updating total volunteer hours:', error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.error('Error getting user document:', error);
+    });
 }
 
 // Function to open the volunteer activity form popup
@@ -253,7 +299,6 @@ document.getElementById('submitVolunteerActivityButton').addEventListener('click
       hours: parseFloat(hours),
       date: date,
   };
-
   addVolunteerActivityToFirestore(activityData);
   closeVolunteerActivityForm();
 });
@@ -271,45 +316,6 @@ function calculateTotalVolunteerHours(volunteerHistory) {
   });
   return totalHours;
 }
-
-auth.onAuthStateChanged(function(user) {
-  if (user) {
-      var userID = user.uid;
-      var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
-      var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory');
-
-      // Clear the existing table data
-      volunteerHistoryTable.querySelector('tbody').innerHTML = '';
-
-      // Fetch the user's volunteer history
-      volunteerHistoryRef.get()
-          .then(function(querySnapshot) {
-              const volunteerHistory = [];
-              querySnapshot.forEach(function(doc) {
-                  var data = doc.data();
-                  var organization = data.organization;
-                  var activity = data.activity;
-                  var hours = data.hours;
-                  var date = data.date;
-
-                  // Store the activity in the volunteerHistory array
-                  volunteerHistory.push(data);
-              });
-
-              // Calculate the total volunteer hours
-              const totalHours = calculateTotalVolunteerHours(volunteerHistory);
-
-              // Update the displayed volunteer hours on the page
-              document.getElementById('user-hours').textContent = totalHours;
-          })
-          .catch(function(error) {
-              console.error('Error fetching volunteer history:', error);
-          });
-
-  } else {
-      // User is not signed in, handle this case if needed
-  }
-});
 
 function chooseAndUploadProfilePicture() {
   const fileInput = document.getElementById('profile-picture-upload');
@@ -395,7 +401,6 @@ function loadUserProfilePicture() {
 // Call the function to load the user's profile picture
 loadUserProfilePicture();
 
-document.getElementById('deleteAccountButton').addEventListener('click', handleDeleteAccountConfirmation);
 
 function handleDeleteAccountConfirmation() {
   const confirmationMessage = "Are you sure you want to delete your account? This action cannot be undone.";
@@ -429,4 +434,224 @@ function deleteAccount() {
         console.error('Error deleting user account:', error);
       });
   }
+}
+
+// Add these functions after the existing JavaScript code
+
+// Show the dropdown menu for a specific row
+function showSettingsDropdown(documentId) {
+  var dropdownMenu = document.getElementById('dropdown_' + documentId);
+  closeAllDropdowns(); // Close any open dropdowns
+  dropdownMenu.style.display = 'block';
+}
+
+// Close all open dropdowns
+function closeAllDropdowns() {
+  var dropdowns = document.querySelectorAll('.dropdown-menu');
+  dropdowns.forEach(function (dropdown) {
+    dropdown.style.display = 'none';
+  });
+}
+
+// Edit the selected volunteer activity
+function editActivity(documentId) {
+  closeAllDropdowns();
+
+  // Retrieve the activity data from Firestore
+  var user = firebase.auth().currentUser;
+  if (user) {
+    var userID = user.uid;
+    var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory').doc(documentId);
+
+    volunteerHistoryRef.get()
+      .then(function (doc) {
+        if (doc.exists) {
+          var activityData = doc.data();
+          // Open the edit activity form with the existing data
+          openEditActivityForm(documentId, activityData);
+        } else {
+          console.log('Volunteer activity not found');
+        }
+      })
+      .catch(function (error) {
+        console.error('Error fetching volunteer activity:', error);
+      });
+  }
+}
+
+// Open the edit activity form with pre-filled data
+function openEditActivityForm(documentId, activityData) {
+  // Populate the form fields with the existing data
+  document.getElementById('editVolunteerOrganization').value = activityData.organization;
+  document.getElementById('editVolunteerActivity').value = activityData.activity;
+  document.getElementById('editVolunteerHours').value = activityData.hours;
+  document.getElementById('editVolunteerDate').value = activityData.date;
+
+  // Show the edit activity form
+  openForm('editVolunteerActivityForm');
+
+  // Add an event listener to the submit button in the edit activity form
+  document.getElementById('submitEditVolunteerActivityButton').addEventListener('click', function () {
+    // Update the volunteer activity in Firestore and reload the table
+    updateVolunteerActivity(documentId);
+    closeForm('editVolunteerActivityForm');
+  });
+}
+
+function updateVolunteerHours(hours) {
+  document.getElementById('user-hours').textContent = hours;
+}
+
+// Update the volunteer activity in Firestore
+function updateVolunteerActivity(documentId) {
+  var user = firebase.auth().currentUser;
+  if (user) {
+    var userID = user.uid;
+    var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory').doc(documentId);
+
+    // Get the existing data from Firestore
+    volunteerHistoryRef.get()
+      .then(function (doc) {
+        if (doc.exists) {
+          var oldData = doc.data();
+          var updatedData = {
+            organization: document.getElementById('editVolunteerOrganization').value,
+            activity: document.getElementById('editVolunteerActivity').value,
+            hours: parseFloat(document.getElementById('editVolunteerHours').value),
+            date: document.getElementById('editVolunteerDate').value,
+          };
+
+          // Calculate the difference in hours
+          var hoursDifference = updatedData.hours - oldData.hours;
+
+          // Update the volunteer activity in Firestore
+          volunteerHistoryRef.update(updatedData)
+            .then(function () {
+              console.log('Volunteer activity updated in Firestore');
+              updateTotalVolunteerHours(userID, hoursDifference);
+              loadInfo(); // Reload the volunteer history table
+            })
+            .catch(function (error) {
+              console.error('Error updating volunteer activity:', error);
+            });
+        } else {
+          console.log('Volunteer activity not found');
+        }
+      })
+      .catch(function (error) {
+        console.error('Error fetching volunteer activity:', error);
+      });
+  }
+}
+
+// Confirm the deletion of the selected volunteer activity
+function confirmDeleteActivity(documentId) {
+  closeAllDropdowns();
+  var confirmation = window.confirm('Are you sure you want to delete this volunteer activity?');
+  if (confirmation) {
+    deleteVolunteerActivity(documentId);
+  }
+}
+
+// Delete the volunteer activity from Firestore
+// Delete the volunteer activity from Firestore
+function deleteVolunteerActivity(documentId) {
+  var user = firebase.auth().currentUser;
+  if (user) {
+    var userID = user.uid;
+    var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory').doc(documentId);
+
+    // Fetch the hours of the activity to be deleted
+    volunteerHistoryRef.get()
+      .then(function (doc) {
+        if (doc.exists) {
+          var activityData = doc.data();
+          var hoursToDelete = activityData.hours;
+
+          // Delete the volunteer activity from Firestore
+          volunteerHistoryRef.delete()
+            .then(function () {
+              console.log('Volunteer activity deleted from Firestore');
+
+              // Fetch the current total volunteer hours from the user document
+              firestore.collection('users').doc(userID).get()
+                .then(function (userDoc) {
+                  if (userDoc.exists) {
+                    var userData = userDoc.data();
+                    var currentTotalHours = userData.hours;
+
+                    // Calculate the updated total volunteer hours
+                    var updatedTotalHours = currentTotalHours - hoursToDelete;
+
+                    // Update the total volunteer hours in the user document
+                    firestore.collection('users').doc(userID).update({
+                      hours: updatedTotalHours
+                    })
+                      .then(function () {
+                        console.log('Total volunteer hours updated in Firestore');
+                        
+                        // Fetch the updated volunteer history to display on the page
+                        firestore.collection('users').doc(userID).collection('volunteerHistory').get()
+                          .then(function (querySnapshot) {
+                            var volunteerHistory = [];
+                            querySnapshot.forEach(function (doc) {
+                              var data = doc.data();
+                              volunteerHistory.push(data);
+                            });
+
+                            // Update the displayed volunteer hours on the page
+                            var totalHours = calculateTotalVolunteerHours(volunteerHistory);
+                            updateVolunteerHours(totalHours);
+                            loadInfo();
+                          })
+                          .catch(function (error) {
+                            console.error('Error fetching updated volunteer history:', error);
+                          });
+                      })
+                      .catch(function (error) {
+                        console.error('Error updating total volunteer hours in Firestore:', error);
+                      });
+                  } else {
+                    console.log('User document not found');
+                  }
+                })
+                .catch(function (error) {
+                  console.error('Error fetching user document:', error);
+                });
+            })
+            .catch(function (error) {
+              console.error('Error deleting volunteer activity:', error);
+            });
+        } else {
+          console.log('Volunteer activity not found');
+        }
+      })
+      .catch(function (error) {
+        console.error('Error fetching volunteer activity:', error);
+      });
+  }
+}
+
+function exportVolunteerInfo() {
+    // Get the volunteer history table
+  var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
+
+  // Create a new Workbook
+  var wb = XLSX.utils.book_new();
+
+  // Extract the headers and data from the first 4 columns
+  var headers = Array.from(volunteerHistoryTable.querySelectorAll('thead th')).slice(0, 4).map(th => th.textContent.trim());
+  var dataRows = Array.from(volunteerHistoryTable.querySelectorAll('tbody tr')).map(row =>
+    Array.from(row.querySelectorAll('td')).slice(0, 4).map(td => td.textContent.trim())
+  );
+
+  // Create a new worksheet
+  var ws = XLSX.utils.aoa_to_sheet([headers, ...dataRows]);
+
+  // Add the worksheet to the workbook
+  XLSX.utils.book_append_sheet(wb, ws, 'Volunteer History');
+
+  // Save the workbook as an Excel file
+  var fileName = 'VolunteerHistory.xlsx';
+  XLSX.writeFile(wb, fileName);
 }

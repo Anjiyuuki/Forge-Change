@@ -10,7 +10,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
     <script>
       var firebaseConfig = {
         apiKey: "AIzaSyBqQI5B3nOy4tI1GdgVZpcwFsebQhOeVrM",
@@ -47,6 +47,7 @@
   </div>
   </header>
     <div class="profile-container" id="profile-body">
+      <div id="left-column">
         <div class="profile-info">
           <div id="profile-cont">
             <img src="" alt="User Profile Picture" class="Picture" id="profile-picture">
@@ -61,72 +62,72 @@
             <h3>Location: <span id="user-location"></span></h3>
             <h3>Interests: <span id="user-interests"></span></h3>
             <h3>Volunteer Hours: <span id="user-hours"></span></h3>
+            <div id="editDelete">
+              <button class="open-button" onclick="openForm('editProfileForm')">Edit Profile</button>
+              <button id="deleteAccountBtn" onclick="handleDeleteAccountConfirmation()">Delete Account</button>
+            </div>
           </div>
         </div>
-      
-    <!-- A button to open the popup form -->
-    <button class="open-button" onclick="openForm('editProfileForm')">Edit Profile</button>
+        <div class="form-popup" id="editProfileForm">
+          <form action="/action_page.php" class="form-container" >
+            <span class="close right-align" onclick="closeForm('editProfileForm')">&times;</span>
+            <h2>Edit Profile</h2>
+            <label for="newName">Name:</label>
+            <input type="text" id="newName">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername">
+            <label for="newEmail">Email:</label>
+            <input type="email" id="newEmail" class="input-field">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword">
+            <div id="editButtons">
+              <div id="interestOptions">
+                <label for="newInterests">Interests:</label><br>
+                <input type="checkbox" id="interestAnimals" name="interest" value="Animals">
+                <label for="interestAnimals">Animals</label><br>
+                <input type="checkbox" id="interestEnvironment" name="interest" value="Environment">
+                <label for="interestEnvironment">Environment</label><br>
+                <input type="checkbox" id="interestEducation" name="interest" value="Education">
+                <label for="interestEducation">Education</label><br>
+                <input type="checkbox" id="interestLGBTQ" name="interest" value="LGBTQ+">
+                <label for="interestLGBTQ">LGBTQ+</label><br>
+                <input type="checkbox" id="interestHumanitarian" name="interest" value="Humanitarian">
+                <label for="interestHumanitarian">Humanitarian</label><br>
+              </div>
+              <div id="locationOptions">
+                <label for="newLocation">Location:</label><br>
+                <input type="radio" id="locationCharleston" name="location" value="Charleston">
+                <label for="locationCharleston">Charleston</label><br>
+                <input type="radio" id="locationGreenville" name="location" value="Greenville">
+                <label for="locationGreenville">Greenville</label><br>
+                <input type="radio" id="locationColumbia" name="location" value="Columbia">
+                <label for="locationColumbia">Columbia</label><br>
+              </div>
+            </div>
+            <button type="button" id="submitChangesButton" onclick="submitProfileChanges()">Submit Changes</button>
+          </form>
+        </div>
+        <div class="volunteer-history">
+          <h2>Volunteer History</h2>
+          <table id="volunteerHistoryTable">
+              <thead>
+                  <tr>
+                      <th>Organization</th>
+                      <th>Activity</th>
+                      <th>Hours</th>
+                      <th>Date</th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+          <button id="addVolunteerActivityButton">Add Volunteer Activity</button>
+          <button onclick="exportVolunteerInfo()" id="exportVolunteerDataButton">Export Volunteer Data</button>
 
-    <!-- The form container with the edit profile form -->
-    <div class="form-popup" id="editProfileForm">
-      <form action="/action_page.php" class="form-container" >
-        <span class="close right-align" onclick="closeForm('editProfileForm')">&times;</span>
-        <h2>Edit Profile</h2>
-        <label for="newName">Name:</label>
-        <input type="text" id="newName">
-        <label for="newUsername">Username:</label>
-        <input type="text" id="newUsername">
-        <label for="newEmail">Email:</label>
-        <input type="email" id="newEmail" class="input-field">
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword">
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword">
-        <div id="editButtons">
-          <div id="interestOptions">
-            <label for="newInterests">Interests:</label><br>
-            <input type="checkbox" id="interestAnimals" name="interest" value="Animals">
-            <label for="interestAnimals">Animals</label><br>
-            <input type="checkbox" id="interestEnvironment" name="interest" value="Environment">
-            <label for="interestEnvironment">Environment</label><br>
-            <input type="checkbox" id="interestEducation" name="interest" value="Education">
-            <label for="interestEducation">Education</label><br>
-            <input type="checkbox" id="interestLGBTQ" name="interest" value="LGBTQ+">
-            <label for="interestLGBTQ">LGBTQ+</label><br>
-            <input type="checkbox" id="interestHumanitarian" name="interest" value="Humanitarian">
-            <label for="interestHumanitarian">Humanitarian</label><br>
-          </div>
-          <div id="locationOptions">
-            <label for="newLocation">Location:</label><br>
-            <input type="radio" id="locationCharleston" name="location" value="Charleston">
-            <label for="locationCharleston">Charleston</label><br>
-            <input type="radio" id="locationGreenville" name="location" value="Greenville">
-            <label for="locationGreenville">Greenville</label><br>
-            <input type="radio" id="locationColumbia" name="location" value="Columbia">
-            <label for="locationColumbia">Columbia</label><br>
-          </div>
-        </div>
-        <button type="button" id="submitChangesButton" onclick="submitProfileChanges()">Submit Changes</button>
-      </form>
-    </div>
-    <div class="volunteer-history">
-      <h2>Volunteer History</h2>
-      <table id="volunteerHistoryTable">
-          <thead>
-              <tr>
-                  <th>Organization</th>
-                  <th>Activity</th>
-                  <th>Hours</th>
-                  <th>Date</th>
-              </tr>
-          </thead>
-          <tbody></tbody>
-      </table>
-      <button id="addVolunteerActivityButton">Add Volunteer Activity</button>
-  </div>
-  
-  <div class="form-popup" id="volunteerActivityForm">
-      <form class="form-container">
+      </div>
+      <div class="form-popup" id="volunteerActivityForm">
+        <form class="form-container">
           <span class="close right-align" id="closeVolunteerActivityForm">&times;</span>
           <h2>Add Volunteer Activity</h2>
           <label for="volunteerOrganization">Organization:</label>
@@ -138,9 +139,31 @@
           <label for="volunteerDate">Date:</label>
           <input type="date" id="volunteerDate">
           <button type="button" id="submitVolunteerActivityButton">Submit</button>
-      </form>
-  </div>
+        </form>
+      </div>
+      <div class="form-popup" id="editVolunteerActivityForm">
+        <form class="form-container">
+          <span class="close right-align" onclick="closeForm('editVolunteerActivityForm')">&times;</span>
+          <h2>Edit Volunteer Activity</h2>
+          <label for="editVolunteerOrganization">Organization:</label>
+          <input type="text" id="editVolunteerOrganization">
+          <label for="editVolunteerActivity">Activity:</label>
+          <input type="text" id="editVolunteerActivity">
+          <label for="editVolunteerHours">Hours:</label>
+          <input type="number" id="editVolunteerHours">
+          <label for="editVolunteerDate">Date:</label>
+          <input type="date" id="editVolunteerDate">
+          <button type="button" id="submitEditVolunteerActivityButton">Submit Changes</button>
+        </form>
+      </div>
     </div>    
-    <script src="profile.js"></script>
+    <div class="right-column">
+      <h2>Events</h2>
+      <ul id="user-event-list"></ul>
+      <h2>Organizations</h2>
+      <ul id="user-organization-list"></ul>
+    </div>
+  </div>
+  <script src="profile.js"></script>
 </body>
 </html>

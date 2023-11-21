@@ -67,7 +67,7 @@ async function initMap() {
       if (city === "All") {
         getEvents("all");
         map.setCenter(defaultPosition);
-        map.setZoom(6);
+        map.setZoom(7);
       }
     });
   });
