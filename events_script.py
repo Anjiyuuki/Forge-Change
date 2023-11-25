@@ -4,6 +4,13 @@ from bs4 import BeautifulSoup
 import json
 import os
 import time
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+# Initialize Firebase Admin SDK
+cred = credentials.Certificate('/Users/juliakempton/Desktop/Forge Change/forge_change/forge-change-firebase-adminsdk-gnrfk-6c993382f2.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 # URLs to visit
 urls = [
@@ -61,6 +68,8 @@ for url in urls:
                 },
             }
             event_data.append(event_info)
+            # Add the event to Firestore
+            doc_ref = db.collection('events').add(event_info)
 
     # Combine the event data for all URLs
     all_event_data.extend(event_data)

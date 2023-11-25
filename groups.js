@@ -41,38 +41,55 @@ function signOut() {
 document.getElementById('signOutButton').addEventListener('click', handleSignOutConfirmation);
 
 // Function to join a group
-async function joinGroup(groupName) {
-  var username;
+async function joinOrLeaveGroup(groupName) {
   var user = firebase.auth().currentUser;
 
   if (user) {
-    firestore.collection('users').doc(user.uid).get()
-      .then(function (doc) {
-        if (doc.exists) {
-          var userData = doc.data();
-          username = userData.username;
-          return firestore.collection('groups').doc(groupName).collection('members').doc(user.uid).set({
+    const userRef = firestore.collection('users').doc(user.uid);
+    const groupRef = firestore.collection('groups').doc(groupName).collection('members').doc(user.uid);
+    // Check if the user is already a member
+    groupRef.get().then((doc) => {
+      if (doc.exists) {
+        // User is a member, leave the group
+        groupRef.delete().then(() => {
+          alert('You have left the ' + groupName + ' group.');
+          // After leaving, refresh the list of members
+          refreshMembersList(groupName);
+        }).catch((error) => {
+          console.error('Error leaving group:', error);
+        });
+      } else {
+        // User is not a member, join the group
+        userRef.get().then((userDoc) => {
+          const userData = userDoc.data();
+          const username = userData.username;
+
+          groupRef.set({
             userId: user.uid,
             username: username
+          }).then(() => {
+            alert('You have joined the ' + groupName + ' group.');
+            // After joining, refresh the list of members
+            refreshMembersList(groupName);
+          }).catch((error) => {
+            console.error('Error joining group:', error);
           });
-        } else {
-          console.log('User data not found');
-          return Promise.reject('User data not found');
-        }
-      })
-      .then(() => {
-        // Successfully joined the group
-        alert('You have joined the ' + groupName + ' group.');
-        // After joining, refresh the list of members
-        refreshMembersList(groupName);
-      })
-      .catch((error) => {
-        console.error('Error joining group:', error);
-      });
+        });
+      }
+    });
+    const topicsList = document.getElementById('topics-list');
+    const eventsList = document.getElementById('events-list');
+
+    topicsList.innerHTML = '';
+    eventsList.innerHTML = '';
+
+    displayGroupsByCategory('topic', 'topics-list', 'createTopicButton');
+    displayGroupsByCategory('event', 'events-list', 'createEventButton');
   } else {
     // User is not logged in
-    alert('Please log in to join a group.');
+    alert('Please log in to join or leave a group.');
   }
+  
 }
 
 // Function to refresh the list of members for a group
@@ -139,10 +156,12 @@ async function createGroup(category) {
 
 // Function to fetch and display groups based on category
 function displayGroupsByCategory(category, containerId, createButtonId) {
+  
   const groupsList = document.getElementById(containerId);
 
   // Clear the existing list of groups
   groupsList.innerHTML = '';
+  const user = firebase.auth().currentUser;
 
   firestore.collection('groups').where('category', '==', category).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -169,18 +188,33 @@ function displayGroupsByCategory(category, containerId, createButtonId) {
           listItem.textContent = username;
           listItem.classList.add('clickable-username');
           usernamesList.appendChild(listItem);
-          listItem.addEventListener('click', () => showUserPopup(username));
+          listItem.addEventListener('click', (event) => showUserPopup(username, event));
         });
       });
 
-      const joinButton = document.createElement('button');
-      joinButton.textContent = 'Join';
-      joinButton.classList.add('join-button');
-      joinButton.addEventListener('click', () => joinGroup(groupName));
+      const actionButton = document.createElement('button');
+      actionButton.classList.add('join-button');
+
+      // Check if the user is already a member to determine the button text
+      if (user) {
+        const groupRef = firestore.collection('groups').doc(groupName).collection('members').doc(user.uid);
+        groupRef.get().then((doc) => {
+          if (doc.exists) {
+            actionButton.textContent = 'Leave Group';
+            actionButton.style.backgroundColor = 'red';
+          } else {
+            actionButton.textContent = 'Join Group';
+          }
+        });
+      } else {
+        actionButton.textContent = 'Join';
+      }
+
+      actionButton.addEventListener('click', () => joinOrLeaveGroup(groupName));
 
       groupCard.appendChild(groupNameElement);
       groupCard.appendChild(usernamesList);
-      groupCard.appendChild(joinButton);
+      groupCard.appendChild(actionButton);
 
       groupsList.appendChild(groupCard);
     });
@@ -190,7 +224,7 @@ function displayGroupsByCategory(category, containerId, createButtonId) {
   createButton.addEventListener('click', () => createGroup(category));
 }
 
-function showUserPopup(username) {
+function showUserPopup(username, clickEvent) {
   const userPopup = document.getElementById('user-popup');
   const popupUsername = document.getElementById('popup-username');
   const popupName = document.getElementById('popup-name');
@@ -217,19 +251,27 @@ function showUserPopup(username) {
       if (!userData.email) {
         popupEmail.textContent = 'Email: Not available';
       } else {
-        popupEmail.textContent = 'Email:'+ userData.email;
+        popupEmail.textContent = 'Email: ' + userData.email;
       }
-      userPopup.style.display = 'block';
     }
+
+    // Position the popup next to the clicked username
+    userPopup.style.display = 'block';
+    userPopup.style.top = clickEvent.clientY + 'px';
+    userPopup.style.left = clickEvent.clientX+100 + 'px';
   });
 }
-
 // Function to close the user popup
 function closeUserPopup() {
   const userPopup = document.getElementById('user-popup');
   userPopup.style.display = 'none';
 }
 
-// Initialize the groups page
-displayGroupsByCategory('topic', 'topics-list', 'createTopicButton');
-displayGroupsByCategory('event', 'events-list', 'createEventButton');
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in
+    // You can call your functions that depend on authentication here
+    displayGroupsByCategory('topic', 'topics-list', 'createTopicButton');
+    displayGroupsByCategory('event', 'events-list', 'createEventButton');
+  }
+});

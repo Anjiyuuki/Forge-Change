@@ -90,7 +90,7 @@ function activeButton(city) {
   }
 }
 
-function getEvents(city) {
+async function getEvents(city) {
   // Clear the events list
   eventsList = document.querySelector(".events-list");
   eventsList.innerHTML = "";
@@ -107,21 +107,21 @@ function getEvents(city) {
     });
   }
 
-  markers.forEach(function(marker) {
+  markers.forEach(function (marker) {
     marker.setMap(null);
   });
 
-  // Load all events from the JSON file
-  fetch("events_info.json")
-    .then((response) => response.json())
-    .then((data) => {
-      // Filter events based on the specified city
-      events = city === "all" ? data : data.filter(event => event.city === city);
-      displayEventsOnMap(events);
-    })
-    .catch((error) => {
-      console.error("Error loading event data:", error);
-    });
+  try {
+    // Fetch events from Firestore
+    const querySnapshot = await firestore.collection("events").get();
+    events = querySnapshot.docs.map(doc => doc.data());
+
+    // Filter events based on the specified city
+    const filteredEvents = city === "all" ? events : events.filter(event => event.city === city);
+    displayEventsOnMap(filteredEvents);
+  } catch (error) {
+    console.error("Error loading event data from Firestore:", error);
+  }
 }
 
 function displayEventsOnMap(events) {
@@ -137,7 +137,7 @@ function displayEventsOnMap(events) {
   // Check if there are no matching events
   if (events.length === 0) {
     const noEventsMessage = document.createElement("p");
-    noEventsMessage.textContent = "No matching organizations found.";
+    noEventsMessage.textContent = "No matching events found.";
     eventsList.appendChild(noEventsMessage);
     return;
   }
@@ -155,6 +155,7 @@ function displayEventsOnMap(events) {
     const formattedDate = startDate.toDateString() === endDate.toDateString()
       ? formattedStartDate
       : `${formattedStartDate} - ${formattedEndDate}`;
+    const id = event.id;
 
     eventElement.innerHTML = `
       <div id="eventName">${event.name}</div>
@@ -174,8 +175,9 @@ function displayEventsOnMap(events) {
     createGroupButton.addEventListener("click", function () {
       createGroup(event.name);
     });
+
     var eventMarker = new google.maps.Marker({
-      position: { lat: event.position.lat, lng: event.position.lng },
+      position: { lat: parseFloat(event.location.geo.latitude), lng: parseFloat(event.location.geo.longitude) },
       map: map,
       title: event.name,
     });
@@ -194,7 +196,7 @@ function displayEventsOnMap(events) {
 
     eventElement.addEventListener('click', () => {
       // Center the map on the clicked event
-      map.setCenter({ lat: event.position.lat, lng: event.position.lng });
+      map.setCenter({ lat: parseFloat(event.location.geo.latitude), lng: parseFloat(event.location.geo.longitude) });
       map.setZoom(15); // You can adjust the zoom level as needed
   
       // Trigger a click event on the marker to open the info window

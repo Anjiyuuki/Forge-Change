@@ -38,12 +38,12 @@
         }
     },
     {
-        "name": "Y Mentor Training (Powdersville Y) 11/20/2023",
+        "name": "Y Mentor Training (Powdersville Y) 11/29/2023",
         "city": "Greenville",
-        "startDate": "2023-11-20",
-        "endDate": "2023-11-20",
-        "date": "2023-11-20",
-        "url": "https://www.eventbrite.com/e/y-mentor-training-powdersville-y-11202023-registration-757874632427",
+        "startDate": "2023-11-29",
+        "endDate": "2023-11-29",
+        "date": "2023-11-29",
+        "url": "https://www.eventbrite.com/e/y-mentor-training-powdersville-y-11292023-registration-757904110597",
         "location": {
             "address": {
                 "addressCountry": "US",
@@ -69,86 +69,10 @@
             "postalCode": "29673",
             "@type": "PostalAddress"
         },
-        "description": "Y Mentor Training (Powdersville Y)  11/20/2023",
+        "description": "Y Mentor Training (Powdersville Y)  11/29/2023",
         "position": {
             "lat": 34.7503346,
             "lng": -82.51951389999999
-        }
-    },
-    {
-        "name": "Volunteer Advocate Training",
-        "city": "Greenville",
-        "startDate": "2023-12-05",
-        "endDate": "2023-12-05",
-        "date": "2023-12-05",
-        "url": "https://www.eventbrite.com/e/volunteer-advocate-training-tickets-740094972987",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Greenwood",
-                "addressRegion": "SC",
-                "streetAddress": "115 East Alexander Avenue",
-                "postalCode": "29646",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.17894199999999",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.151382"
-            },
-            "@type": "Place",
-            "name": "Beyond Abuse"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Greenwood",
-            "addressRegion": "SC",
-            "streetAddress": "115 East Alexander Avenue",
-            "postalCode": "29646",
-            "@type": "PostalAddress"
-        },
-        "description": "Beyond Abuse offers training for volunteer advocates who wish to help those impacted by sexual violence and child abuse.",
-        "position": {
-            "lat": 34.17894199999999,
-            "lng": -82.151382
-        }
-    },
-    {
-        "name": "Y Mentor Training (Easley, Corporate Office) 11/21/2023",
-        "city": "Greenville",
-        "startDate": "2023-11-21",
-        "endDate": "2023-11-21",
-        "date": "2023-11-21",
-        "url": "https://www.eventbrite.com/e/y-mentor-training-easley-corporate-office-11212023-registration-757873940357",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Easley",
-                "addressRegion": "SC",
-                "streetAddress": "101 Burns Rd",
-                "postalCode": "29640",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.8299499",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.5787214"
-            },
-            "@type": "Place",
-            "name": "Easley *Corporate Office*"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Easley",
-            "addressRegion": "SC",
-            "streetAddress": "101 Burns Rd",
-            "postalCode": "29640",
-            "@type": "PostalAddress"
-        },
-        "description": "Y Mentor Training (Easley, Corporate Office) 11/21/2023",
-        "position": {
-            "lat": 34.8299499,
-            "lng": -82.5787214
         }
     },
     {
@@ -190,6 +114,120 @@
         }
     },
     {
+        "name": "Volunteer Advocate Training",
+        "city": "Greenville",
+        "startDate": "2023-12-05",
+        "endDate": "2023-12-05",
+        "date": "2023-12-05",
+        "url": "https://www.eventbrite.com/e/volunteer-advocate-training-tickets-740094972987",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenwood",
+                "addressRegion": "SC",
+                "streetAddress": "115 East Alexander Avenue",
+                "postalCode": "29646",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.17894199999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.151382"
+            },
+            "@type": "Place",
+            "name": "Beyond Abuse"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Greenwood",
+            "addressRegion": "SC",
+            "streetAddress": "115 East Alexander Avenue",
+            "postalCode": "29646",
+            "@type": "PostalAddress"
+        },
+        "description": "Beyond Abuse offers training for volunteer advocates who wish to help those impacted by sexual violence and child abuse.",
+        "position": {
+            "lat": 34.17894199999999,
+            "lng": -82.151382
+        }
+    },
+    {
+        "name": "Y Mentor Training (Easley, Corporate Office) 12/4/2023",
+        "city": "Greenville",
+        "startDate": "2023-12-04",
+        "endDate": "2023-12-04",
+        "date": "2023-12-04",
+        "url": "https://www.eventbrite.com/e/y-mentor-training-easley-corporate-office-1242023-registration-764205337737",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Easley",
+                "addressRegion": "SC",
+                "streetAddress": "101 Burns Rd",
+                "postalCode": "29640",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.8299499",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.5787214"
+            },
+            "@type": "Place",
+            "name": "Easley *Corporate Office*"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Easley",
+            "addressRegion": "SC",
+            "streetAddress": "101 Burns Rd",
+            "postalCode": "29640",
+            "@type": "PostalAddress"
+        },
+        "description": "Y Mentor Training (Easley, Corporate Office) 12/4/2023",
+        "position": {
+            "lat": 34.8299499,
+            "lng": -82.5787214
+        }
+    },
+    {
+        "name": "SHARE'S ANNUAL GALA",
+        "city": "Greenville",
+        "startDate": "2024-02-29",
+        "endDate": "2024-02-29",
+        "date": "2024-02-29",
+        "url": "https://www.eventbrite.com/e/shares-annual-gala-tickets-761260529737",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenville",
+                "addressRegion": "SC",
+                "streetAddress": "1 Exposition Drive",
+                "postalCode": "29607",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.8521853",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.3542866"
+            },
+            "@type": "Place",
+            "name": "Greenville Convention Center"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Greenville",
+            "addressRegion": "SC",
+            "streetAddress": "1 Exposition Drive",
+            "postalCode": "29607",
+            "@type": "PostalAddress"
+        },
+        "description": "Fundraiser to help SHARE build stronger families and create vibrant communities. Meet great people, eat good food, and dance the night away.",
+        "position": {
+            "lat": 34.8521853,
+            "lng": -82.3542866
+        }
+    },
+    {
         "name": "Tamin Temple #155 Annual Charity Ball",
         "city": "Greenville",
         "startDate": "2023-11-24",
@@ -225,6 +263,44 @@
         "position": {
             "lat": 34.9544211,
             "lng": -82.1191982
+        }
+    },
+    {
+        "name": "How to Close Every End-of-Year Gift and Set Yourself Up for Success in 2024",
+        "city": "Greenville",
+        "startDate": "2023-12-07",
+        "endDate": "2023-12-07",
+        "date": "2023-12-07",
+        "url": "https://www.eventbrite.com/e/how-to-close-every-end-of-year-gift-and-set-yourself-up-for-success-in-2024-tickets-764016553077",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Greenville",
+                "addressRegion": "SC",
+                "streetAddress": "128 The Parkway",
+                "postalCode": "29615",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.8642462",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.25966650000001"
+            },
+            "@type": "Place",
+            "name": "Hampton Inn & Suites Greenville Airport"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Greenville",
+            "addressRegion": "SC",
+            "streetAddress": "128 The Parkway",
+            "postalCode": "29615",
+            "@type": "PostalAddress"
+        },
+        "description": "It's crunch time! Join us to make sure that you have  the right communications and outreach so that you can close all the gifts",
+        "position": {
+            "lat": 34.8642462,
+            "lng": -82.25966650000001
         }
     },
     {
@@ -304,41 +380,117 @@
         }
     },
     {
-        "name": "SHARE'S ANNUAL GALA",
+        "name": "Youth Homelessness Prevention  - Stakeholder Meeting (1a)",
         "city": "Greenville",
-        "startDate": "2024-02-29",
-        "endDate": "2024-02-29",
-        "date": "2024-02-29",
-        "url": "https://www.eventbrite.com/e/shares-annual-gala-tickets-761260529737",
+        "startDate": "2023-12-05",
+        "endDate": "2023-12-05",
+        "date": "2023-12-05",
+        "url": "https://www.eventbrite.com/e/youth-homelessness-prevention-stakeholder-meeting-1a-tickets-760676553047",
         "location": {
             "address": {
                 "addressCountry": "US",
                 "addressLocality": "Greenville",
                 "addressRegion": "SC",
-                "streetAddress": "1 Exposition Drive",
-                "postalCode": "29607",
+                "streetAddress": "424 Westfield Street",
+                "postalCode": "29601",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "34.8521853",
+                "latitude": "34.8472222",
                 "@type": "GeoCoordinates",
-                "longitude": "-82.3542866"
+                "longitude": "-82.4091667"
             },
             "@type": "Place",
-            "name": "Greenville Convention Center"
+            "name": "Kroc Center Greenville"
         },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Greenville",
             "addressRegion": "SC",
-            "streetAddress": "1 Exposition Drive",
-            "postalCode": "29607",
+            "streetAddress": "424 Westfield Street",
+            "postalCode": "29601",
             "@type": "PostalAddress"
         },
-        "description": "Fundraiser to help SHARE build stronger families and create vibrant communities. Meet great people, eat good food, and dance the night away.",
+        "description": "Please join Pendleton Place for a community stakeholder meeting as we embark on a demonstration project to prevent youth homelessness.",
         "position": {
-            "lat": 34.8521853,
-            "lng": -82.3542866
+            "lat": 34.8472222,
+            "lng": -82.4091667
+        }
+    },
+    {
+        "name": "Jus Us Girlz Annual Community Giveaway",
+        "city": "Greenville",
+        "startDate": "2023-12-09",
+        "endDate": "2023-12-09",
+        "date": "2023-12-09",
+        "url": "https://www.eventbrite.com/e/jus-us-girlz-annual-community-giveaway-tickets-763606275927",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Mauldin",
+                "addressRegion": "SC",
+                "streetAddress": "107 Miller Road",
+                "postalCode": "29662",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.7851234",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.3090651"
+            },
+            "@type": "Place",
+            "name": "Kingdom Movement Church"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Mauldin",
+            "addressRegion": "SC",
+            "streetAddress": "107 Miller Road",
+            "postalCode": "29662",
+            "@type": "PostalAddress"
+        },
+        "description": "Hey everyone, get ready for our Annual Community Giveaway on December 9, free clothes, shoes, fashion jewelry. These goodies  a new home.",
+        "position": {
+            "lat": 34.7851234,
+            "lng": -82.3090651
+        }
+    },
+    {
+        "name": "Young Adults Community Service Meetup",
+        "city": "Greenville",
+        "startDate": "2023-11-28",
+        "endDate": "2023-11-28",
+        "date": "2023-11-28",
+        "url": "https://www.eventbrite.com/e/young-adults-community-service-meetup-tickets-760709501597",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Simpsonville",
+                "addressRegion": "SC",
+                "streetAddress": "1102 Howard Drive",
+                "postalCode": "29681",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.716491",
+                "@type": "GeoCoordinates",
+                "longitude": "-82.21778499999999"
+            },
+            "@type": "Place",
+            "name": "Center For Community Services"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Simpsonville",
+            "addressRegion": "SC",
+            "streetAddress": "1102 Howard Drive",
+            "postalCode": "29681",
+            "@type": "PostalAddress"
+        },
+        "description": "Make a difference with other young professionals",
+        "position": {
+            "lat": 34.716491,
+            "lng": -82.21778499999999
         }
     },
     {
@@ -418,44 +570,6 @@
         }
     },
     {
-        "name": "Young Adults Community Service Meetup",
-        "city": "Greenville",
-        "startDate": "2023-11-28",
-        "endDate": "2023-11-28",
-        "date": "2023-11-28",
-        "url": "https://www.eventbrite.com/e/young-adults-community-service-meetup-tickets-760709501597",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Simpsonville",
-                "addressRegion": "SC",
-                "streetAddress": "1102 Howard Drive",
-                "postalCode": "29681",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.716491",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.21778499999999"
-            },
-            "@type": "Place",
-            "name": "Center For Community Services"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Simpsonville",
-            "addressRegion": "SC",
-            "streetAddress": "1102 Howard Drive",
-            "postalCode": "29681",
-            "@type": "PostalAddress"
-        },
-        "description": "Make a difference with other young professionals",
-        "position": {
-            "lat": 34.716491,
-            "lng": -82.21778499999999
-        }
-    },
-    {
         "name": "HCC Foundation Presents Blue Ridge Orchestra's Unwrapping Holiday Favorites",
         "city": "Greenville",
         "startDate": "2023-12-09",
@@ -491,44 +605,6 @@
         "position": {
             "lat": 35.5259088,
             "lng": -82.92788639999999
-        }
-    },
-    {
-        "name": "PowHer + Potential Leadership Retreat: Asheville, NC",
-        "city": "Greenville",
-        "startDate": "2024-05-03",
-        "endDate": "2024-05-05",
-        "date": "2024-05-03 - 2024-05-05",
-        "url": "https://www.eventbrite.com/e/powher-potential-leadership-retreat-asheville-nc-registration-726468154807",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Asheville",
-                "addressRegion": "NC",
-                "streetAddress": "Location TBA by January 2024",
-                "postalCode": "28801",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "35.5950581",
-                "@type": "GeoCoordinates",
-                "longitude": "-82.5514869"
-            },
-            "@type": "Place",
-            "name": "Asheville, NC: Location TBA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Asheville",
-            "addressRegion": "NC",
-            "streetAddress": "Location TBA by January 2024",
-            "postalCode": "28801",
-            "@type": "PostalAddress"
-        },
-        "description": "Get ready to be inspired, empowered, and motivated as we come together to unlock our true potential in a retreat setting",
-        "position": {
-            "lat": 35.5950581,
-            "lng": -82.5514869
         }
     },
     {
@@ -570,41 +646,41 @@
         }
     },
     {
-        "name": "Nature-Based Wellness Retreat for Military Widows",
+        "name": "PowHer + Potential Leadership Retreat: Asheville, NC",
         "city": "Greenville",
-        "startDate": "2024-06-06",
-        "endDate": "2024-06-09",
-        "date": "2024-06-06 - 2024-06-09",
-        "url": "https://www.eventbrite.com/e/nature-based-wellness-retreat-for-military-widows-tickets-748533974267",
+        "startDate": "2024-05-03",
+        "endDate": "2024-05-05",
+        "date": "2024-05-03 - 2024-05-05",
+        "url": "https://www.eventbrite.com/e/powher-potential-leadership-retreat-asheville-nc-registration-726468154807",
         "location": {
             "address": {
                 "addressCountry": "US",
-                "addressLocality": "Franklin",
+                "addressLocality": "Asheville",
                 "addressRegion": "NC",
-                "streetAddress": "635 Berry Cove Rd.",
-                "postalCode": "28734",
+                "streetAddress": "Location TBA by January 2024",
+                "postalCode": "28801",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "35.212513",
+                "latitude": "35.5950581",
                 "@type": "GeoCoordinates",
-                "longitude": "-83.30076299999999"
+                "longitude": "-82.5514869"
             },
             "@type": "Place",
-            "name": "Nurture + Nature Glamping Retreat Center"
+            "name": "Asheville, NC: Location TBA"
         },
         "address": {
             "addressCountry": "US",
-            "addressLocality": "Franklin",
+            "addressLocality": "Asheville",
             "addressRegion": "NC",
-            "streetAddress": "635 Berry Cove Rd.",
-            "postalCode": "28734",
+            "streetAddress": "Location TBA by January 2024",
+            "postalCode": "28801",
             "@type": "PostalAddress"
         },
-        "description": "Get ready for a rejuvenating getaway at our Nature-Based Wellness Retreat, exclusively designed for military widows to find support and grow",
+        "description": "Get ready to be inspired, empowered, and motivated as we come together to unlock our true potential in a retreat setting",
         "position": {
-            "lat": 35.212513,
-            "lng": -83.30076299999999
+            "lat": 35.5950581,
+            "lng": -82.5514869
         }
     },
     {
@@ -646,117 +722,41 @@
         }
     },
     {
-        "name": "Every Black Voice: ACNC Hosts AVL's Racial Justice Coalition Lunch n' Learn",
+        "name": "Nature-Based Wellness Retreat for Military Widows",
         "city": "Greenville",
-        "startDate": "2023-12-27",
-        "endDate": "2023-12-27",
-        "date": "2023-12-27",
-        "url": "https://www.eventbrite.com/e/every-black-voice-acnc-hosts-avls-racial-justice-coalition-lunch-n-learn-tickets-643335984247",
+        "startDate": "2024-06-06",
+        "endDate": "2024-06-09",
+        "date": "2024-06-06 - 2024-06-09",
+        "url": "https://www.eventbrite.com/e/nature-based-wellness-retreat-for-military-widows-tickets-748533974267",
         "location": {
             "address": {
                 "addressCountry": "US",
-                "addressLocality": "Asheville",
+                "addressLocality": "Franklin",
                 "addressRegion": "NC",
-                "streetAddress": "216 Asheland Avenue",
-                "postalCode": "28801",
+                "streetAddress": "635 Berry Cove Rd.",
+                "postalCode": "28734",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "35.5862181",
+                "latitude": "35.212513",
                 "@type": "GeoCoordinates",
-                "longitude": "-82.5559073"
+                "longitude": "-83.30076299999999"
             },
             "@type": "Place",
-            "name": "216 Asheland Ave"
+            "name": "Nurture + Nature Glamping Retreat Center"
         },
         "address": {
             "addressCountry": "US",
-            "addressLocality": "Asheville",
+            "addressLocality": "Franklin",
             "addressRegion": "NC",
-            "streetAddress": "216 Asheland Avenue",
-            "postalCode": "28801",
+            "streetAddress": "635 Berry Cove Rd.",
+            "postalCode": "28734",
             "@type": "PostalAddress"
         },
-        "description": "ACNC is excited to be a part of NC Managed Care. Our goal is to help people get care, stay well and build healthy communities.",
+        "description": "Get ready for a rejuvenating getaway at our Nature-Based Wellness Retreat, exclusively designed for military widows to find support and grow",
         "position": {
-            "lat": 35.5862181,
-            "lng": -82.5559073
-        }
-    },
-    {
-        "name": "Volunteer Event",
-        "city": "Greenville",
-        "startDate": "2023-12-16",
-        "endDate": "2023-12-16",
-        "date": "2023-12-16",
-        "url": "https://www.eventbrite.com/e/volunteer-event-tickets-757531596397",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Charlotte",
-                "addressRegion": "NC",
-                "streetAddress": "500-A Spratt Street",
-                "postalCode": "28206",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "35.2384999",
-                "@type": "GeoCoordinates",
-                "longitude": "-80.8378271"
-            },
-            "@type": "Place",
-            "name": "Crisis Assistance Ministry"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Charlotte",
-            "addressRegion": "NC",
-            "streetAddress": "500-A Spratt Street",
-            "postalCode": "28206",
-            "@type": "PostalAddress"
-        },
-        "description": "Join NBMBAA for a volunteer event at the Crisis Assistance Ministry.",
-        "position": {
-            "lat": 35.2384999,
-            "lng": -80.8378271
-        }
-    },
-    {
-        "name": "Annual Charity Gala",
-        "city": "Greenville",
-        "startDate": "2023-12-16",
-        "endDate": "2023-12-16",
-        "date": "2023-12-16",
-        "url": "https://www.eventbrite.com/e/annual-charity-gala-tickets-744441784417",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Rock Hill",
-                "addressRegion": "SC",
-                "streetAddress": "742 North Anderson Road",
-                "postalCode": "29730",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.9572439",
-                "@type": "GeoCoordinates",
-                "longitude": "-80.99517929999999"
-            },
-            "@type": "Place",
-            "name": "742 North Anderson Road, Rock Hill, SC, USA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Rock Hill",
-            "addressRegion": "SC",
-            "streetAddress": "742 North Anderson Road",
-            "postalCode": "29730",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us for the Annual Charity Gala, an unforgettable evening of giving, glitz, and glamour, where we come together to make a difference in",
-        "position": {
-            "lat": 34.9572439,
-            "lng": -80.99517929999999
+            "lat": 35.212513,
+            "lng": -83.30076299999999
         }
     },
     {
@@ -836,44 +836,6 @@
         }
     },
     {
-        "name": "David Aylor  Annual Christmas Party & Fundraiser",
-        "city": "Charleston",
-        "startDate": "2023-12-15",
-        "endDate": "2023-12-15",
-        "date": "2023-12-15",
-        "url": "https://www.eventbrite.com/e/david-aylor-annual-christmas-party-fundraiser-tickets-749452541727",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Charleston",
-                "addressRegion": "SC",
-                "streetAddress": "462 King St",
-                "postalCode": "29403",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "32.7894124",
-                "@type": "GeoCoordinates",
-                "longitude": "-79.93871769999998"
-            },
-            "@type": "Place",
-            "name": "Republic Garden & Lounge"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Charleston",
-            "addressRegion": "SC",
-            "streetAddress": "462 King St",
-            "postalCode": "29403",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us for the David Aylor Annual Christmas Party & Fundraiser, Friday, December 15th, 2023 from 7-10pm at Republic Garden & Lounge.",
-        "position": {
-            "lat": 32.7894124,
-            "lng": -79.93871769999998
-        }
-    },
-    {
         "name": "BE Impactful Holiday Festival  -  Toy & Dinner Giveaway",
         "city": "Charleston",
         "startDate": "2023-12-16",
@@ -909,6 +871,44 @@
         "position": {
             "lat": 32.8808776,
             "lng": -80.0031688
+        }
+    },
+    {
+        "name": "Giving Tuesday Uptown Social Happy Hour",
+        "city": "Charleston",
+        "startDate": "2023-11-28",
+        "endDate": "2023-11-28",
+        "date": "2023-11-28",
+        "url": "https://www.eventbrite.com/e/giving-tuesday-uptown-social-happy-hour-tickets-763334563227",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "587 King Street",
+                "postalCode": "29403",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.792608",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.941232"
+            },
+            "@type": "Place",
+            "name": "Uptown Social"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Charleston",
+            "addressRegion": "SC",
+            "streetAddress": "587 King Street",
+            "postalCode": "29403",
+            "@type": "PostalAddress"
+        },
+        "description": "Come out to support Green Heart on Giving Tuesday -- a global day of giving! Tickets & drink proceeds support Farm to School programming.",
+        "position": {
+            "lat": 32.792608,
+            "lng": -79.941232
         }
     },
     {
@@ -988,6 +988,44 @@
         }
     },
     {
+        "name": "David Aylor  Annual Christmas Party & Fundraiser",
+        "city": "Charleston",
+        "startDate": "2023-12-15",
+        "endDate": "2023-12-15",
+        "date": "2023-12-15",
+        "url": "https://www.eventbrite.com/e/david-aylor-annual-christmas-party-fundraiser-tickets-749452541727",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charleston",
+                "addressRegion": "SC",
+                "streetAddress": "462 King St",
+                "postalCode": "29403",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.7894124",
+                "@type": "GeoCoordinates",
+                "longitude": "-79.93871769999998"
+            },
+            "@type": "Place",
+            "name": "Republic Garden & Lounge"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Charleston",
+            "addressRegion": "SC",
+            "streetAddress": "462 King St",
+            "postalCode": "29403",
+            "@type": "PostalAddress"
+        },
+        "description": "Join us for the David Aylor Annual Christmas Party & Fundraiser, Friday, December 15th, 2023 from 7-10pm at Republic Garden & Lounge.",
+        "position": {
+            "lat": 32.7894124,
+            "lng": -79.93871769999998
+        }
+    },
+    {
         "name": "Savannah Jaycees Cornhole Tournament",
         "city": "Charleston",
         "startDate": "2023-12-09",
@@ -1023,44 +1061,6 @@
         "position": {
             "lat": 32.0177952,
             "lng": -80.8450685
-        }
-    },
-    {
-        "name": "New Neighbors Community Service at Second Harvest",
-        "city": "Charleston",
-        "startDate": "2023-11-21",
-        "endDate": "2023-11-21",
-        "date": "2023-11-21",
-        "url": "https://www.eventbrite.com/e/new-neighbors-community-service-at-second-harvest-tickets-699022383767",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Savannah",
-                "addressRegion": "GA",
-                "streetAddress": "2651 Causton Bluff Road",
-                "postalCode": "31404",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "32.064708",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.045979"
-            },
-            "@type": "Place",
-            "name": "Second Harvest Volunteer Center"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Savannah",
-            "addressRegion": "GA",
-            "streetAddress": "2651 Causton Bluff Road",
-            "postalCode": "31404",
-            "@type": "PostalAddress"
-        },
-        "description": "Volunteer to support America's Second Harvest of Coastal Georgia",
-        "position": {
-            "lat": 32.064708,
-            "lng": -81.045979
         }
     },
     {
@@ -1102,6 +1102,44 @@
         }
     },
     {
+        "name": "New Neighbors Community Service at Second Harvest",
+        "city": "Charleston",
+        "startDate": "2023-12-19",
+        "endDate": "2023-12-19",
+        "date": "2023-12-19",
+        "url": "https://www.eventbrite.com/e/new-neighbors-community-service-at-second-harvest-tickets-699022423887",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Savannah",
+                "addressRegion": "GA",
+                "streetAddress": "2651 Causton Bluff Road",
+                "postalCode": "31404",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "32.064708",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.045979"
+            },
+            "@type": "Place",
+            "name": "Second Harvest Volunteer Center"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Savannah",
+            "addressRegion": "GA",
+            "streetAddress": "2651 Causton Bluff Road",
+            "postalCode": "31404",
+            "@type": "PostalAddress"
+        },
+        "description": "Volunteer to support America's Second Harvest of Coastal Georgia",
+        "position": {
+            "lat": 32.064708,
+            "lng": -81.045979
+        }
+    },
+    {
         "name": "Santa Paws",
         "city": "Charleston",
         "startDate": "2023-12-10",
@@ -1140,44 +1178,6 @@
         }
     },
     {
-        "name": "Tranquility Transitional Housing First Aunnual Public Benefit Fundraiser",
-        "city": "Charleston",
-        "startDate": "2023-11-24",
-        "endDate": "2023-11-25",
-        "date": "2023-11-24 - 2023-11-25",
-        "url": "https://www.eventbrite.com/e/tranquility-transitional-housing-first-aunnual-public-benefit-fundraiser-tickets-738292351297",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Gadsden",
-                "addressRegion": "SC",
-                "streetAddress": "1032 George Wilson Boulevard",
-                "postalCode": "29052",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "33.8244251",
-                "@type": "GeoCoordinates",
-                "longitude": "-80.70178179999999"
-            },
-            "@type": "Place",
-            "name": "1032 George Wilson Blvd"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Gadsden",
-            "addressRegion": "SC",
-            "streetAddress": "1032 George Wilson Boulevard",
-            "postalCode": "29052",
-            "@type": "PostalAddress"
-        },
-        "description": "The purpose of this fundraiser event is to build a facility for housing and educate and decriminalized ex offenders.",
-        "position": {
-            "lat": 33.8244251,
-            "lng": -80.70178179999999
-        }
-    },
-    {
         "name": "Women Blessing Women Empowerment Conference",
         "city": "Charleston",
         "startDate": "2023-12-08",
@@ -1213,6 +1213,44 @@
         "position": {
             "lat": 32.078895,
             "lng": -81.08502039999999
+        }
+    },
+    {
+        "name": "Tranquility Transitional Housing First Aunnual Public Benefit Fundraiser",
+        "city": "Charleston",
+        "startDate": "2023-11-24",
+        "endDate": "2023-11-25",
+        "date": "2023-11-24 - 2023-11-25",
+        "url": "https://www.eventbrite.com/e/tranquility-transitional-housing-first-aunnual-public-benefit-fundraiser-tickets-738292351297",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Gadsden",
+                "addressRegion": "SC",
+                "streetAddress": "1032 George Wilson Boulevard",
+                "postalCode": "29052",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "33.8244251",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.70178179999999"
+            },
+            "@type": "Place",
+            "name": "1032 George Wilson Blvd"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Gadsden",
+            "addressRegion": "SC",
+            "streetAddress": "1032 George Wilson Boulevard",
+            "postalCode": "29052",
+            "@type": "PostalAddress"
+        },
+        "description": "The purpose of this fundraiser event is to build a facility for housing and educate and decriminalized ex offenders.",
+        "position": {
+            "lat": 33.8244251,
+            "lng": -80.70178179999999
         }
     },
     {
@@ -1292,44 +1330,6 @@
         }
     },
     {
-        "name": "Group Therapy's 34th Chili Cook-Off",
-        "city": "Columbia",
-        "startDate": "2023-12-02",
-        "endDate": "2023-12-02",
-        "date": "2023-12-02",
-        "url": "https://www.eventbrite.com/e/group-therapys-34th-chili-cook-off-tickets-728031871927",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Columbia",
-                "addressRegion": "SC",
-                "streetAddress": "2107 Greene Street",
-                "postalCode": "29205",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.0006684",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.0162608"
-            },
-            "@type": "Place",
-            "name": "2107 Greene St"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Columbia",
-            "addressRegion": "SC",
-            "streetAddress": "2107 Greene Street",
-            "postalCode": "29205",
-            "@type": "PostalAddress"
-        },
-        "description": "Welcome contestants! All three team packages are available for purchase here.",
-        "position": {
-            "lat": 34.0006684,
-            "lng": -81.0162608
-        }
-    },
-    {
         "name": "7th Annual Winter Fest Toy Giveway",
         "city": "Columbia",
         "startDate": "2023-12-02",
@@ -1365,6 +1365,44 @@
         "position": {
             "lat": 34.1562284,
             "lng": -80.9110304
+        }
+    },
+    {
+        "name": "Group Therapy's 34th Chili Cook-Off",
+        "city": "Columbia",
+        "startDate": "2023-12-02",
+        "endDate": "2023-12-02",
+        "date": "2023-12-02",
+        "url": "https://www.eventbrite.com/e/group-therapys-34th-chili-cook-off-tickets-728031871927",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Columbia",
+                "addressRegion": "SC",
+                "streetAddress": "2107 Greene Street",
+                "postalCode": "29205",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.0006684",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0162608"
+            },
+            "@type": "Place",
+            "name": "2107 Greene St"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Columbia",
+            "addressRegion": "SC",
+            "streetAddress": "2107 Greene Street",
+            "postalCode": "29205",
+            "@type": "PostalAddress"
+        },
+        "description": "Welcome contestants! All three team packages are available for purchase here.",
+        "position": {
+            "lat": 34.0006684,
+            "lng": -81.0162608
         }
     },
     {
@@ -1406,41 +1444,41 @@
         }
     },
     {
-        "name": "THE VULNERABILITY PROJECT",
+        "name": "The HBCU Christmas Party, sponsored by Benedict College National Alumni",
         "city": "Columbia",
-        "startDate": "2023-11-19",
-        "endDate": "2023-11-19",
-        "date": "2023-11-19",
-        "url": "https://www.eventbrite.com/e/the-vulnerability-project-tickets-742980854737",
+        "startDate": "2023-12-15",
+        "endDate": "2023-12-16",
+        "date": "2023-12-15 - 2023-12-16",
+        "url": "https://www.eventbrite.com/e/the-hbcu-christmas-party-sponsored-by-benedict-college-national-alumni-tickets-760658499047",
         "location": {
             "address": {
                 "addressCountry": "US",
                 "addressLocality": "Columbia",
                 "addressRegion": "SC",
-                "streetAddress": "200 Graces Way",
-                "postalCode": "29229",
+                "streetAddress": "817 Saint Andrews Road",
+                "postalCode": "29210",
                 "@type": "PostalAddress"
             },
             "geo": {
-                "latitude": "34.1134025",
+                "latitude": "34.0467515",
                 "@type": "GeoCoordinates",
-                "longitude": "-80.88164990000001"
+                "longitude": "-81.114805"
             },
             "@type": "Place",
-            "name": "Mimsy’s Kitchen & Jazz Lounge"
+            "name": "817 St Andrews Rd"
         },
         "address": {
             "addressCountry": "US",
             "addressLocality": "Columbia",
             "addressRegion": "SC",
-            "streetAddress": "200 Graces Way",
-            "postalCode": "29229",
+            "streetAddress": "817 Saint Andrews Road",
+            "postalCode": "29210",
             "@type": "PostalAddress"
         },
-        "description": "Discussion about vulnerability in relationships",
+        "description": "REP Your School!",
         "position": {
-            "lat": 34.1134025,
-            "lng": -80.88164990000001
+            "lat": 34.0467515,
+            "lng": -81.114805
         }
     },
     {
@@ -1634,6 +1672,44 @@
         }
     },
     {
+        "name": "New Hope End of Year Celebration",
+        "city": "Columbia",
+        "startDate": "2023-12-01",
+        "endDate": "2023-12-01",
+        "date": "2023-12-01",
+        "url": "https://www.eventbrite.com/e/new-hope-end-of-year-celebration-tickets-740366374757",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Rock Hill",
+                "addressRegion": "SC",
+                "streetAddress": "140 East Main Street",
+                "postalCode": "29730",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.92520199999999",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.0269266"
+            },
+            "@type": "Place",
+            "name": "Crystal Ballroom Rock Hill, East Main Street, Rock Hill, SC, USA"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Rock Hill",
+            "addressRegion": "SC",
+            "streetAddress": "140 East Main Street",
+            "postalCode": "29730",
+            "@type": "PostalAddress"
+        },
+        "description": "Join us at the New Hope End of Year Celebration for a night of joy, laughter, and new beginnings as we bid farewell to the old and welcome t",
+        "position": {
+            "lat": 34.92520199999999,
+            "lng": -81.0269266
+        }
+    },
+    {
         "name": "Women’s Conference",
         "city": "Columbia",
         "startDate": "2024-03-23",
@@ -1669,6 +1745,44 @@
         "position": {
             "lat": 34.1954331,
             "lng": -79.7625625
+        }
+    },
+    {
+        "name": "Hungry Heroes 2024 Mike Doty Memorial Event",
+        "city": "Columbia",
+        "startDate": "2024-01-27",
+        "endDate": "2024-01-27",
+        "date": "2024-01-27",
+        "url": "https://www.eventbrite.com/e/hungry-heroes-2024-mike-doty-memorial-event-tickets-761909280167",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Rock Hill",
+                "addressRegion": "SC",
+                "streetAddress": "123 Museum Road",
+                "postalCode": "29732",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "34.9792356",
+                "@type": "GeoCoordinates",
+                "longitude": "-81.06373409999999"
+            },
+            "@type": "Place",
+            "name": "123 Museum Road, Rock Hill, SC, USA"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Rock Hill",
+            "addressRegion": "SC",
+            "streetAddress": "123 Museum Road",
+            "postalCode": "29732",
+            "@type": "PostalAddress"
+        },
+        "description": "VENDOR Registration - Hungry Heroes 6th Annual Mike Doty Memorial Event",
+        "position": {
+            "lat": 34.9792356,
+            "lng": -81.06373409999999
         }
     },
     {
@@ -1710,44 +1824,6 @@
         }
     },
     {
-        "name": "Thanksgiving GIVE BACK",
-        "city": "Columbia",
-        "startDate": "2023-11-20",
-        "endDate": "2023-11-20",
-        "date": "2023-11-20",
-        "url": "https://www.eventbrite.com/e/thanksgiving-give-back-tickets-750265292687",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Charlotte",
-                "addressRegion": "NC",
-                "streetAddress": "210 East Trade Street",
-                "postalCode": "28202",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "35.2255999",
-                "@type": "GeoCoordinates",
-                "longitude": "-80.8419128"
-            },
-            "@type": "Place",
-            "name": "The MilliUp Event Center"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Charlotte",
-            "addressRegion": "NC",
-            "streetAddress": "210 East Trade Street",
-            "postalCode": "28202",
-            "@type": "PostalAddress"
-        },
-        "description": "20 Families will receive Free Thanksgiving Dinners.",
-        "position": {
-            "lat": 35.2255999,
-            "lng": -80.8419128
-        }
-    },
-    {
         "name": "Hanukkah Concert",
         "city": "Columbia",
         "startDate": "2023-12-08",
@@ -1783,44 +1859,6 @@
         "position": {
             "lat": 35.0862681,
             "lng": -80.82580879999999
-        }
-    },
-    {
-        "name": "New Hope End of Year Celebration",
-        "city": "Columbia",
-        "startDate": "2023-12-01",
-        "endDate": "2023-12-01",
-        "date": "2023-12-01",
-        "url": "https://www.eventbrite.com/e/new-hope-end-of-year-celebration-tickets-740366374757",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Rock Hill",
-                "addressRegion": "SC",
-                "streetAddress": "140 East Main Street",
-                "postalCode": "29730",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "34.92520199999999",
-                "@type": "GeoCoordinates",
-                "longitude": "-81.0269266"
-            },
-            "@type": "Place",
-            "name": "Crystal Ballroom Rock Hill, East Main Street, Rock Hill, SC, USA"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Rock Hill",
-            "addressRegion": "SC",
-            "streetAddress": "140 East Main Street",
-            "postalCode": "29730",
-            "@type": "PostalAddress"
-        },
-        "description": "Join us at the New Hope End of Year Celebration for a night of joy, laughter, and new beginnings as we bid farewell to the old and welcome t",
-        "position": {
-            "lat": 34.92520199999999,
-            "lng": -81.0269266
         }
     },
     {
@@ -1938,6 +1976,44 @@
         }
     },
     {
+        "name": "The Gather Giving Holiday Giving Party  (Pop up and Donations Drive for Domestic Violence Shelter)",
+        "city": "Columbia",
+        "startDate": "2023-11-24",
+        "endDate": "2023-11-25",
+        "date": "2023-11-24 - 2023-11-25",
+        "url": "https://www.eventbrite.com/e/the-gather-giving-holiday-giving-party-pop-up-and-donations-drive-for-domestic-violence-shelter-tickets-763702212877",
+        "location": {
+            "address": {
+                "addressCountry": "US",
+                "addressLocality": "Charlotte",
+                "addressRegion": "NC",
+                "streetAddress": "210 East Trade Street",
+                "postalCode": "28202",
+                "@type": "PostalAddress"
+            },
+            "geo": {
+                "latitude": "35.22533600000001",
+                "@type": "GeoCoordinates",
+                "longitude": "-80.842507"
+            },
+            "@type": "Place",
+            "name": "The MilliUp Event Center By MilliUp LLC, East Trade Street, Charlotte, NC, USA"
+        },
+        "address": {
+            "addressCountry": "US",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "streetAddress": "210 East Trade Street",
+            "postalCode": "28202",
+            "@type": "PostalAddress"
+        },
+        "description": "Join us at The Gather Giving Holiday Giving Party, a fun-filled pop-up event where we come together to donate and support a domestic violenc",
+        "position": {
+            "lat": 35.22533600000001,
+            "lng": -80.842507
+        }
+    },
+    {
         "name": "Copy of \"Mission Possible: A Mindful Fundraiser\"",
         "city": "Columbia",
         "startDate": "2024-04-21",
@@ -1973,44 +2049,6 @@
         "position": {
             "lat": 35.186857,
             "lng": -80.880757
-        }
-    },
-    {
-        "name": "DRAGO Charities- Benefiting Hearts United for Good (HUG)",
-        "city": "Columbia",
-        "startDate": "2023-11-21",
-        "endDate": "2023-11-21",
-        "date": "2023-11-21",
-        "url": "https://www.eventbrite.com/e/drago-charities-benefiting-hearts-united-for-good-hug-tickets-748816529397",
-        "location": {
-            "address": {
-                "addressCountry": "US",
-                "addressLocality": "Charlotte",
-                "addressRegion": "NC",
-                "streetAddress": "1221 The Plaza",
-                "postalCode": "28205",
-                "@type": "PostalAddress"
-            },
-            "geo": {
-                "latitude": "35.21923",
-                "@type": "GeoCoordinates",
-                "longitude": "-80.8113"
-            },
-            "@type": "Place",
-            "name": "Single Barrel Room"
-        },
-        "address": {
-            "addressCountry": "US",
-            "addressLocality": "Charlotte",
-            "addressRegion": "NC",
-            "streetAddress": "1221 The Plaza",
-            "postalCode": "28205",
-            "@type": "PostalAddress"
-        },
-        "description": "Not your grandmas bingo, We do this for shitty prizes, fun and most importantly CHARITY!!",
-        "position": {
-            "lat": 35.21923,
-            "lng": -80.8113
         }
     }
 ]

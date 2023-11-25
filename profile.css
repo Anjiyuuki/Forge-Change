@@ -1,33 +1,52 @@
 .profile-container {
-  width: 90%;
+  width: 95%;
   margin-left: 50px;
   display: grid; 
+  gap: 50px 80px; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
   grid-template-areas: 
-    "Left Right";
-}
+    "Profile-Info History";}
 
 .profile-info {
-  grid-area: Left;
+  grid-area: Profile-Info;
   display: grid; 
   grid-auto-columns: 1fr; 
   grid-template-columns: 0.8fr 1.2fr; 
-  grid-template-rows: 1.5fr 0.5fr; 
-  gap: 20px 0px; 
+  grid-template-rows: 0.3fr 2.7fr; 
+  gap: 0px 20px; 
   grid-template-areas: 
-    "Picture Info"
-    "Upload Info"; 
+    "Title Title"
+    "Picture Info";
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.Picture { grid-area: Picture; }
+#Title {grid-area: Title}
+.Picture { grid-area: Picture;
+display: block; }
 .Upload { grid-area: Upload; }
-.Info { grid-area: Info; }
+.Info { grid-area: Info; 
+font-size: 20px;}
 
-#profile-cont {
+.titles {
+  font-size: 25px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:#44672d
+}
+
+#pic-cont {
   width: 200px;
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 10px;
 }
 
 #profile-picture {
@@ -35,16 +54,25 @@
   max-height: 200px;
 }
 
+#upload-pic-btn {
+  background-color: #555;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  opacity: 0.5;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 13px;
+}
+
 .volunteer-history {
-  padding: 20px;
-  background-color: #e1e7f7;
+  grid-area: History;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 60%;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
 }
 
 #volunteerHistoryTable {
-  width: 100%;
   border-collapse: collapse;
 }
 
@@ -54,12 +82,8 @@
   text-align: left;
 }
 
-#volunteerHistoryTable th:last-child, #volunteerHistoryTable td:last-child {
-  text-align: center;
-}
-
-#volunteerHistoryTable th:nth-child(5), #volunteerHistoryTable td:nth-child(5) {
-  position: relative;
+#volunteerHistoryTable th {
+  font-size: 18px;
 }
 
 .settings-button {
@@ -95,13 +119,16 @@
   background-color: #ddd;
 }
 
-#addVolunteerActivityButton {
+#addVolunteerActivityButton, #exportVolunteerDataButton {
   background-color: #555;
   color: white;
-  padding: 10px;
+  padding: 10px 10px;
   border: none;
+  opacity: 0.8;
   border-radius: 5px;
-  margin-top: 10px;
+  width: 200px;
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .open-button {
@@ -237,19 +264,6 @@
   display: none;
 }
 
-#right-column {
-  grid-area: Right;
-}
-
-#user-event-list, #user-organization-list {
-  overflow-y: scroll;
-  border-style: solid;
-  border-color: #44672d;
-  border-radius: 20px;
-  border-width: 5px;
-  height: 100px;
-}
-
 .settings-button {
   background-color: #555;
   color: white;
@@ -298,4 +312,19 @@
 /* Ensure the settings button stays visible even during editing */
 #editVolunteerActivityForm .settings-button {
   display: block;
+}
+
+.scrollable-table-container {
+  height: 200px; /* Adjust the max-height as needed */
+  width: 600px;
+  overflow-y: auto;
+  margin-bottom: 10px; /* Optional: Add some spacing at the bottom */
+  padding: 10px;
+  border: 5px rgb(167, 163, 163) solid;
+  border-radius: 10px;
+}
+
+.settings-cell button {
+  display: block;
+  margin-bottom: 5px; /* Adjust the margin as needed */
 }

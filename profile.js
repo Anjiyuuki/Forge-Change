@@ -1,8 +1,6 @@
 var firestore = firebase.firestore();
 var auth = firebase.auth();
 const storageRef = firebase.storage().ref(); // Initialize Firebase Storage
-
-// Get the current page's filename
 const currentPage = window.location.pathname.split('/').pop();
 
 // Remove the 'active' class from all navigation links
@@ -28,77 +26,87 @@ async function loadInfo() {
   auth.onAuthStateChanged(function(user) {
     if (user) {
       var userID = user.uid;
-    var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
-    var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory');
+      var volunteerHistoryTable = document.getElementById('volunteerHistoryTable');
+      var volunteerHistoryRef = firestore.collection('users').doc(userID).collection('volunteerHistory');
 
-    // Clear the existing table data
-    volunteerHistoryTable.querySelector('tbody').innerHTML = '';
+      // Clear the existing table data
+      volunteerHistoryTable.querySelector('tbody').innerHTML = '';
 
-    // Fetch the user's volunteer history
-    volunteerHistoryRef.get()
-      .then(function (querySnapshot) {
-        var volunteerHistory = [];
-        querySnapshot.forEach(function (doc) {
-          var data = doc.data();
-          volunteerHistory.push(data);
-        
-          // Create a new row for each volunteer activity and append it to the table
-          var newRow = volunteerHistoryTable.querySelector('tbody').insertRow();
-          newRow.insertCell(0).textContent = data.organization;
-          newRow.insertCell(1).textContent = data.activity;
-          newRow.insertCell(2).textContent = data.hours;
-          newRow.insertCell(3).textContent = data.date;
-        
-          // Add a settings button and dropdown menu to each row
-          var settingsCell = newRow.insertCell(4);
-          var settingsButton = document.createElement('button');
-          settingsButton.textContent = 'Settings';
-          settingsButton.onclick = function () {
-            showSettingsDropdown(doc.id); // Pass the document ID to identify the activity
-          };
-          settingsCell.appendChild(settingsButton);
-        
-          // Create a dropdown menu for each row
-          var dropdownMenu = document.createElement('div');
-          dropdownMenu.className = 'dropdown-menu';
-          dropdownMenu.id = 'dropdown_' + doc.id; // Use the document ID to uniquely identify each dropdown
-          dropdownMenu.innerHTML = '<button onclick="editActivity(\'' + doc.id + '\')">Edit</button>' +
-            '<button onclick="confirmDeleteActivity(\'' + doc.id + '\')">Delete</button>';
-          settingsCell.appendChild(dropdownMenu);
+      // Fetch the user's volunteer history
+      volunteerHistoryRef.get()
+        .then(function (querySnapshot) {
+          var volunteerHistory = [];
+          querySnapshot.forEach(function (doc) {
+            var data = doc.data();
+            volunteerHistory.push(data);
           
-        });
-        var totalHours = calculateTotalVolunteerHours(volunteerHistory);
-        updateVolunteerHours(totalHours);
-      })
-      .catch(function (error) {
-        console.error('Error fetching volunteer history:', error);
-      });
-        // User is signed in, retrieve user's name
-        firestore.collection('users').doc(user.uid).get()
-            .then(function(doc) {
-                if (doc.exists) {
-                    var userData = doc.data();
-                    var userName = userData.name;
-                    var userLocation = userData.location;
-                    var userHours = userData.hours;
-                    var userInterests = userData.interests;
-                    // Update the user's name in the profile
-                    document.getElementById('user-name').textContent = userName;
-                    document.getElementById('user-location').textContent = userLocation;
-                    document.getElementById('user-interests').textContent = userInterests.join(', ');
-                    document.getElementById('user-hours').textContent = userHours;
+            // Create a new row for each volunteer activity and append it to the table
+            var newRow = volunteerHistoryTable.querySelector('tbody').insertRow();
+            newRow.insertCell(0).textContent = data.organization;
+            newRow.insertCell(1).textContent = data.activity;
+            newRow.insertCell(2).textContent = data.hours;
+            newRow.insertCell(3).textContent = data.date;
+          
+            // Add a settings button and dropdown menu to each row
+            var settingsCell = newRow.insertCell(4);
+            settingsCell.className = 'settings-cell';
 
-                } else {
-                    console.log('User data not found');
-                }
-            })
-            .catch(function(error) {
-                console.log('Error getting user data:', error);
-            });
-    } else {
-        // User is not signed in, handle this case if needed
-    }
-});
+            var editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.onclick = function () {
+              openEditActivityForm(doc.id, data); // Pass the document ID and activity data to the edit form
+            };
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+              confirmDeleteActivity(doc.id); // Pass the document ID to identify the activity
+            };
+
+            settingsCell.appendChild(editButton);
+            settingsCell.appendChild(deleteButton);
+
+            // Create a dropdown menu for each row
+            var dropdownMenu = document.createElement('div');
+            dropdownMenu.className = 'dropdown-menu';
+            dropdownMenu.id = 'dropdown_' + doc.id; // Use the document ID to uniquely identify each dropdown
+            dropdownMenu.innerHTML = '<button onclick="editActivity(\'' + doc.id + '\')">Edit</button>' +
+              '<button onclick="confirmDeleteActivity(\'' + doc.id + '\')">Delete</button>';
+            settingsCell.appendChild(dropdownMenu);
+            
+          });
+          var totalHours = calculateTotalVolunteerHours(volunteerHistory);
+          updateVolunteerHours(totalHours);
+        })
+        .catch(function (error) {
+          console.error('Error fetching volunteer history:', error);
+        });
+          // User is signed in, retrieve user's name
+          firestore.collection('users').doc(user.uid).get()
+              .then(function(doc) {
+                  if (doc.exists) {
+                      var userData = doc.data();
+                      var userName = userData.name;
+                      var userLocation = userData.location;
+                      var userHours = userData.hours;
+                      var userInterests = userData.interests;
+                      // Update the user's name in the profile
+                      document.getElementById('user-name').textContent = userName;
+                      document.getElementById('user-location').textContent = userLocation;
+                      document.getElementById('user-interests').textContent = userInterests.join(', ');
+                      document.getElementById('user-hours').textContent = userHours;
+
+                  } else {
+                      console.log('User data not found');
+                  }
+              })
+              .catch(function(error) {
+                  console.log('Error getting user data:', error);
+              });
+      } else {
+          // User is not signed in, handle this case if needed
+      }
+  });
 }
 loadInfo();
 
@@ -139,7 +147,6 @@ function closeForm(formId) {
   document.getElementById(formId).style.display = "none";
 }
 
-// Function to submit profile changes (similar to the submitChangesButton click handler)
 function submitProfileChanges() {
   var user = firebase.auth().currentUser;
   if (user) {

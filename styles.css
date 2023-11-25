@@ -50,6 +50,7 @@ nav {
 .nav-link:hover {
   background-color: #e1f5f7;
   color: #44672d;
+  cursor:pointer;
 }
 
 .active {
@@ -86,4 +87,17 @@ header img {
 
 button {
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }

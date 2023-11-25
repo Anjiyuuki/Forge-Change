@@ -242,8 +242,11 @@ async function getOrganizationsFromFirestore() {
       const website = data.website || '';
       // Convert keyword to lowercase if it exists, otherwise, use an empty string
       const keyword = data.keyword ? data.keyword.toLowerCase() : '';
+      // Include the document ID in the organization object
+      const id = doc.id;
       // Return an object with the organization's name, position, keyword, location, and website
       return {
+        id: id,
         name: name,
         position: { lat: lat, lng: lng },
         keyword: keyword,

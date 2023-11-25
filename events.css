@@ -104,24 +104,16 @@
 #event-links {
   position: absolute;
   bottom: 10px; 
+  width: 550px;
 }
+#event-links > * {
+  margin-right: 5%;
+}
+
 
 #eventName {
   font-weight: bold;
   font-size: 16px;
-}
-
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-  margin-left: 15px;
-  margin-bottom: 0px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  margin-left: 5px;
-  background-color: rgba(0, 0, 0, .5);
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 .create-group-button {
@@ -131,5 +123,4 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  margin-left: 180px;
   }
